@@ -3,135 +3,112 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mykhailo — studente di informatica e sviluppatore</title>
-  <meta name="description" content="Mykhailo: studente di informatica in Italia. Creo bot Telegram, siti web e assistenti di intelligenza artificiale che girano in locale.">
+  <title>Mykhailo — bot Telegram e AI in locale</title>
+  <meta name="description" content="Mykhailo, studente di informatica in Italia. Costruisco bot Telegram, siti web e assistenti AI che girano sul mio PC.">
   <meta name="color-scheme" content="light dark">
-  <meta property="og:title" content="Mykhailo — portfolio">
-  <meta property="og:description" content="Bot Telegram, siti web e AI in locale. Progetto principale: MikyCore.">
+  <meta property="og:title" content="Mykhailo — bot Telegram e AI in locale">
+  <meta property="og:description" content="Costruisco bot che lavorano mentre studio. Progetto principale: MikyCore.">
   <meta property="og:image" content="https://mikybuilds.github.io/assets/today.png">
   <meta property="og:url" content="https://mikybuilds.github.io/">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232f7cf6'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='34' font-weight='700' text-anchor='middle' fill='white'%3EM%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M8 30C8 16 19 8 32 8s24 8 24 22-11 22-24 22c-4 0-8-1-11-2L9 56l4-11c-3-4-5-9-5-15z' fill='%232541ff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a class="skip" href="#main" data-i18n="skip">Vai al contenuto</a>
-  <header class="nav">
-    <div class="wrap nav-in">
-      <a class="logo" href="#top" aria-label="Mykhailo"><span>M</span>ykhailo</a>
-      <nav aria-label="Menu">
-        <a href="#about" data-i18n="nav.about">Chi sono</a>
-        <a href="#project" data-i18n="nav.project">Progetti</a>
-        <a href="#services" data-i18n="nav.services">Servizi</a>
-        <a href="#contact" data-i18n="nav.contact">Contatti</a>
-      </nav>
-      <div class="tools">
-        <button class="chip-btn" id="lang" type="button" aria-label="Lingua / Language">EN</button>
-        <button class="chip-btn" id="theme" type="button" aria-label="Tema">◐</button>
-      </div>
+
+  <header class="top">
+    <a class="name" href="#main">Mykhailo</a>
+    <nav aria-label="Menu">
+      <a href="#about" data-i18n="nav.about">Chi sono</a>
+      <a href="#mikycore">MikyCore</a>
+      <a href="#services" data-i18n="nav.services">Servizi</a>
+      <a href="#contact" data-i18n="nav.contact">Contatti</a>
+    </nav>
+    <div class="switches">
+      <button id="lang" type="button" aria-label="Lingua / Language">English</button>
+      <button id="theme" type="button">Scuro</button>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero" id="top">
-      <div class="wrap hero-in">
-        <div class="hero-text">
-          <p class="eyebrow" data-i18n="hero.eyebrow">Studente di informatica · in Italia</p>
-          <h1><span data-i18n="hero.hi">Ciao, sono</span> <span class="grad">Mykhailo</span></h1>
-          <p class="lead" data-i18n="hero.lead">Creo bot Telegram, siti web e assistenti di intelligenza artificiale che girano sul mio computer — senza servizi a pagamento, con attenzione a sicurezza e privacy.</p>
-          <div class="cta">
-            <a class="btn primary" href="#project" data-i18n="hero.cta1">Guarda MikyCore</a>
-            <a class="btn ghost" href="#contact" data-i18n="hero.cta2">Contattami</a>
-          </div>
-          <ul class="facts">
-            <li><b>21k+</b><span data-i18n="facts.lines">righe di codice nel progetto</span></li>
-            <li><b>46</b><span data-i18n="facts.tests">suite di test automatici</span></li>
-            <li><b>3</b><span data-i18n="facts.langs">lingue: UA · IT · EN</span></li>
-          </ul>
-        </div>
-        <div class="hero-shot" aria-hidden="true">
-          <div class="phone tilt-l"><img src="assets/today.png" alt="" loading="eager" width="390" height="844"></div>
-          <div class="phone tilt-r"><img src="assets/market.png" alt="" loading="eager" width="390" height="844"></div>
-        </div>
+    <section class="hero">
+      <div class="hero-copy">
+        <h1 data-i18n="hero.title">Costruisco bot che lavorano mentre io studio.</h1>
+        <p class="lead" data-i18n="hero.lead">Sono Mykhailo, studente di informatica in Italia. Il mio assistente MikyCore gira sul mio PC: tiene d'occhio i compiti, mi prepara per le verifiche e trova affari su Subito.</p>
+        <p class="actions">
+          <a class="cta" href="https://t.me/mikybuilds" id="cta-tg" data-i18n="hero.cta">Scrivimi su Telegram</a>
+          <a class="quiet" href="#mikycore" data-i18n="hero.more">Come funziona MikyCore</a>
+        </p>
+      </div>
+
+      <figure class="chat" aria-label="Esempio di conversazione con MikyCore">
+        <ol class="msgs" id="msgs">
+          <li class="me" data-i18n="c1">Ci sono ThinkPad buoni su Subito?</li>
+          <li class="bot"><span data-i18n="c2a">Uno sì: Dell Latitude 7490, i7 con 8 GB, a 150 €.</span>
+            <span class="deal"><b data-i18n="c2b">Per questa configurazione il mercato è circa 250 €</b><span data-i18n="c2c">Spedizione con TuttoSubito, pagamento protetto.</span></span></li>
+          <li class="me" data-i18n="c3">E domani cosa ho?</li>
+          <li class="bot" data-i18n="c4">Verifica di fisica alle 10. Ti ho preparato 12 flashcard sul capitolo 4: le ripassiamo stasera alle 21?</li>
+        </ol>
+        <figcaption data-i18n="chat.cap">Una conversazione tipo con MikyCore.</figcaption>
+      </figure>
+    </section>
+
+    <section id="about" class="block">
+      <h2 data-i18n="about.title">Chi sono</h2>
+      <div class="prose">
+        <p data-i18n="about.p1">Sono ucraino e vivo in Italia, dove frequento il terzo anno di informatica. Mi piace prendere un problema di tutti i giorni — compiti, voti, appunti, annunci online — e scrivere il programma che lo risolve da solo.</p>
+        <p data-i18n="about.p2">Scrivo soprattutto in Python, ma anche in C++, JavaScript, HTML e CSS. Lavoro con modelli di linguaggio in locale (Ollama), con la Bot API e le Mini App di Telegram, e con Playwright per l'automazione del browser. Ogni funzione ha i suoi test automatici.</p>
+        <p data-i18n="about.p3">Parlo ucraino (madrelingua), italiano e inglese.</p>
       </div>
     </section>
 
-    <section id="about" class="section">
-      <div class="wrap two">
-        <div>
-          <h2 data-i18n="about.title">Chi sono</h2>
-          <p data-i18n="about.p1">Sono ucraino e vivo in Italia, dove frequento il terzo anno di un indirizzo di informatica. Mi piace trasformare problemi reali — compiti, voti, appunti, annunci online — in strumenti che li risolvono da soli.</p>
-          <p data-i18n="about.p2">Il mio progetto principale è MikyCore, un assistente personale con intelligenza artificiale locale che uso ogni giorno per la scuola e non solo. Lo sviluppo con un approccio "da professionista": test automatici, sicurezza, codice leggibile.</p>
-        </div>
-        <div>
-          <h3 data-i18n="about.skills">Competenze</h3>
-          <ul class="tags">
-            <li>Python</li><li>C++</li><li>HTML &amp; CSS</li><li>JavaScript</li><li>Telegram Bot API</li><li>Telegram Mini Apps</li>
-            <li>Ollama · LLM locali</li><li>Playwright</li><li data-i18n="skills.tests">Test automatici</li><li>Flowgorithm</li><li>Git</li><li data-i18n="skills.sec">Sicurezza (sandbox, prompt injection)</li>
-          </ul>
-          <h3 data-i18n="about.langs">Lingue</h3>
-          <ul class="langs">
-            <li><b data-i18n="lang.uk">Ucraino</b><span data-i18n="lang.native">madrelingua</span></li>
-            <li><b data-i18n="lang.it">Italiano</b><span data-i18n="lang.fluent">fluente</span></li>
-            <li><b data-i18n="lang.en">Inglese</b><span data-i18n="lang.good">buono</span></li>
-          </ul>
-        </div>
+    <section id="mikycore" class="block">
+      <h2>MikyCore</h2>
+      <div class="prose">
+        <p data-i18n="mc.lead">Un assistente personale su Telegram con un modello di linguaggio che gira interamente sulla mia scheda video da 8 GB: niente abbonamenti, niente dati inviati fuori. Lo uso ogni giorno per la scuola. Sono circa 21 000 righe di codice, con 46 suite di test.</p>
       </div>
+
+      <div class="shots">
+        <figure><img src="assets/today.png" alt="Schermata Oggi: promemoria, compiti e flashcard del giorno" width="390" height="844" loading="lazy"><figcaption data-i18n="shot.today">La giornata: promemoria, compiti, flashcard.</figcaption></figure>
+        <figure><img src="assets/market.png" alt="Schermata Mercato: monitoraggi su Subito, profitto e ultimi affari" width="390" height="844" loading="lazy"><figcaption data-i18n="shot.market">Il mercato: affari su Subito e il mio profitto.</figcaption></figure>
+        <figure><img src="assets/cards.png" alt="Flashcard girata con la risposta e i pulsanti di valutazione" width="390" height="844" loading="lazy"><figcaption data-i18n="shot.cards">Le flashcard, con la ripetizione dilazionata.</figcaption></figure>
+      </div>
+
+      <dl class="features">
+        <div><dt data-i18n="f1.t">Sceglie da solo lo strumento giusto</dt><dd data-i18n="f1.d">Ha più di 100 strumenti: promemoria, file, browser, Google Classroom, posta. Nei test sul modello reale sceglie quello giusto nel 98% dei casi.</dd></div>
+        <div><dt data-i18n="f2.t">Trova affari su Subito</dt><dd data-i18n="f2.d">Legge gli annunci, calcola il prezzo di mercato per modello e configurazione (processore, RAM, generazione), riconosce le truffe e mi scrive solo quando conviene davvero.</dd></div>
+        <div><dt data-i18n="f3.t">Mi aiuta a studiare</dt><dd data-i18n="f3.d">Trasforma le lezioni in appunti su Obsidian, crea flashcard, mi interroga a voce e assegna un voto, e organizza il ripasso prima delle verifiche.</dd></div>
+        <div><dt data-i18n="f4.t">Si migliora, con il mio permesso</dt><dd data-i18n="f4.d">Nota dove sbaglia e propone regole, automazioni e perfino nuovi plugin in Python. I plugin girano in una sandbox isolata e partono solo dopo la mia conferma.</dd></div>
+        <div><dt>Flowgorithm</dt><dd data-i18n="f5.d">Genera diagrammi di flusso e li verifica eseguendoli con un interprete .fprg scritto da me, che indica l'errore e il blocco esatto.</dd></div>
+        <div><dt data-i18n="f6.t">Sicuro per scelta</dt><dd data-i18n="f6.d">Le azioni rischiose chiedono conferma, le password non passano mai dal modello, il testo esterno non può dargli ordini, e non aggira le protezioni dei siti.</dd></div>
+      </dl>
     </section>
 
-    <section id="project" class="section alt">
-      <div class="wrap">
-        <p class="eyebrow" data-i18n="proj.eyebrow">Progetto principale</p>
-        <h2>MikyCore</h2>
-        <p class="lead narrow" data-i18n="proj.lead">Un assistente personale su Telegram con un'intelligenza artificiale che gira interamente sul mio PC (GPU da 8 GB): nessun abbonamento, nessun dato inviato a servizi esterni. Ha un'app integrata (Telegram Mini App) e impara dal modo in cui lo uso.</p>
-
-        <div class="gallery" role="list">
-          <figure role="listitem"><div class="phone"><img src="assets/today.png" alt="Schermata Oggi: promemoria, compiti, carte da ripassare" loading="lazy" width="390" height="844"></div><figcaption data-i18n="shot.today">La giornata in un colpo d'occhio</figcaption></figure>
-          <figure role="listitem"><div class="phone"><img src="assets/market.png" alt="Schermata Mercato: monitoraggi Subito e affari" loading="lazy" width="390" height="844"></div><figcaption data-i18n="shot.market">Mercato: affari su Subito e profitto</figcaption></figure>
-          <figure role="listitem"><div class="phone"><img src="assets/cards.png" alt="Flashcard con ripetizione dilazionata" loading="lazy" width="390" height="844"></div><figcaption data-i18n="shot.cards">Flashcard con ripetizione dilazionata</figcaption></figure>
-          <figure role="listitem"><div class="phone"><img src="assets/more.png" alt="Sezioni dell'app" loading="lazy" width="390" height="844"></div><figcaption data-i18n="shot.more">Tutte le funzioni, in tre lingue</figcaption></figure>
-        </div>
-
-        <div class="features">
-          <article><span class="ico">🧠</span><h3 data-i18n="f1.t">AI in locale con strumenti</h3><p data-i18n="f1.d">Un agente che sceglie da solo tra oltre 100 strumenti (promemoria, file, browser, Classroom, email…). Valutato con test sul modello reale: ~98% di scelte corrette.</p></article>
-          <article><span class="ico">🧬</span><h3 data-i18n="f2.t">Si migliora da solo — con il mio permesso</h3><p data-i18n="f2.d">Nota dove sbaglia, propone regole, "ricette" e perfino nuovi plugin in Python. Ogni plugin gira in una sandbox isolata e si attiva solo dopo la mia conferma.</p></article>
-          <article><span class="ico">🛒</span><h3 data-i18n="f3.t">Analisi del mercato Subito</h3><p data-i18n="f3.d">Legge gli annunci, calcola il prezzo di mercato per modello e configurazione (CPU, RAM, generazione), segnala truffe e mi avvisa solo per i veri affari.</p></article>
-          <article><span class="ico">📚</span><h3 data-i18n="f4.t">Studio</h3><p data-i18n="f4.d">Lezioni → appunti strutturati in Obsidian, flashcard automatiche, simulazione di interrogazioni con voto, piano di studio verso le verifiche.</p></article>
-          <article><span class="ico">📊</span><h3 data-i18n="f5.t">Flowgorithm</h3><p data-i18n="f5.d">Genera diagrammi di flusso verificati eseguendoli, e un interprete .fprg scritto da zero che trova l'errore e il blocco esatto in cui si trova.</p></article>
-          <article><span class="ico">🔐</span><h3 data-i18n="f6.t">Sicurezza prima di tutto</h3><p data-i18n="f6.d">Conferma per le azioni rischiose, protezione da prompt injection, password mai passate all'AI, nessun aggiramento delle protezioni dei siti.</p></article>
-        </div>
-
-        <div class="stack">
-          <h3 data-i18n="proj.stack">Tecnologie</h3>
-          <p>Python · python-telegram-bot · Ollama (Qwen3 8B, Qwen3-VL) · Playwright · faster-whisper · Telegram Mini App (JavaScript, CSS) · Obsidian · Google APIs · <span data-i18n="proj.tests">46 suite di test + valutazioni sul modello reale</span></p>
-        </div>
+    <section id="services" class="block">
+      <h2 data-i18n="srv.title">Lavoro su richiesta</h2>
+      <div class="prose">
+        <p data-i18n="srv.lead">Prendo piccoli progetti e li faccio bene. Prezzi da studente, da concordare in base al lavoro.</p>
       </div>
+      <dl class="services">
+        <div><dt data-i18n="s1.t">Bot Telegram</dt><dd data-i18n="s1.d">Prenotazioni, menù, promemoria per i clienti, risposte automatiche, mini app. Per negozi, palestre, insegnanti.</dd></div>
+        <div><dt data-i18n="s2.t">Siti web</dt><dd data-i18n="s2.d">Siti vetrina veloci, fatti bene anche su telefono, pubblicati gratis su GitHub Pages o sul tuo dominio.</dd></div>
+        <div><dt data-i18n="s3.t">Traduzioni ucraino, italiano, inglese</dt><dd data-i18n="s3.d">Lettere, moduli e aiuto con la burocrazia italiana per chi parla ucraino. Traduzioni non giurate.</dd></div>
+        <div><dt data-i18n="s4.t">Ripetizioni di informatica</dt><dd data-i18n="s4.d">Python, Flowgorithm e basi di programmazione per studenti più giovani, con esercizi e quiz.</dd></div>
+      </dl>
     </section>
 
-    <section id="services" class="section">
-      <div class="wrap">
-        <h2 data-i18n="srv.title">Cosa posso fare per te</h2>
-        <p class="lead narrow" data-i18n="srv.lead">Piccoli progetti fatti bene, con prezzi da studente. Scrivimi e ne parliamo.</p>
-        <div class="services">
-          <article><span class="ico">🤖</span><h3 data-i18n="s1.t">Bot Telegram su misura</h3><p data-i18n="s1.d">Prenotazioni, menù, promemoria per i clienti, risposte automatiche, mini app — per negozi, palestre, insegnanti.</p></article>
-          <article><span class="ico">🌐</span><h3 data-i18n="s2.t">Siti web</h3><p data-i18n="s2.d">Siti vetrina veloci e curati, adatti al telefono, pubblicati gratis su GitHub Pages o sul tuo dominio.</p></article>
-          <article><span class="ico">🗣️</span><h3 data-i18n="s3.t">Traduzioni UA · IT · EN</h3><p data-i18n="s3.d">Testi, lettere, moduli e aiuto con la burocrazia italiana per chi parla ucraino (traduzioni non giurate).</p></article>
-          <article><span class="ico">🧑‍🏫</span><h3 data-i18n="s4.t">Ripetizioni di informatica</h3><p data-i18n="s4.d">Python, Flowgorithm, basi di programmazione per studenti più giovani — con esercizi e quiz.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section alt">
-      <div class="wrap contact">
-        <h2 data-i18n="ct.title">Contatti</h2>
-        <p class="lead narrow" data-i18n="ct.lead">Il modo più veloce per raggiungermi:</p>
-        <div class="cta" id="contact-links"></div>
-        <p class="muted" id="contact-empty" hidden data-i18n="ct.empty">I contatti arriveranno presto.</p>
-      </div>
+    <section id="contact" class="block contact">
+      <h2 data-i18n="ct.title">Contatti</h2>
+      <p class="prose" data-i18n="ct.lead">Scrivimi su Telegram: rispondo di solito in giornata.</p>
+      <p class="contact-links" id="contact-links"></p>
     </section>
   </main>
 
   <footer class="foot">
-    <div class="wrap"><span>© <span id="year">2026</span> Mykhailo</span> · <span data-i18n="foot.made">fatto a mano con HTML, CSS e JavaScript</span></div>
+    <p><span data-i18n="foot">Sito scritto a mano in HTML, CSS e JavaScript.</span> © <span id="year">2026</span> Mykhailo</p>
   </footer>
   <script src="script.js"></script>
 </body>
