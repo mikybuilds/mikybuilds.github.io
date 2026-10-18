@@ -121,5 +121,82 @@ document.getElementById("lang").addEventListener("click", () => setLang(lang ===
 document.getElementById("theme").addEventListener("click", () => setTheme(isDark() ? "light" : "dark"));
 window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paintThemeButton);
 
-/* the conversation plays once on load */
-document.getElementById("msgs").classList.add("play");
+/* ---------- motion ---------- */
+const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/* headline word by word */
+function splitHeadline() {
+  const h = document.querySelector("h1");
+  if (calm) return;
+  const words = h.textContent.trim().split(/\s+/);
+  h.replaceChildren(...words.flatMap((w, i) => {
+    const s = document.createElement("span");
+    s.className = "w"; s.style.setProperty("--i", i); s.textContent = w;
+    return i < words.length - 1 ? [s, document.createTextNode(" ")] : [s];
+  }));
+}
+
+/* the conversation, played like a real chat: "typing…" before every reply */
+let chatRun = 0;
+async function playChat() {
+  const run = ++chatRun;
+  const box = document.getElementById("msgs"), chat = document.querySelector(".chat");
+  const items = [...box.querySelectorAll("li:not(.typing)")];
+  box.querySelectorAll(".typing").forEach((t) => t.remove());
+  if (calm) { items.forEach((li) => li.classList.add("shown")); chat.classList.add("done"); return; }
+  box.classList.add("js"); chat.classList.remove("done");
+  items.forEach((li) => li.classList.remove("shown"));
+  await wait(900);
+  for (const li of items) {
+    if (run !== chatRun) return;
+    if (li.classList.contains("bot")) {
+      const t = document.createElement("li");
+      t.className = "typing"; t.setAttribute("aria-hidden", "true");
+      t.append(document.createElement("i"), document.createElement("i"), document.createElement("i"));
+      box.insertBefore(t, li);
+      await wait(950);
+      t.remove();
+      if (run !== chatRun) return;
+    }
+    li.classList.add("shown");
+    await wait(li.classList.contains("me") ? 650 : 900);
+  }
+  chat.classList.add("done");
+}
+
+/* sticky bar becomes frosted glass after a little scroll */
+const bar = document.getElementById("bar");
+const onScroll = () => bar.classList.toggle("scrolled", window.scrollY > 12);
+window.addEventListener("scroll", onScroll, {passive: true}); onScroll();
+
+/* screenshots fan out once when reached */
+const shots = document.querySelector(".shots");
+if (!calm && "IntersectionObserver" in window) {
+  shots.classList.add("wait");
+  const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { shots.classList.remove("wait"); io.disconnect(); } }, {threshold: 0.25});
+  io.observe(shots);
+}
+
+/* language switch: soft crossfade + the headline and chat replay */
+document.getElementById("lang").addEventListener("click", () => {
+  const main = document.querySelector("main");
+  main.classList.remove("swap"); void main.offsetWidth; main.classList.add("swap");
+  setTimeout(() => { splitHeadline(); playChat(); }, 0);              // after setLang() has put the new texts in
+});
+
+/* theme switch: a circle grows from the button (View Transitions, where supported) */
+const themeBtn = document.getElementById("theme");
+themeBtn.addEventListener("click", (ev) => {
+  const next = isDark() ? "light" : "dark";
+  if (calm || !document.startViewTransition) return;                 // the plain handler below switches instantly
+  ev.stopImmediatePropagation();
+  const r = themeBtn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+  const root = document.documentElement.style;
+  root.setProperty("--x", x + "px"); root.setProperty("--y", y + "px");
+  root.setProperty("--r", Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)) + "px");
+  document.startViewTransition(() => setTheme(next));
+}, true);
+
+splitHeadline();
+playChat();
