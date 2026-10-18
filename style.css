@@ -1,28 +1,34 @@
-/* Mykhailo — portfolio. Palette from the world of chat apps: wallpaper, bubbles, ink, one action colour. */
+/* Mykhailo — portfolio. Palette from Telegram itself: pastel gradient wallpaper, green sent bubbles, ink, one action blue, one "good deal" green.
+   Dark theme follows Telegram's night colours. */
 :root {
-  --wall: #e6eaf0;        /* chat wallpaper */
-  --bubble: #ffffff;      /* incoming bubble */
-  --sent: #dff5cb;        /* outgoing bubble */
-  --ink: #141a26;         /* text */
-  --soft: #586274;        /* secondary text */
-  --rule: #c9d0db;        /* dividers */
-  --act: #2541ff;         /* links and actions only */
+  --wall: #f4f6fb;        /* page */
+  --bubble: #ffffff;      /* incoming bubble, cards */
+  --sent: #e1f9c9;        /* outgoing bubble */
+  --ink: #0f1733;         /* text */
+  --soft: #4f5a75;        /* secondary text */
+  --rule: #dde2ee;        /* dividers */
+  --act: #2b59ff;         /* links and actions only */
   --act-ink: #ffffff;
-  --paper: #d9e2ec;       /* inside the chat window */
-  --doodle: #b9c6d6;      /* wallpaper doodles */
+  --ok: #0f8a4a;          /* a good deal */
+  --paper: linear-gradient(140deg, #cfe8b3 0%, #e6ecac 32%, #b4dcc4 64%, #9fc8e3 100%);   /* inside the chat window */
+  --doodle: rgba(30, 72, 44, 0.2);   /* wallpaper doodles */
+  --glow1: rgba(43, 89, 255, 0.12); --glow2: rgba(110, 200, 140, 0.18);
   /* school + chat doodles: bubble, book, bell, braces, laptop, flashcard, plane, sparkle */
   --doodles: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 22h34a8 8 0 0 1 8 8v14a8 8 0 0 1-8 8H38l-10 8v-8h-6a8 8 0 0 1-8-8V30a8 8 0 0 1 8-8z'/%3E%3Cpath d='M126 24c8-4 16-4 22 0v30c-6-4-14-4-22 0zM148 24c6-4 14-4 22 0v30c-8-4-16-4-22 0z'/%3E%3Cpath d='M36 150h30M42 150v-14a9 9 0 0 1 18 0v14M48 156a3 3 0 0 0 6 0'/%3E%3Cpath d='M138 104c-6 0-6 4-6 9s-2 8-6 8c4 0 6 3 6 8s0 9 6 9M164 104c6 0 6 4 6 9s2 8 6 8c-4 0-6 3-6 8s0 9-6 9'/%3E%3Cpath d='M128 172h40v24h-40zM120 204h56'/%3E%3Cpath d='M78 84l26-6 6 26-26 6z'/%3E%3Cpath d='M18 92l34-14-10 34-7-12zM35 100l17-22'/%3E%3Cpath d='M196 70v14M189 77h14M86 182v10M81 187h10'/%3E%3C/svg%3E");
   --display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
   --body: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
-:root[data-theme="dark"] { --wall: #0f1520; --bubble: #1b2431; --sent: #23402c; --ink: #e8edf4; --soft: #9aa6b8; --rule: #2a3444; --act: #8a9bff; --act-ink: #0f1520; --paper: #131b28; --doodle: #222d3d; }
+:root[data-theme="dark"] { --wall: #0e1621; --bubble: #182533; --sent: #2b5278; --ink: #e9eef5; --soft: #93a3b8; --rule: #233243; --act: #7aa2ff; --act-ink: #0e1621; --ok: #5fd08f;
+  --paper: linear-gradient(140deg, #1b3a2d 0%, #28391f 32%, #163a3c 64%, #1a2d4b 100%); --doodle: rgba(255, 255, 255, 0.08); --glow1: rgba(122, 162, 255, 0.1); --glow2: rgba(60, 170, 110, 0.09); }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --wall: #0f1520; --bubble: #1b2431; --sent: #23402c; --ink: #e8edf4; --soft: #9aa6b8; --rule: #2a3444; --act: #8a9bff; --act-ink: #0f1520; --paper: #131b28; --doodle: #222d3d; }
+  :root:not([data-theme="light"]) { --wall: #0e1621; --bubble: #182533; --sent: #2b5278; --ink: #e9eef5; --soft: #93a3b8; --rule: #233243; --act: #7aa2ff; --act-ink: #0e1621; --ok: #5fd08f;
+    --paper: linear-gradient(140deg, #1b3a2d 0%, #28391f 32%, #163a3c 64%, #1a2d4b 100%); --doodle: rgba(255, 255, 255, 0.08); --glow1: rgba(122, 162, 255, 0.1); --glow2: rgba(60, 170, 110, 0.09); }
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--wall); color: var(--ink); font: 18px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+body { margin: 0; color: var(--ink);
+  background: radial-gradient(900px 560px at 88% -8%, var(--glow1), transparent 70%), radial-gradient(760px 520px at -8% 6%, var(--glow2), transparent 70%), var(--wall); font: 18px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: var(--act); text-underline-offset: 3px; }
 :focus-visible { outline: 3px solid var(--act); outline-offset: 3px; border-radius: 4px; }
@@ -75,8 +81,8 @@ h1 { font: 800 clamp(42px, 6.2vw, 78px)/0.98 var(--display); letter-spacing: -0.
 .msgs li { max-width: 86%; padding: 11px 15px 12px; font-size: 17px; line-height: 1.45; box-shadow: 0 1px 1px rgba(20, 26, 38, 0.12); }
 .msgs .me { align-self: flex-end; background: var(--sent); border-radius: 18px 18px 6px 18px; }
 .msgs .bot { align-self: flex-start; background: var(--bubble); border-radius: 18px 18px 18px 6px; }
-.deal { display: block; margin-top: 10px; padding: 10px 12px; border-left: 3px solid var(--act); background: color-mix(in srgb, var(--act) 7%, transparent); border-radius: 0 8px 8px 0; font-size: 15px; }
-.deal b { display: block; font-weight: 600; }
+.deal { display: block; margin-top: 10px; padding: 10px 12px; border-left: 3px solid var(--ok); background: color-mix(in srgb, var(--ok) 9%, transparent); border-radius: 0 8px 8px 0; font-size: 15px; }
+.deal b { display: block; font-weight: 600; color: var(--ok); }
 .deal span { color: var(--soft); }
 .chat figcaption { margin-top: 14px; font-size: 14px; color: var(--soft); text-align: right; }
 
@@ -99,14 +105,15 @@ h1 { font: 800 clamp(42px, 6.2vw, 78px)/0.98 var(--display); letter-spacing: -0.
 .msgs .typing i:nth-child(2) { animation-delay: 0.15s; } .msgs .typing i:nth-child(3) { animation-delay: 0.3s; }
 @keyframes dot { 0%, 60%, 100% { transform: translateY(0); opacity: 0.45; } 30% { transform: translateY(-4px); opacity: 1; } }
 .deal { position: relative; overflow: hidden; }
-.shown .deal::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, color-mix(in srgb, var(--act) 18%, transparent) 50%, transparent 70%); transform: translateX(-100%); animation: sheen 1.1s 0.45s var(--out) forwards; }
+.shown .deal::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, color-mix(in srgb, var(--ok) 22%, transparent) 50%, transparent 70%); transform: translateX(-100%); animation: sheen 1.1s 0.45s var(--out) forwards; }
 @keyframes sheen { to { transform: translateX(100%); } }
 .chat figcaption { opacity: 0; transition: opacity 0.6s; } .chat.done figcaption { opacity: 1; }
 
 /* sticky bar that turns to frosted glass once you scroll */
 .bar { position: sticky; top: 0; z-index: 10; transition: background-color 0.3s, box-shadow 0.3s, backdrop-filter 0.3s; }
 .bar.scrolled { background: color-mix(in srgb, var(--wall) 78%, transparent); backdrop-filter: saturate(1.5) blur(14px); -webkit-backdrop-filter: saturate(1.5) blur(14px); box-shadow: 0 1px 0 var(--rule); }
-.bar .top { transition: padding 0.3s var(--out); } .bar.scrolled .top { padding-top: 12px; padding-bottom: 12px; }
+/* the bar keeps its height when it turns to glass: changing it moved the page under the scroll position and made it shake near the top */
+.top { padding-top: 14px; padding-bottom: 14px; }
 
 /* the MikyCore screenshots fan out once, when you reach them */
 .shots figure { transition: transform 0.9s var(--out), opacity 0.9s var(--out); }
@@ -208,7 +215,6 @@ main.swap .lead { animation: swap 0.4s var(--out) both; opacity: 1; }   /* the i
   .top { flex-wrap: wrap; row-gap: 10px; }
   .top nav { order: 3; width: 100%; margin: 0 -4px; gap: 6px; overflow-x: auto; scrollbar-width: none; }
   .top nav a { padding: 8px 10px; white-space: nowrap; border-radius: 10px; }
-  .bar.scrolled .top nav { display: none; }
   .switches { margin-left: auto; }
   .flow ol { grid-template-columns: 1fr; gap: 30px; }
   .flow li + li::before { left: 30px; top: -30px; width: 2px; height: 30px; background: repeating-linear-gradient(180deg, var(--rule) 0 6px, transparent 6px 11px); }
