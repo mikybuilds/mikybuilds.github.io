@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
   <a class="skip" href="#main" data-i18n="skip">Vai al contenuto</a>
@@ -28,8 +28,11 @@
       <a href="#contact" data-i18n="nav.contact">Contatti</a>
     </nav>
     <div class="switches">
-      <button id="lang" type="button" aria-label="Lingua / Language">English</button>
-      <button id="theme" type="button">Scuro</button>
+      <button id="lang" type="button" aria-label="Switch to English">EN</button>
+      <button id="theme" type="button" aria-label="Tema scuro">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      </button>
     </div>
   </div></header>
 
@@ -45,6 +48,12 @@
       </div>
 
       <figure class="chat" aria-label="Esempio di conversazione con MikyCore">
+        <div class="window" id="window">
+        <div class="paper" aria-hidden="true"></div><div class="paper glow" aria-hidden="true"></div>
+        <div class="chat-head">
+          <svg class="avatar" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="32"/><path d="M18 31c0-8 6-13 14-13s14 5 14 13-6 13-14 13c-2 0-4-.4-6-1l-7 4 2-6c-2-2.5-3-6-3-10z"/></svg>
+          <div><b>MikyCore</b><span id="status" data-i18n="st.online">online</span></div>
+        </div>
         <ol class="msgs" id="msgs">
           <li class="me" data-i18n="c1">Ci sono ThinkPad buoni su Subito?</li>
           <li class="bot"><span data-i18n="c2a">Uno sì: Dell Latitude 7490, i7 con 8 GB, a 150 €.</span>
@@ -52,6 +61,7 @@
           <li class="me" data-i18n="c3">E domani cosa ho?</li>
           <li class="bot" data-i18n="c4">Verifica di fisica alle 10. Ti ho preparato 12 flashcard sul capitolo 4: le ripassiamo stasera alle 21?</li>
         </ol>
+        </div>
         <figcaption data-i18n="chat.cap">Una conversazione tipo con MikyCore.</figcaption>
       </figure>
     </section>
@@ -69,6 +79,16 @@
       <h2>MikyCore</h2>
       <div class="prose">
         <p data-i18n="mc.lead">Un assistente personale su Telegram con un modello di linguaggio che gira interamente sulla mia scheda video da 8 GB: niente abbonamenti, niente dati inviati fuori. Lo uso ogni giorno per la scuola. Sono circa 21 000 righe di codice, con 46 suite di test.</p>
+      </div>
+
+      <div class="flow" id="flow">
+        <h3 class="flow-title" data-i18n="hw.title">Il percorso di un messaggio</h3>
+        <ol>
+          <li><b data-i18n="hw.n1t">Il mio telefono</b><span data-i18n="hw.n1d">Scrivo o mando un vocale su Telegram, anche da scuola.</span></li>
+          <li><b data-i18n="hw.n2t">Il mio PC</b><span data-i18n="hw.n2d">Qwen3 8B gira sulla RTX 5060 da 8 GB, Whisper trascrive la voce. Nessun servizio a pagamento.</span></li>
+          <li><b data-i18n="hw.n3t">Più di 100 strumenti</b><span data-i18n="hw.n3d">Classeviva, Classroom, Subito, Obsidian, posta, browser: il modello sceglie quello giusto.</span></li>
+        </ol>
+        <p class="flow-back" data-i18n="hw.back">La risposta torna sul telefono in pochi secondi.</p>
       </div>
 
       <div class="shots">
@@ -98,6 +118,13 @@
         <div><dt data-i18n="s3.t">Traduzioni ucraino, italiano, inglese</dt><dd data-i18n="s3.d">Lettere, moduli e aiuto con la burocrazia italiana per chi parla ucraino. Traduzioni non giurate.</dd></div>
         <div><dt data-i18n="s4.t">Ripetizioni di informatica</dt><dd data-i18n="s4.d">Python, Flowgorithm e basi di programmazione per studenti più giovani, con esercizi e quiz.</dd></div>
       </dl>
+      <h3 class="steps-title" data-i18n="pr.title">Come lavoriamo</h3>
+      <ol class="steps">
+        <li><b data-i18n="pr.1t">Mi scrivi</b><span data-i18n="pr.1d">Due righe su cosa ti serve bastano: il resto lo chiedo io.</span></li>
+        <li><b data-i18n="pr.2t">Ricevi una proposta</b><span data-i18n="pr.2d">Ti mando l'idea, i tempi e il prezzo prima di iniziare. Nessun impegno.</span></li>
+        <li><b data-i18n="pr.3t">Lo provi e lo sistemiamo</b><span data-i18n="pr.3d">Vedi il lavoro mentre lo faccio e correggiamo insieme i dettagli.</span></li>
+      </ol>
+      <p class="actions srv-cta"><a class="cta" href="https://t.me/mikybuilds" data-tg data-i18n="pr.cta">Chiedi una proposta su Telegram</a></p>
     </section>
 
     <section id="contact" class="block contact">
@@ -109,7 +136,8 @@
 
   <footer class="foot">
     <p><span data-i18n="foot">Sito scritto a mano in HTML, CSS e JavaScript.</span> © <span id="year">2026</span> Mykhailo</p>
+    <a href="#main" class="totop" data-i18n="totop">Torna su</a>
   </footer>
-  <script src="script.js"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>
