@@ -42,7 +42,19 @@ const EN = {
   "s3.t": "Ukrainian, Italian, English translations", "s3.d": "Letters, forms and help with Italian paperwork for Ukrainian speakers. Non-certified translations.",
   "s4.t": "Computer science tutoring", "s4.d": "Python, Flowgorithm and programming basics for younger students, with exercises and quizzes.",
   "ct.title": "Contact", "ct.lead": "Message me on Telegram: I usually reply the same day.",
-  "foot": "Site written by hand in HTML, CSS and JavaScript.",
+  "foot": "Site written by hand in HTML, CSS and JavaScript.", "totop": "Back to top",
+  "st.online": "online", "st.typing": "typing…",
+  "hw.title": "The path of one message",
+  "hw.n1t": "My phone", "hw.n1d": "I type or send a voice message on Telegram, even from school.",
+  "hw.n2t": "My PC", "hw.n2d": "Qwen3 8B runs on the 8 GB RTX 5060, Whisper transcribes the voice. No paid services.",
+  "hw.n3t": "More than 100 tools", "hw.n3d": "Classeviva, Classroom, Subito, Obsidian, email, browser: the model picks the right one.",
+  "hw.back": "The answer is back on the phone in a few seconds.",
+  "pr.title": "How we work",
+  "pr.1t": "You message me", "pr.1d": "A couple of lines about what you need is enough: I'll ask the rest.",
+  "pr.2t": "You get a proposal", "pr.2d": "I send you the idea, the timing and the price before I start. No commitment.",
+  "pr.3t": "You try it, we polish it", "pr.3d": "You see the work while I build it and we fix the details together.",
+  "pr.cta": "Ask for a proposal on Telegram",
+  "_themeDark": "Dark theme", "_themeLight": "Light theme", "_langBtn": "IT", "_langAria": "Passa all'italiano",
   "_title": "Mykhailo — Telegram bots and local AI",
   "_desc": "Mykhailo, computer science student in Italy. I build Telegram bots, websites and AI assistants that run on my own PC.",
   "_chat": "Example conversation with MikyCore",
@@ -58,9 +70,10 @@ const store = {
 const IT = {};
 document.querySelectorAll("[data-i18n]").forEach((el) => { IT[el.dataset.i18n] = el.textContent; });
 Object.assign(IT, {
-  "theme.dark": "Scuro", "theme.light": "Chiaro",
+  "st.typing": "sta scrivendo…",
   _title: document.title, _desc: document.querySelector('meta[name="description"]').content,
-  _chat: document.querySelector(".chat").getAttribute("aria-label"), _lang: "English"
+  _chat: document.querySelector(".chat").getAttribute("aria-label"),
+  _themeDark: "Tema scuro", _themeLight: "Tema chiaro", _langBtn: "EN", _langAria: "Switch to English"
 });
 
 let lang = "it";
@@ -74,7 +87,8 @@ function setLang(code) {
   document.title = d._title;
   document.querySelector('meta[name="description"]').content = d._desc;
   document.querySelector(".chat").setAttribute("aria-label", d._chat);
-  document.getElementById("lang").textContent = d._lang;
+  const lb = document.getElementById("lang");
+  lb.textContent = d._langBtn; lb.setAttribute("aria-label", d._langAria);
   store.set("lang", lang);
   paintThemeButton();
 }
@@ -91,26 +105,41 @@ function setTheme(t) {
   paintThemeButton();
 }
 function paintThemeButton() {
-  document.getElementById("theme").textContent = isDark() ? dict()["theme.light"] : dict()["theme.dark"];
+  const dark = isDark();
+  document.documentElement.classList.toggle("is-dark", dark);
+  document.getElementById("theme").setAttribute("aria-label", dark ? dict()._themeLight : dict()._themeDark);
 }
 
 /* contacts */
 function renderContacts() {
   const box = document.getElementById("contact-links");
   const links = [];
-  if (CONTACTS.telegram) links.push(["https://t.me/" + CONTACTS.telegram.replace(/^@/, ""), "@" + CONTACTS.telegram.replace(/^@/, "")]);
-  if (CONTACTS.email) links.push(["mailto:" + CONTACTS.email, CONTACTS.email]);
-  if (CONTACTS.github) links.push(["https://github.com/" + CONTACTS.github, "GitHub"]);
-  if (CONTACTS.linkedin) links.push([CONTACTS.linkedin, "LinkedIn"]);
-  box.replaceChildren(...links.map(([href, text]) => {
+  const tgUrl = "https://t.me/" + CONTACTS.telegram.replace(/^@/, "");
+  if (CONTACTS.telegram) links.push([tgUrl, "@" + CONTACTS.telegram.replace(/^@/, ""), "telegram"]);
+  if (CONTACTS.email) links.push(["mailto:" + CONTACTS.email, CONTACTS.email, ""]);
+  if (CONTACTS.github) links.push(["https://github.com/" + CONTACTS.github, "GitHub", "github"]);
+  if (CONTACTS.linkedin) links.push([CONTACTS.linkedin, "LinkedIn", ""]);
+  box.replaceChildren(...links.map(([href, text, icon]) => {
     const a = document.createElement("a");
-    a.href = href; a.textContent = text;
+    a.href = href;
+    if (ICONS[icon]) {
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("viewBox", "0 0 24 24"); svg.setAttribute("aria-hidden", "true");
+      const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      p.setAttribute("d", ICONS[icon]); svg.append(p); a.append(svg);
+    }
+    a.append(text);
     if (/^https?:/.test(href)) { a.target = "_blank"; a.rel = "noopener"; }
     return a;
   }));
-  const tg = document.getElementById("cta-tg");
-  if (!CONTACTS.telegram) tg.remove(); else tg.href = "https://t.me/" + CONTACTS.telegram.replace(/^@/, "");
+  document.querySelectorAll("#cta-tg, [data-tg]").forEach((el) => { if (!CONTACTS.telegram) el.remove(); else el.href = tgUrl; });
 }
+
+/* brand marks from Simple Icons (CC0) */
+const ICONS = {
+  telegram: "M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z",
+  github: "M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+};
 
 /* start */
 document.getElementById("year").textContent = new Date().getFullYear();
@@ -143,8 +172,14 @@ async function playChat() {
   const run = ++chatRun;
   const box = document.getElementById("msgs"), chat = document.querySelector(".chat");
   const items = [...box.querySelectorAll("li:not(.typing)")];
+  const status = document.getElementById("status");
+  const setStatus = (typing) => { status.textContent = dict()[typing ? "st.typing" : "st.online"]; };
   box.querySelectorAll(".typing").forEach((t) => t.remove());
+  setStatus(false);
   if (calm) { items.forEach((li) => li.classList.add("shown")); chat.classList.add("done"); return; }
+  /* reserve the final height first, so the page doesn't jump while messages appear */
+  box.style.minHeight = ""; box.classList.remove("js");
+  box.style.minHeight = box.offsetHeight + "px";
   box.classList.add("js"); chat.classList.remove("done");
   items.forEach((li) => li.classList.remove("shown"));
   await wait(900);
@@ -155,8 +190,10 @@ async function playChat() {
       t.className = "typing"; t.setAttribute("aria-hidden", "true");
       t.append(document.createElement("i"), document.createElement("i"), document.createElement("i"));
       box.insertBefore(t, li);
+      setStatus(true);
       await wait(950);
       t.remove();
+      setStatus(false);
       if (run !== chatRun) return;
     }
     li.classList.add("shown");
@@ -176,6 +213,23 @@ if (!calm && "IntersectionObserver" in window) {
   shots.classList.add("wait");
   const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { shots.classList.remove("wait"); io.disconnect(); } }, {threshold: 0.25});
   io.observe(shots);
+}
+
+/* the message path animates once, when reached */
+const flow = document.getElementById("flow");
+if (!calm && "IntersectionObserver" in window) {
+  const fo = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { flow.classList.add("run"); fo.disconnect(); } }, {threshold: 0.5});
+  fo.observe(flow);
+}
+
+/* the chat wallpaper lights up under the pointer (mouse/pen only) */
+const win = document.getElementById("window");
+if (!calm && window.matchMedia("(pointer: fine)").matches) {
+  win.addEventListener("pointermove", (e) => {
+    const r = win.getBoundingClientRect();
+    win.style.setProperty("--mx", (e.clientX - r.left) + "px");
+    win.style.setProperty("--my", (e.clientY - r.top) + "px");
+  });
 }
 
 /* language switch: soft crossfade + the headline and chat replay */
