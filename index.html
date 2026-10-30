@@ -8,20 +8,38 @@
   <meta name="color-scheme" content="light dark">
   <meta property="og:title" content="Mykhailo — bot Telegram e AI in locale">
   <meta property="og:description" content="Costruisco bot che lavorano mentre studio. Progetto principale: MikyCore.">
-  <meta property="og:image" content="https://mikybuilds.github.io/assets/today.png">
+  <meta property="og:image" content="https://mikybuilds.github.io/assets/og.png">
   <meta property="og:url" content="https://mikybuilds.github.io/">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M8 30C8 16 19 8 32 8s24 8 24 22-11 22-24 22c-4 0-8-1-11-2L9 56l4-11c-3-4-5-9-5-15z' fill='%232541ff'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232b59ff'/%3E%3Ctext x='32' y='43' font-family='Arial Black,Arial' font-weight='900' font-size='30' text-anchor='middle' fill='%23fff'%3EM.%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="app.css?v=7">
+  <link rel="stylesheet" href="style.css?v=7">
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
   <a class="skip" href="#main" data-i18n="skip">Vai al contenuto</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <!-- icons used inside the app screens -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M4 15h9" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="18.5" cy="15" r="1.9" fill="#2B59FF"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 6.5A2.5 2.5 0 0 1 7.5 4h9A2.5 2.5 0 0 1 19 6.5v7a2.5 2.5 0 0 1-2.5 2.5H11l-4 3.5V16h.5A2.5 2.5 0 0 1 5 13.5z" stroke="#ECEFF4" stroke-width="1.75" stroke-linejoin="round" fill="none"/><circle cx="15.5" cy="9.8" r="1.5" fill="#2B59FF"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2.1-5" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M19.500 4.500v4h-4" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500" stroke="#3FB984" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#8C95A6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3.500" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M5.500 11.500a6.500 6.500 0 0 0 13 0M12 18v2.500" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-cam" viewBox="0 0 24 24"><path d="M4 8.500A2.500 2.500 0 0 1 6.500 6h1.800l1.400-2h4.600l1.400 2h1.800A2.500 2.500 0 0 1 20 8.500v8A2.500 2.500 0 0 1 17.500 19h-11A2.500 2.500 0 0 1 4 16.500z" stroke="#ECEFF4" stroke-width="1.75" stroke-linejoin="round" fill="none"/><circle cx="12" cy="12.500" r="3" stroke="#ECEFF4" stroke-width="1.75" fill="none"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.500" stroke="#fff" stroke-width="1.8" fill="none"/><path d="M16 16l4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-class" viewBox="0 0 24 24"><rect x="3.500" y="4.500" width="17" height="11.500" rx="2" stroke="#ECEFF4" stroke-width="1.75" fill="none"/><path d="M8 20l2.500-4M16 20l-2.500-4" stroke="#ECEFF4" stroke-width="1.75" stroke-linecap="round" fill="none"/><circle cx="16.500" cy="10" r="1.700" fill="#2B59FF"/></symbol>
+  </svg>
 
   <header class="bar" id="bar"><div class="top">
     <a class="name" href="#main">Mykhailo</a>
-    <nav aria-label="Menu">
+    <nav aria-label="Menu" id="nav">
+      <i class="nav-ind" aria-hidden="true"></i>
       <a href="#about" data-i18n="nav.about">Chi sono</a>
       <a href="#mikycore">MikyCore</a>
       <a href="#services" data-i18n="nav.services">Servizi</a>
@@ -37,100 +55,381 @@
   </div></header>
 
   <main id="main">
-    <section class="hero">
-      <div class="hero-copy">
-        <h1 data-i18n="hero.title">Costruisco bot che lavorano mentre io studio.</h1>
-        <p class="lead" data-i18n="hero.lead">Sono Mykhailo, studente di informatica in Italia. Il mio assistente MikyCore gira sul mio PC: tiene d'occhio i compiti, mi prepara per le verifiche e trova affari su Subito.</p>
-        <p class="actions">
-          <a class="cta" href="https://t.me/mikybuilds" id="cta-tg" data-i18n="hero.cta">Scrivimi su Telegram</a>
-          <a class="quiet" href="#mikycore" data-i18n="hero.more">Come funziona MikyCore</a>
-        </p>
-      </div>
-
-      <figure class="chat" aria-label="Esempio di conversazione con MikyCore">
-        <div class="window" id="window">
-        <div class="paper" aria-hidden="true"></div><div class="paper glow" aria-hidden="true"></div>
-        <div class="chat-head">
-          <svg class="avatar" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="32"/><path d="M18 31c0-8 6-13 14-13s14 5 14 13-6 13-14 13c-2 0-4-.4-6-1l-7 4 2-6c-2-2.5-3-6-3-10z"/></svg>
-          <div><b>MikyCore</b><span id="status" data-i18n="st.online">online</span></div>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+      <div class="grain" aria-hidden="true"></div>
+      <div class="hero-in">
+        <div class="hero-copy" id="hero-copy">
+          <p class="badge"><i></i><span data-i18n="hero.badge">Disponibile per piccoli progetti</span></p>
+          <h1 data-i18n="hero.title">Costruisco bot che lavorano mentre io studio.</h1>
+          <p class="lead" data-i18n="hero.lead">Sono Mykhailo, studente di informatica in Italia. Il mio assistente MikyCore gira sul mio PC: tiene d'occhio i compiti, mi prepara per le verifiche e trova affari su Subito.</p>
+          <p class="actions">
+            <a class="cta" href="https://t.me/mikybuilds" id="cta-tg" data-mag data-i18n="hero.cta">Scrivimi su Telegram</a>
+            <a class="quiet" href="#mikycore" data-i18n="hero.more">Come funziona MikyCore</a>
+          </p>
         </div>
-        <ol class="msgs" id="msgs">
-          <li class="me" data-i18n="c1">Ci sono ThinkPad buoni su Subito?</li>
-          <li class="bot"><span data-i18n="c2a">Uno sì: Dell Latitude 7490, i7 con 8 GB, a 150 €.</span>
-            <span class="deal"><b data-i18n="c2b">Per questa configurazione il mercato è circa 250 €</b><span data-i18n="c2c">Spedizione con TuttoSubito, pagamento protetto.</span></span></li>
-          <li class="me" data-i18n="c3">E domani cosa ho?</li>
-          <li class="bot" data-i18n="c4">Verifica di fisica alle 10. Ti ho preparato 12 flashcard sul capitolo 4: le ripassiamo stasera alle 21?</li>
-        </ol>
+
+        <figure class="chat" id="hero-phone" aria-label="Esempio di conversazione con MikyCore">
+          <div class="notes" aria-hidden="true">
+            <div class="note n1"><i class="ic bl"></i><span><b data-i18n="nt.1t">Promemoria</b><small data-i18n="nt.1d">Verifica di fisica domani, 10:40</small></span></div>
+            <div class="note n2"><i class="ic gr"></i><span><b data-i18n="nt.2t">Affare trovato</b><small data-i18n="nt.2d">Dell Latitude 7490 · −40%</small></span></div>
+            <div class="note n3"><i class="ic ck"></i><span><b data-i18n="nt.3t">Compito pronto</b><small data-i18n="nt.3d">average.py, verificato eseguendolo</small></span></div>
+          </div>
+          <div class="tiltbox" id="tilt"><div class="floatbox"><div class="phone hero-phone">
+            <div class="screen app">
+              <header class="a-hd a-chat-hd">
+                <a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a>
+                <div class="a-title"><b>MikyCore<i>.</i></b><span class="a-status"><u></u><em id="status" data-i18n="st.online">online</em></span></div>
+                <a class="a-btn a-btn-s"><b>10:40</b><span data-i18n="su.fi">Fisica</span></a>
+              </header>
+              <div class="a-main a-chat">
+                <div class="a-day" data-i18n="g.today">Oggi, 15:42</div>
+                <ol class="msgs" id="msgs">
+                  <li class="me" data-i18n="g.me1">Cosa ho domani?</li>
+                  <li class="bot"><span class="av">M.</span><div class="bd">
+                    <p data-i18n="g.b1">Domani hai 5 lezioni, si comincia alle 8:00. Il punto importante: la verifica di fisica alla terza ora.</p>
+                    <div class="a-card a-sched">
+                      <div class="a-sched-h"><b data-i18n="g.day">Martedì 21 ottobre</b><span data-i18n="g.n5">5 lezioni</span></div>
+                      <div class="a-sched-r"><span>8:00</span><span data-i18n="su.it">Italiano</span></div>
+                      <div class="a-sched-r"><span>8:55</span><span data-i18n="su.ma">Matematica</span></div>
+                      <div class="a-sched-r hot"><span>10:40</span><b data-i18n="su.fi">Fisica</b><em data-i18n="m.test">verifica</em></div>
+                    </div>
+                  </div></li>
+                  <li class="me" data-i18n="c1">Ci sono ThinkPad buoni su Subito?</li>
+                  <li class="bot"><span class="av">M.</span><div class="bd">
+                    <p data-i18n="c2a">Uno sì: Dell Latitude 7490, i7 con 8 GB, a 150 €.</p>
+                    <div class="deal"><b data-i18n="c2b">Per questa configurazione il mercato è circa 250 €</b><span data-i18n="c2c">Spedizione con TuttoSubito, pagamento protetto.</span></div>
+                  </div></li>
+                </ol>
+              </div>
+              <div class="a-composer">
+                <div class="a-in"><span class="a-plus"><svg width="20" height="20"><use href="#i-plus"/></svg></span><span class="ph" data-i18n="g.ph">Scrivi a MikyCore…</span><span class="a-mic"><svg width="20" height="20" style="color:#fff"><use href="#i-mic"/></svg></span></div>
+              </div>
+            </div>
+          </div></div></div>
+          <figcaption data-i18n="chat.cap">Una conversazione tipo con MikyCore.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- STACK MARQUEE -->
+    <div class="marquee" aria-label="Stack">
+      <ul class="track" id="track">
+        <li>Python</li><li>C++</li><li>JavaScript</li><li>HTML / CSS</li><li>Ollama</li><li>Qwen3</li><li>Whisper</li><li>Telegram Bot API</li><li>Mini App</li><li>Playwright</li><li>Obsidian</li><li>Flowgorithm</li>
+      </ul>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+      <div class="sec">
+        <h2 data-r data-i18n="about.title">Chi sono</h2>
+        <div class="about-body">
+          <p class="big scrub" id="scrub" data-i18n="about.p1">Sono ucraino e vivo in Italia, dove frequento il terzo anno di informatica. Mi piace prendere un problema di tutti i giorni — compiti, voti, appunti, annunci online — e scrivere il programma che lo risolve da solo.</p>
+          <p class="plain" data-r data-i18n="ab.p2">Ogni funzione ha i suoi test automatici, e provo tutto sul modello reale prima di fidarmi.</p>
+          <dl class="facts">
+            <div data-r><dt data-i18n="ab.k1">Studio</dt><dd data-i18n="ab.v1">Informatica, terzo anno</dd></div>
+            <div data-r style="--d:80ms"><dt data-i18n="ab.k4">Lingue</dt><dd data-i18n="ab.v4">Ucraino (madrelingua), italiano, inglese</dd></div>
+            <div data-r style="--d:160ms"><dt data-i18n="ab.k5">Progetto principale</dt><dd>MikyCore</dd></div>
+          </dl>
         </div>
-        <figcaption data-i18n="chat.cap">Una conversazione tipo con MikyCore.</figcaption>
-      </figure>
-    </section>
-
-    <section id="about" class="block">
-      <h2 data-i18n="about.title">Chi sono</h2>
-      <div class="prose">
-        <p data-i18n="about.p1">Sono ucraino e vivo in Italia, dove frequento il terzo anno di informatica. Mi piace prendere un problema di tutti i giorni — compiti, voti, appunti, annunci online — e scrivere il programma che lo risolve da solo.</p>
-        <p data-i18n="about.p2">Scrivo soprattutto in Python, ma anche in C++, JavaScript, HTML e CSS. Lavoro con modelli di linguaggio in locale (Ollama), con la Bot API e le Mini App di Telegram, e con Playwright per l'automazione del browser. Ogni funzione ha i suoi test automatici.</p>
-        <p data-i18n="about.p3">Parlo ucraino (madrelingua), italiano e inglese.</p>
       </div>
     </section>
 
-    <section id="mikycore" class="block">
-      <h2>MikyCore</h2>
-      <div class="prose">
-        <p data-i18n="mc.lead">Un assistente personale su Telegram con un modello di linguaggio che gira interamente sulla mia scheda video da 8 GB: niente abbonamenti, niente dati inviati fuori. Lo uso ogni giorno per la scuola. Sono circa 21 000 righe di codice, con 46 suite di test.</p>
-      </div>
+    <!-- MIKYCORE -->
+    <section id="mikycore" class="core">
+      <div class="sec">
+        <h2 data-r>MikyCore</h2>
+        <p class="core-lead" data-r data-i18n="mc.lead">Un assistente personale su Telegram con un modello di linguaggio che gira interamente sulla mia scheda video da 8 GB: niente abbonamenti, niente dati inviati fuori. Lo uso ogni giorno per la scuola. Sono circa 21 000 righe di codice, con 46 suite di test.</p>
 
-      <div class="flow" id="flow">
-        <h3 class="flow-title" data-i18n="hw.title">Il percorso di un messaggio</h3>
-        <ol>
-          <li><b data-i18n="hw.n1t">Il mio telefono</b><span data-i18n="hw.n1d">Scrivo o mando un vocale su Telegram, anche da scuola.</span></li>
-          <li><b data-i18n="hw.n2t">Il mio PC</b><span data-i18n="hw.n2d">Qwen3 8B gira sulla RTX 5060 da 8 GB, Whisper trascrive la voce. Nessun servizio a pagamento.</span></li>
-          <li><b data-i18n="hw.n3t">Più di 100 strumenti</b><span data-i18n="hw.n3d">Classeviva, Classroom, Subito, Obsidian, posta, browser: il modello sceglie quello giusto.</span></li>
+        <div class="flow" id="flow">
+          <h3 class="flow-title" data-i18n="hw.title">Il percorso di un messaggio</h3>
+          <ol>
+            <li class="spot" data-r><b data-i18n="hw.n1t">Il mio telefono</b><span data-i18n="hw.n1d">Scrivo o mando un vocale su Telegram, anche da scuola.</span></li>
+            <li class="spot" data-r style="--d:120ms"><b data-i18n="hw.n2t">Il mio PC</b><span data-i18n="hw.n2d">Qwen3 8B gira sulla RTX 5060 da 8 GB, Whisper trascrive la voce. Nessun servizio a pagamento.</span></li>
+            <li class="spot" data-r style="--d:240ms"><b data-i18n="hw.n3t">Più di 100 strumenti</b><span data-i18n="hw.n3d">Classeviva, Classroom, Subito, Obsidian, posta, browser: il modello sceglie quello giusto.</span></li>
+          </ol>
+          <p class="flow-back" data-i18n="hw.back">La risposta torna sul telefono in pochi secondi.</p>
+        </div>
+
+        <h3 class="sub-title" data-r data-i18n="app.title">L'app per iPhone</h3>
+        <p class="sub-lead" data-r data-i18n="app.lead">Oltre a Telegram, MikyCore ha una sua app iOS: chat, orario, voti, compiti e widget. Le schermate qui sotto sono quelle vere, con dati di esempio.</p>
+
+        <div class="show" id="show">
+          <div class="show-list">
+
+            <article>
+              <h3 data-i18n="f1.t">Sceglie da solo lo strumento giusto</h3>
+              <p data-i18n="f1.d">Ha più di 100 strumenti: promemoria, file, browser, Google Classroom, posta. Nei test sul modello reale sceglie quello giusto nel 98% dei casi.</p>
+              <figure class="phone mini"><div class="screen app">
+                <header class="a-hd a-chat-hd">
+                  <a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a>
+                  <div class="a-title"><b>MikyCore<i>.</i></b><span class="a-status"><u></u><em data-i18n="st.online">online</em></span></div>
+                  <a class="a-btn a-btn-s"><b>10:40</b><span data-i18n="su.fi">Fisica</span></a>
+                </header>
+                <div class="a-main a-chat">
+                  <div class="a-day" data-i18n="g.today">Oggi, 15:42</div>
+                  <ol class="msgs static">
+                    <li class="me" data-i18n="g.me1">Cosa ho domani?</li>
+                    <li class="bot"><span class="av">M.</span><div class="bd">
+                      <p data-i18n="g.b1">Domani hai 5 lezioni, si comincia alle 8:00. Il punto importante: la verifica di fisica alla terza ora.</p>
+                      <div class="a-card a-sched">
+                        <div class="a-sched-h"><b data-i18n="g.day">Martedì 21 ottobre</b><span data-i18n="g.n5">5 lezioni</span></div>
+                        <div class="a-sched-r"><span>8:00</span><span data-i18n="su.it">Italiano</span></div>
+                        <div class="a-sched-r"><span>8:55</span><span data-i18n="su.ma">Matematica</span></div>
+                        <div class="a-sched-r hot"><span>10:40</span><b data-i18n="su.fi">Fisica</b><em data-i18n="m.test">verifica</em></div>
+                        <div class="a-sched-r"><span>11:35</span><span data-i18n="su.st">Storia</span></div>
+                      </div>
+                      <div class="a-chips2"><span data-i18n="m.hw">Compiti per domani</span><span data-i18n="g.ch2">Piano di ripasso</span></div>
+                    </div></li>
+                  </ol>
+                </div>
+                <div class="a-composer">
+                  <div class="a-in"><span class="a-plus"><svg width="20" height="20"><use href="#i-plus"/></svg></span><span class="ph" data-i18n="g.ph">Scrivi a MikyCore…</span><span class="a-mic"><svg width="20" height="20" style="color:#fff"><use href="#i-mic"/></svg></span></div>
+                </div>
+              </div></figure>
+            </article>
+
+            <article>
+              <h3 data-i18n="sf2.t">La giornata in una schermata</h3>
+              <p data-i18n="sf2.d">La lezione in corso, l'orario, i compiti per domani, le scadenze di Classroom e le verifiche. I dati arrivano da Classeviva e Classroom.</p>
+              <figure class="phone mini"><div class="screen app">
+                <header class="a-hd">
+                  <div class="a-row">
+                    <a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a>
+                    <a class="a-btn"><svg width="18" height="18"><use href="#i-chat"/></svg><span data-i18n="m.ask">Chiedi a MikyCore</span></a>
+                  </div>
+                  <div><h1 class="a-h1" data-i18n="m.today">Oggi</h1><p class="a-sub" data-i18n="m.date">Lunedì 20 ottobre</p></div>
+                </header>
+                <div class="a-main">
+                  <section class="a-now">
+                    <div class="a-now-r"><b data-i18n="m.now">Adesso · 3ª ora</b><span data-i18n="m.left">ancora 28 min</span></div>
+                    <div class="a-now-r end"><span class="a-now-t" data-i18n="su.fi">Fisica</span><span class="tab">10:40 – 11:35</span></div>
+                    <div class="a-bar"><i></i></div>
+                    <div class="a-now-n" data-i18n="m.next">Dopo: Storia alle 11:35</div>
+                  </section>
+                  <section class="a-card a-tl">
+                    <div class="done"><span>8:00</span><u></u><s data-i18n="su.it">Italiano</s></div>
+                    <div class="done"><span>8:55</span><u></u><s data-i18n="su.ma">Matematica</s></div>
+                    <div class="cur"><span>10:40</span><u></u><b data-i18n="su.fi">Fisica</b></div>
+                    <div class="nxt"><span>11:35</span><u></u><i data-i18n="su.st">Storia</i></div>
+                    <div class="nxt"><span>12:30</span><u></u><i data-i18n="su.en">Inglese</i></div>
+                  </section>
+                  <section class="a-hw">
+                    <div class="a-sec-h"><h2 data-i18n="m.hw">Compiti per domani</h2><span data-i18n="m.hwc">1 di 3</span></div>
+                    <label class="a-task done"><i class="cb on"></i><span data-i18n="m.hw1">Matematica — esercizi 4–7, p. 112</span></label>
+                    <label class="a-task"><i class="cb"></i><span data-i18n="m.hw2">Storia — leggere il paragrafo 9</span></label>
+                    <label class="a-task"><i class="cb"></i><span data-i18n="m.hw3">Fisica — ripassare le leggi di Newton</span><em data-i18n="m.test">verifica</em></label>
+                  </section>
+                  <a class="a-link"><svg width="20" height="20"><use href="#i-class"/></svg><span><b data-i18n="m.cr">Classroom: media aritmetica</b><small data-i18n="m.crd">entro domani, 23:59 · ancora 2 compiti</small></span><svg width="16" height="16"><use href="#i-chev"/></svg></a>
+                </div>
+              </div></figure>
+            </article>
+
+            <article>
+              <h3 data-i18n="sf3.t">Voti e media, con un consiglio</h3>
+              <p data-i18n="sf3.d">Media per materia e andamento nel tempo. Dice anche che voto serve alla prossima verifica per raggiungere l'obiettivo.</p>
+              <figure class="phone mini"><div class="screen app">
+                <header class="a-hd">
+                  <div class="a-row"><a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a><span class="a-meta" data-i18n="gr.upd">Classeviva · aggiornato 14:05</span></div>
+                  <h1 class="a-h1" data-i18n="gr.h">Voti</h1>
+                </header>
+                <div class="a-main">
+                  <section class="a-card a-avg">
+                    <div><b class="big-n" data-num>7,6</b><span data-i18n="gr.avg">media del semestre</span><em data-i18n="gr.up">▲ 0,3 nell'ultimo mese</em></div>
+                    <svg viewBox="0 0 150 70" fill="none" role="img" aria-label=""><path d="M4 52 L30 46 L56 50 L82 36 L108 32 L134 22" stroke="#2B59FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 52 L30 46 L56 50 L82 36 L108 32 L134 22 L134 66 L4 66 Z" fill="rgba(43,89,255,0.12)"/><circle cx="134" cy="22" r="4.500" fill="#2B59FF"/></svg>
+                  </section>
+                  <section class="a-card a-subj">
+                    <div><span data-i18n="su.ma">Matematica</span><b data-num>7,2</b><p><i style="width:72%;background:#F2B44B"></i></p><small data-num>6½ · 8 · 7</small></div>
+                    <div><span data-i18n="su.fi">Fisica</span><b data-num>7,8</b><p><i style="width:78%"></i></p><small data-num>8 · 7½ · 8</small></div>
+                    <div><span data-i18n="su.it">Italiano</span><b data-num>8,1</b><p><i style="width:81%;background:#3FB984"></i></p><small data-num>8 · 8½</small></div>
+                    <div><span data-i18n="su.st">Storia</span><b data-num>7,5</b><p><i style="width:75%"></i></p><small data-num>7 · 8</small></div>
+                    <div><span data-i18n="su.en">Inglese</span><b data-num>7,4</b><p><i style="width:74%"></i></p><small data-num>7½ · 7</small></div>
+                  </section>
+                  <section class="a-tip">
+                    <small data-i18n="gr.tip">Consiglio</small>
+                    <span data-i18n="gr.tipt">Per arrivare a 8 in matematica, alla prossima verifica serve 9 o più.</span>
+                    <a data-i18n="gr.plan">Crea un piano di ripasso →</a>
+                  </section>
+                </div>
+              </div></figure>
+            </article>
+
+            <article>
+              <h3 data-i18n="sf4.t">I compiti li fa con me</h3>
+              <p data-i18n="sf4.d">Legge i compiti di Classroom, scrive il codice e lo verifica eseguendolo, poi salva il risultato su Google Drive.</p>
+              <figure class="phone mini"><div class="screen app">
+                <header class="a-hd">
+                  <div class="a-row"><a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a><a class="a-btn"><svg width="18" height="18"><use href="#i-refresh"/></svg><span data-i18n="cl.ref">Aggiorna</span></a></div>
+                  <div><h1 class="a-h1">Classroom</h1><p class="a-sub" data-i18n="cl.sub">3 da consegnare · la prossima è domani</p></div>
+                  <div class="a-chips"><span class="on" data-i18n="cl.all">Tutti</span><span data-i18n="cl.cs">Informatica</span><span data-i18n="su.st">Storia</span></div>
+                </header>
+                <div class="a-main">
+                  <article class="a-card a-hwk">
+                    <div class="a-hwk-h"><span data-i18n="cl.cs">Informatica</span><em data-i18n="cl.d1">entro domani, 23:59</em></div>
+                    <h2 data-i18n="cl.t1">Programma: media aritmetica di un array</h2>
+                    <div class="tags"><span data-i18n="cl.g1">Codice · Python</span><span data-i18n="cl.m1">1 materiale</span></div>
+                    <div class="a-done"><svg width="18" height="18"><use href="#i-check"/></svg><span><b data-i18n="cl.ok">Fatto · su Google Drive</b><small data-i18n="cl.okd">average.py · verificato eseguendolo</small></span><a data-i18n="cl.chat">In chat</a></div>
+                  </article>
+                  <article class="a-card a-hwk">
+                    <div class="a-hwk-h"><span data-i18n="su.st">Storia</span><span class="mut" data-i18n="cl.d2">entro ven 25 ottobre</span></div>
+                    <h2 data-i18n="cl.t2">Presentazione: il Rinascimento in Italia</h2>
+                    <div class="tags"><span data-i18n="cl.g2">Presentazione</span><span data-i18n="cl.m2">2 materiali</span></div>
+                    <div class="a-acts"><span class="ghost" data-i18n="cl.do">Fallo con il bot</span><span class="sq"></span></div>
+                  </article>
+                  <article class="a-dash"><span><b data-i18n="cl.t3">Tema: il mio libro preferito</b><small data-i18n="cl.s3">Italiano · consegnato</small></span><svg width="20" height="20"><use href="#i-check"/></svg></article>
+                </div>
+              </div></figure>
+            </article>
+
+            <article>
+              <h3 data-i18n="sf5.t">Widget sulla schermata Home</h3>
+              <p data-i18n="sf5.d">Il domani, la lezione in corso e una scorciatoia per parlare con il bot (voce o fotocamera), senza aprire l'app.</p>
+              <figure class="phone mini"><div class="screen app wg">
+                <section class="w-big">
+                  <div class="w-l">
+                    <div class="w-top"><span class="av">M.</span><b data-i18n="wg.tom">Domani · martedì</b></div>
+                    <div><span class="w-n" data-i18n="g.n5">5 lezioni</span><small data-i18n="wg.hrs">dalle 8:00 alle 13:25</small></div>
+                    <em data-i18n="wg.test">Verifica: fisica</em>
+                  </div>
+                  <div class="w-sep"></div>
+                  <div class="w-r">
+                    <small data-i18n="wg.hw">Compiti · 1 di 3</small>
+                    <span class="d"><i class="cb on"></i><s data-i18n="su.ma">Matematica</s></span>
+                    <span><i class="cb"></i><span data-i18n="su.st">Storia</span></span>
+                    <span><i class="cb"></i><span data-i18n="su.fi">Fisica</span></span>
+                  </div>
+                </section>
+                <div class="w-two">
+                  <section class="w-now">
+                    <div><b data-i18n="wg.now">Adesso</b><svg viewBox="0 0 36 36" width="34" height="34"><circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="4"/><circle cx="18" cy="18" r="14" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-dasharray="43 88" transform="rotate(-90 18 18)"/></svg></div>
+                    <div><span class="w-n" data-i18n="su.fi">Fisica</span><small data-i18n="wg.till">fino alle 11:35 · ancora 28 min</small></div>
+                  </section>
+                  <section class="w-ask">
+                    <span class="av big">M.</span>
+                    <div><b data-i18n="m.ask">Chiedi a MikyCore</b><span class="w-btns"><i><svg width="16" height="16" style="color:#ECEFF4"><use href="#i-mic"/></svg></i><i><svg width="16" height="16"><use href="#i-cam"/></svg></i></span></div>
+                  </section>
+                </div>
+                <div class="w-icon"><span>M.</span><small>MikyCore</small></div>
+              </div></figure>
+            </article>
+
+            <article>
+              <h3 data-i18n="sf6.t">Siti per i negozi del quartiere</h3>
+              <p data-i18n="sf6.d">Chiedo al bot di trovare un locale senza sito e di crearlo: design, testi e anteprima. Poi ho un link e un QR da portare di persona.</p>
+              <figure class="phone mini"><div class="screen app">
+                <header class="a-hd">
+                  <div class="a-row"><a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a><a class="a-btn pri"><svg width="18" height="18"><use href="#i-search"/></svg><span data-i18n="st.find">Trova locali</span></a></div>
+                  <h1 class="a-h1" data-i18n="st.h">Siti</h1>
+                  <div class="a-seg"><span class="on" data-i18n="st.mine">I miei siti · 4</span><span data-i18n="st.leads">Contatti · 35</span></div>
+                </header>
+                <div class="a-main">
+                  <div class="a-grid">
+                    <div class="a-site"><div class="pv green"><small>BAR A FERRARA</small><b>Caffè Estense</b><i></i></div><div class="cap"><b>Caffè Estense</b><span class="ok"><u></u><em data-i18n="st.pub">Pubblicato</em></span></div></div>
+                    <div class="a-site"><div class="pv cream"><small>Trattoria</small><b>Il Mulino</b><hr><hr></div><div class="cap"><b>Trattoria Il Mulino</b><span class="bl"><u></u><em data-i18n="st.demo">Demo</em></span></div></div>
+                    <div class="a-site"><div class="pv red"><i class="stripe"></i><b>BAR SPORT</b><hr><i class="tag"></i></div><div class="cap"><b>Bar Sport</b><span class="gr"><u></u><em data-i18n="st.demo">Demo</em></span></div></div>
+                    <div class="a-site"><div class="pv dark"><i class="stripe2"></i><b>BARBERIA</b><i class="gold"></i></div><div class="cap"><b>Barbieri Centro</b><span class="gr"><u></u><em data-i18n="st.demo">Demo</em></span></div></div>
+                  </div>
+                </div>
+              </div></figure>
+            </article>
+
+          </div>
+
+          <div class="show-phone" aria-hidden="true">
+            <div class="phone"><div class="stack"></div></div>
+          </div>
+        </div>
+
+        <h3 class="sub-title" data-r data-i18n="hood.title">Sotto il cofano</h3>
+        <div class="bento">
+          <article class="bc spot w4" data-r>
+            <i class="bi"><svg viewBox="0 0 24 24"><path d="M3 12V4h8l9 9-8 8z"/><circle cx="7.500" cy="8.500" r="1.200"/></svg></i>
+            <h4 data-i18n="f2.t">Trova affari su Subito</h4>
+            <p data-i18n="f2.d">Legge gli annunci, calcola il prezzo di mercato per modello e configurazione (processore, RAM, generazione), riconosce le truffe e mi scrive solo quando conviene davvero.</p>
+            <div class="vs" aria-hidden="true"><span style="--w:60%"><em>150 €</em></span><span class="mk" style="--w:100%"><em>~250 €</em></span></div>
+          </article>
+          <article class="bc spot w2" data-r style="--d:100ms">
+            <i class="bi"><svg viewBox="0 0 24 24"><rect x="9" y="3.500" width="6" height="11" rx="3"/><path d="M5.500 11.500a6.500 6.500 0 0 0 13 0M12 18v2.500"/></svg></i>
+            <h4 data-i18n="f7.t">Parla e ascolta</h4>
+            <p data-i18n="f7.d">Capisce i vocali con Whisper e può rispondere anche a voce.</p>
+            <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </article>
+          <article class="bc spot w3" data-r>
+            <i class="bi"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></svg></i>
+            <h4 data-i18n="f3.t">Mi aiuta a studiare</h4>
+            <p data-i18n="f3.d">Trasforma le lezioni in appunti su Obsidian, crea flashcard, mi interroga a voce e assegna un voto, e organizza il ripasso prima delle verifiche.</p>
+          </article>
+          <article class="bc spot w3" data-r style="--d:100ms">
+            <i class="bi"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.500 2.500M15.500 15.500L18 18M18 6l-2.500 2.500M8.500 15.500L6 18"/></svg></i>
+            <h4 data-i18n="f4.t">Si migliora, con il mio permesso</h4>
+            <p data-i18n="f4.d">Nota dove sbaglia e propone regole, automazioni e perfino nuovi plugin in Python. I plugin girano in una sandbox isolata e partono solo dopo la mia conferma.</p>
+          </article>
+          <article class="bc spot w2" data-r>
+            <i class="bi"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6z"/><path d="M8.500 12l2.500 2.500 4.500-5"/></svg></i>
+            <h4 data-i18n="f6.t">Sicuro per scelta</h4>
+            <p data-i18n="f6.d">Le azioni rischiose chiedono conferma, le password non passano mai dal modello, il testo esterno non può dargli ordini, e non aggira le protezioni dei siti.</p>
+          </article>
+          <article class="bc spot w4 fg" data-r style="--d:100ms">
+            <div>
+              <i class="bi"><svg viewBox="0 0 24 24"><path d="M5 5h6v4H5zM13 15h6v4h-6zM8 9v3h8v3"/></svg></i>
+              <h4>Flowgorithm</h4>
+              <p data-i18n="f5.d">Genera diagrammi di flusso e li verifica eseguendoli con un interprete .fprg scritto da me, che indica l'errore e il blocco esatto.</p>
+            </div>
+            <svg class="draw" viewBox="0 0 120 150" fill="none" aria-hidden="true">
+              <rect pathLength="1" x="30" y="4" width="60" height="22" rx="11"/>
+              <path pathLength="1" d="M60 26v14"/>
+              <path pathLength="1" d="M60 40l-34 22 34 22 34-22z"/>
+              <path pathLength="1" d="M60 84v14"/>
+              <rect pathLength="1" class="bad" x="30" y="98" width="60" height="22" rx="4"/>
+              <path pathLength="1" d="M60 120v12"/>
+              <rect pathLength="1" x="30" y="132" width="60" height="16" rx="8"/>
+            </svg>
+          </article>
+        </div>
+
+        <dl class="spec" id="spec">
+          <div data-r><dt data-i18n="sp.model">Modello</dt><dd>Qwen3 8B</dd></div>
+          <div data-r style="--d:80ms"><dt data-i18n="sp.gpu">Scheda video</dt><dd>RTX 5060 · 8 GB</dd></div>
+          <div data-r style="--d:160ms"><dt data-i18n="sp.tools">Strumenti</dt><dd><span class="cnt" data-count="100">100</span>+</dd></div>
+          <div data-r><dt data-i18n="sp.code">Codice</dt><dd><span class="cnt" data-count="21000">21 000</span> <small data-i18n="sp.lines">righe</small></dd></div>
+          <div data-r style="--d:80ms"><dt data-i18n="sp.tests">Test</dt><dd><span class="cnt" data-count="46">46</span> <small data-i18n="sp.suites">suite</small></dd></div>
+          <div data-r style="--d:160ms"><dt data-i18n="sp.pick">Strumento giusto</dt><dd><span class="cnt" data-count="98">98</span>%</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="services-sec">
+      <div class="sec">
+        <h2 data-r data-i18n="srv.title">Lavoro su richiesta</h2>
+        <p class="srv-lead" data-r data-i18n="srv.lead">Prendo piccoli progetti e li faccio bene. Prezzi da studente, da concordare in base al lavoro.</p>
+        <dl class="services">
+          <div class="spot" data-r style="--d:0ms"><dt data-i18n="s1.t">Bot Telegram</dt><dd data-i18n="s1.d">Prenotazioni, menù, promemoria per i clienti, risposte automatiche, mini app. Per negozi, palestre, insegnanti.</dd><svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+          <div class="spot" data-r style="--d:70ms"><dt data-i18n="s2.t">Siti web</dt><dd data-i18n="s2.d">Siti vetrina veloci, fatti bene anche su telefono, pubblicati gratis su GitHub Pages o sul tuo dominio.</dd><svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+          <div class="spot" data-r style="--d:140ms"><dt data-i18n="s3.t">Traduzioni ucraino, italiano, inglese</dt><dd data-i18n="s3.d">Lettere, moduli e aiuto con la burocrazia italiana per chi parla ucraino. Traduzioni non giurate.</dd><svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+          <div class="spot" data-r style="--d:210ms"><dt data-i18n="s4.t">Ripetizioni di informatica</dt><dd data-i18n="s4.d">Python, Flowgorithm e basi di programmazione per studenti più giovani, con esercizi e quiz.</dd><svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+        </dl>
+
+        <h3 class="steps-title" data-r data-i18n="pr.title">Come lavoriamo</h3>
+        <ol class="steps" id="steps">
+          <li><b data-i18n="pr.1t">Mi scrivi</b><span data-i18n="pr.1d">Due righe su cosa ti serve bastano: il resto lo chiedo io.</span></li>
+          <li><b data-i18n="pr.2t">Ricevi una proposta</b><span data-i18n="pr.2d">Ti mando l'idea, i tempi e il prezzo prima di iniziare. Nessun impegno.</span></li>
+          <li><b data-i18n="pr.3t">Lo provi e lo sistemiamo</b><span data-i18n="pr.3d">Vedi il lavoro mentre lo faccio e correggiamo insieme i dettagli.</span></li>
         </ol>
-        <p class="flow-back" data-i18n="hw.back">La risposta torna sul telefono in pochi secondi.</p>
+        <p class="srv-cta" data-r><a class="cta" href="https://t.me/mikybuilds" data-tg data-mag data-i18n="pr.cta">Chiedi una proposta su Telegram</a></p>
       </div>
-
-      <div class="shots">
-        <figure><img src="assets/today.png" alt="Schermata Oggi: promemoria, compiti e flashcard del giorno" width="390" height="844" loading="lazy"><figcaption data-i18n="shot.today">La giornata: promemoria, compiti, flashcard.</figcaption></figure>
-        <figure><img src="assets/market.png" alt="Schermata Mercato: monitoraggi su Subito, profitto e ultimi affari" width="390" height="844" loading="lazy"><figcaption data-i18n="shot.market">Il mercato: affari su Subito e il mio profitto.</figcaption></figure>
-        <figure><img src="assets/cards.png" alt="Flashcard girata con la risposta e i pulsanti di valutazione" width="390" height="844" loading="lazy"><figcaption data-i18n="shot.cards">Le flashcard, con la ripetizione dilazionata.</figcaption></figure>
-      </div>
-
-      <dl class="features">
-        <div><dt data-i18n="f1.t">Sceglie da solo lo strumento giusto</dt><dd data-i18n="f1.d">Ha più di 100 strumenti: promemoria, file, browser, Google Classroom, posta. Nei test sul modello reale sceglie quello giusto nel 98% dei casi.</dd></div>
-        <div><dt data-i18n="f2.t">Trova affari su Subito</dt><dd data-i18n="f2.d">Legge gli annunci, calcola il prezzo di mercato per modello e configurazione (processore, RAM, generazione), riconosce le truffe e mi scrive solo quando conviene davvero.</dd></div>
-        <div><dt data-i18n="f3.t">Mi aiuta a studiare</dt><dd data-i18n="f3.d">Trasforma le lezioni in appunti su Obsidian, crea flashcard, mi interroga a voce e assegna un voto, e organizza il ripasso prima delle verifiche.</dd></div>
-        <div><dt data-i18n="f4.t">Si migliora, con il mio permesso</dt><dd data-i18n="f4.d">Nota dove sbaglia e propone regole, automazioni e perfino nuovi plugin in Python. I plugin girano in una sandbox isolata e partono solo dopo la mia conferma.</dd></div>
-        <div><dt>Flowgorithm</dt><dd data-i18n="f5.d">Genera diagrammi di flusso e li verifica eseguendoli con un interprete .fprg scritto da me, che indica l'errore e il blocco esatto.</dd></div>
-        <div><dt data-i18n="f6.t">Sicuro per scelta</dt><dd data-i18n="f6.d">Le azioni rischiose chiedono conferma, le password non passano mai dal modello, il testo esterno non può dargli ordini, e non aggira le protezioni dei siti.</dd></div>
-      </dl>
     </section>
 
-    <section id="services" class="block">
-      <h2 data-i18n="srv.title">Lavoro su richiesta</h2>
-      <div class="prose">
-        <p data-i18n="srv.lead">Prendo piccoli progetti e li faccio bene. Prezzi da studente, da concordare in base al lavoro.</p>
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+      <div class="grain" aria-hidden="true"></div>
+      <div class="sec">
+        <h2 data-r data-i18n="ct.title">Contatti</h2>
+        <p class="ct-lead" data-r data-i18n="ct.lead">Scrivimi su Telegram: rispondo di solito in giornata.</p>
+        <p class="contact-links" id="contact-links"></p>
       </div>
-      <dl class="services">
-        <div><dt data-i18n="s1.t">Bot Telegram</dt><dd data-i18n="s1.d">Prenotazioni, menù, promemoria per i clienti, risposte automatiche, mini app. Per negozi, palestre, insegnanti.</dd></div>
-        <div><dt data-i18n="s2.t">Siti web</dt><dd data-i18n="s2.d">Siti vetrina veloci, fatti bene anche su telefono, pubblicati gratis su GitHub Pages o sul tuo dominio.</dd></div>
-        <div><dt data-i18n="s3.t">Traduzioni ucraino, italiano, inglese</dt><dd data-i18n="s3.d">Lettere, moduli e aiuto con la burocrazia italiana per chi parla ucraino. Traduzioni non giurate.</dd></div>
-        <div><dt data-i18n="s4.t">Ripetizioni di informatica</dt><dd data-i18n="s4.d">Python, Flowgorithm e basi di programmazione per studenti più giovani, con esercizi e quiz.</dd></div>
-      </dl>
-      <h3 class="steps-title" data-i18n="pr.title">Come lavoriamo</h3>
-      <ol class="steps">
-        <li><b data-i18n="pr.1t">Mi scrivi</b><span data-i18n="pr.1d">Due righe su cosa ti serve bastano: il resto lo chiedo io.</span></li>
-        <li><b data-i18n="pr.2t">Ricevi una proposta</b><span data-i18n="pr.2d">Ti mando l'idea, i tempi e il prezzo prima di iniziare. Nessun impegno.</span></li>
-        <li><b data-i18n="pr.3t">Lo provi e lo sistemiamo</b><span data-i18n="pr.3d">Vedi il lavoro mentre lo faccio e correggiamo insieme i dettagli.</span></li>
-      </ol>
-      <p class="actions srv-cta"><a class="cta" href="https://t.me/mikybuilds" data-tg data-i18n="pr.cta">Chiedi una proposta su Telegram</a></p>
-    </section>
-
-    <section id="contact" class="block contact">
-      <h2 data-i18n="ct.title">Contatti</h2>
-      <p class="prose" data-i18n="ct.lead">Scrivimi su Telegram: rispondo di solito in giornata.</p>
-      <p class="contact-links" id="contact-links"></p>
     </section>
   </main>
 
@@ -138,6 +437,6 @@
     <p><span data-i18n="foot">Sito scritto a mano in HTML, CSS e JavaScript.</span> © <span id="year">2026</span> Mykhailo</p>
     <a href="#main" class="totop" data-i18n="totop">Torna su</a>
   </footer>
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-/* Portfolio of Mykhailo: Italian / English switch, theme switch, contact links, chat intro. No libraries. */
+/* Portfolio of Mykhailo: Italian / English switch, theme switch, contact links, app showcase, chat intro. No libraries. */
 "use strict";
 
 /* Contacts — empty fields are not shown. */
@@ -12,59 +12,88 @@ const CONTACTS = {
 const EN = {
   "skip": "Skip to content",
   "nav.about": "About", "nav.services": "Services", "nav.contact": "Contact",
-  "theme.dark": "Dark", "theme.light": "Light",
   "hero.title": "I build bots that work while I study.",
   "hero.lead": "I'm Mykhailo, a computer science student in Italy. My assistant MikyCore runs on my own PC: it keeps an eye on homework, gets me ready for tests and finds deals on Subito.",
-  "hero.cta": "Message me on Telegram", "hero.more": "How MikyCore works",
+  "hero.cta": "Message me on Telegram", "hero.more": "How MikyCore works", "hero.badge": "Available for small projects",
+  "nt.1t": "Reminder", "nt.1d": "Physics test tomorrow, 10:40", "nt.2t": "Deal found", "nt.2d": "Dell Latitude 7490 · −40%", "nt.3t": "Homework ready", "nt.3d": "average.py, checked by running it",
+  "chat.cap": "A typical conversation with MikyCore.",
   "c1": "Any good ThinkPads on Subito?",
   "c2a": "One, yes: Dell Latitude 7490, i7 with 8 GB, for €150.",
   "c2b": "For this configuration the market is around €250",
   "c2c": "Shipping with TuttoSubito, so the payment is protected.",
-  "c3": "And what do I have tomorrow?",
-  "c4": "Physics test at 10. I made you 12 flashcards on chapter 4: shall we review them tonight at 9?",
-  "chat.cap": "A typical conversation with MikyCore.",
+  "g.today": "Today, 3:42 pm", "g.me1": "What do I have tomorrow?",
+  "g.b1": "Tomorrow you have 5 lessons, starting at 8:00. The important one: the physics test in the third period.",
+  "g.day": "Tuesday, October 21", "g.n5": "5 lessons", "g.ph": "Message MikyCore…", "g.ch2": "Revision plan",
+  "su.it": "Italian", "su.ma": "Maths", "su.fi": "Physics", "su.st": "History", "su.en": "English",
+  "m.test": "test", "m.hw": "Homework for tomorrow",
   "about.title": "About me",
   "about.p1": "I'm Ukrainian and I live in Italy, where I'm in my third year of computer science. I like taking an everyday problem — homework, grades, notes, online listings — and writing the program that solves it on its own.",
-  "about.p2": "I mostly write Python, plus C++, JavaScript, HTML and CSS. I work with local language models (Ollama), the Telegram Bot API and Mini Apps, and Playwright for browser automation. Every feature has its own automated tests.",
-  "about.p3": "I speak Ukrainian (native), Italian and English.",
+  "ab.p2": "Every feature has its own automated tests, and I try everything on the real model before I trust it.",
+  "ab.k1": "Studying", "ab.v1": "Computer science, third year", "ab.k2": "I write", "ab.k3": "I work with", "ab.k4": "Languages", "ab.k5": "Main project", "ab.v4": "Ukrainian (native), Italian, English",
   "mc.lead": "A personal Telegram assistant with a language model that runs entirely on my 8 GB graphics card: no subscriptions, no data sent anywhere. I use it every day for school. It's about 21,000 lines of code with 46 test suites.",
-  "shot.today": "The day: reminders, homework, flashcards.", "shot.market": "The market: Subito deals and my profit.", "shot.cards": "Flashcards with spaced repetition.",
+  "hw.title": "The path of one message",
+  "hw.n1t": "My phone", "hw.n1d": "I type or send a voice message on Telegram, even from school.",
+  "hw.n2t": "My PC", "hw.n2d": "Qwen3 8B runs on the 8 GB RTX 5060, Whisper transcribes the voice. No paid services.",
+  "hw.n3t": "More than 100 tools", "hw.n3d": "Classeviva, Classroom, Subito, Obsidian, email, browser: the model picks the right one.",
+  "hw.back": "The answer is back on the phone in a few seconds.",
+  "app.title": "The iPhone app",
+  "app.lead": "Besides Telegram, MikyCore has its own iOS app: chat, timetable, grades, homework and widgets. The screens below are the real ones, with sample data.",
   "f1.t": "Picks the right tool on its own", "f1.d": "It has more than 100 tools: reminders, files, browser, Google Classroom, email. In tests on the real model it picks the right one 98% of the time.",
+  "sf2.t": "Your day on one screen", "sf2.d": "The lesson in progress, the timetable, homework for tomorrow, Classroom deadlines and tests. The data comes from Classeviva and Classroom.",
+  "m.ask": "Ask MikyCore", "m.today": "Today", "m.date": "Monday, October 20", "m.now": "Now · period 3", "m.left": "28 min left", "m.next": "Next: History at 11:35",
+  "m.hwc": "1 of 3", "m.hw1": "Maths — exercises 4–7, p. 112", "m.hw2": "History — read section 9", "m.hw3": "Physics — review Newton's laws",
+  "m.cr": "Classroom: arithmetic mean", "m.crd": "due tomorrow, 11:59 pm · 2 tasks left",
+  "sf3.t": "Grades and average, with advice", "sf3.d": "Average per subject and the trend over time. It also tells me what mark I need on the next test to reach my goal.",
+  "gr.upd": "Classeviva · updated 2:05 pm", "gr.h": "Grades", "gr.avg": "semester average", "gr.up": "▲ 0.3 in the last month",
+  "gr.tip": "Tip", "gr.tipt": "To reach an 8 in maths, you need a 9 or higher on the next test.", "gr.plan": "Make a revision plan →",
+  "sf4.t": "Homework, done together", "sf4.d": "It reads the Classroom assignments, writes the code and checks it by running it, then saves the result to Google Drive.",
+  "cl.ref": "Refresh", "cl.sub": "3 to hand in · the next one is tomorrow", "cl.all": "All", "cl.cs": "Computer science",
+  "cl.d1": "due tomorrow, 11:59 pm", "cl.t1": "Program: arithmetic mean of an array", "cl.g1": "Code · Python", "cl.m1": "1 file",
+  "cl.ok": "Done · on Google Drive", "cl.okd": "average.py · checked by running it", "cl.chat": "To chat",
+  "cl.d2": "due Fri, October 25", "cl.t2": "Presentation: the Renaissance in Italy", "cl.g2": "Presentation", "cl.m2": "2 files", "cl.do": "Do it with the bot",
+  "cl.t3": "Essay: my favourite book", "cl.s3": "Italian · handed in",
+  "sf5.t": "Widgets on the Home screen", "sf5.d": "Tomorrow, the lesson in progress and a shortcut to talk to the bot (voice or camera) without opening the app.",
+  "wg.tom": "Tomorrow · Tuesday", "wg.hrs": "8:00 to 1:25 pm", "wg.test": "Test: physics", "wg.hw": "Homework · 1 of 3", "wg.now": "Now", "wg.till": "until 11:35 · 28 min left",
+  "sf6.t": "Websites for local shops", "sf6.d": "I ask the bot to find a place without a website and build one: design, copy and a preview. Then I have a link and a QR code to bring in person.",
+  "st.find": "Find places", "st.h": "Sites", "st.mine": "My sites · 4", "st.leads": "Leads · 35", "st.pub": "Published", "st.demo": "Demo",
+  "hood.title": "Under the hood",
   "f2.t": "Finds deals on Subito", "f2.d": "It reads listings, works out the market price per model and configuration (CPU, RAM, generation), spots scams and only messages me when a deal is real.",
   "f3.t": "Helps me study", "f3.d": "It turns lessons into notes in Obsidian, makes flashcards, quizzes me out loud with a grade, and plans revision before tests.",
   "f4.t": "Improves itself, with my permission", "f4.d": "It notices where it fails and proposes rules, automations and even new Python plugins. Plugins run in an isolated sandbox and start only after I confirm them.",
   "f5.d": "It generates flowcharts and checks them by running them in a .fprg interpreter I wrote, which points to the error and the exact block.",
   "f6.t": "Safe by design", "f6.d": "Risky actions ask for confirmation, passwords never go through the model, outside text can't give it orders, and it doesn't get around websites' protections.",
+  "f7.t": "Speaks and listens", "f7.d": "It understands voice messages with Whisper and can answer out loud too.",
+  "sp.model": "Model", "sp.gpu": "Graphics card", "sp.tools": "Tools", "sp.code": "Code", "sp.lines": "lines", "sp.tests": "Tests", "sp.suites": "suites", "sp.pick": "Right tool",
   "srv.title": "Work on request",
   "srv.lead": "I take on small projects and do them well. Student prices, agreed depending on the job.",
   "s1.t": "Telegram bots", "s1.d": "Bookings, menus, customer reminders, auto-replies, mini apps. For shops, gyms, teachers.",
   "s2.t": "Websites", "s2.d": "Fast showcase sites that work well on phones too, published for free on GitHub Pages or on your domain.",
   "s3.t": "Ukrainian, Italian, English translations", "s3.d": "Letters, forms and help with Italian paperwork for Ukrainian speakers. Non-certified translations.",
   "s4.t": "Computer science tutoring", "s4.d": "Python, Flowgorithm and programming basics for younger students, with exercises and quizzes.",
-  "ct.title": "Contact", "ct.lead": "Message me on Telegram: I usually reply the same day.",
-  "foot": "Site written by hand in HTML, CSS and JavaScript.", "totop": "Back to top",
-  "st.online": "online", "st.typing": "typing…",
-  "hw.title": "The path of one message",
-  "hw.n1t": "My phone", "hw.n1d": "I type or send a voice message on Telegram, even from school.",
-  "hw.n2t": "My PC", "hw.n2d": "Qwen3 8B runs on the 8 GB RTX 5060, Whisper transcribes the voice. No paid services.",
-  "hw.n3t": "More than 100 tools", "hw.n3d": "Classeviva, Classroom, Subito, Obsidian, email, browser: the model picks the right one.",
-  "hw.back": "The answer is back on the phone in a few seconds.",
   "pr.title": "How we work",
   "pr.1t": "You message me", "pr.1d": "A couple of lines about what you need is enough: I'll ask the rest.",
   "pr.2t": "You get a proposal", "pr.2d": "I send you the idea, the timing and the price before I start. No commitment.",
   "pr.3t": "You try it, we polish it", "pr.3d": "You see the work while I build it and we fix the details together.",
   "pr.cta": "Ask for a proposal on Telegram",
+  "ct.title": "Contact", "ct.lead": "Message me on Telegram: I usually reply the same day.",
+  "foot": "Site written by hand in HTML, CSS and JavaScript.", "totop": "Back to top",
+  "st.online": "online", "st.typing": "typing…",
   "_themeDark": "Dark theme", "_themeLight": "Light theme", "_langBtn": "IT", "_langAria": "Passa all'italiano",
   "_title": "Mykhailo — Telegram bots and local AI",
   "_desc": "Mykhailo, computer science student in Italy. I build Telegram bots, websites and AI assistants that run on my own PC.",
-  "_chat": "Example conversation with MikyCore",
-  "_lang": "Italiano"
+  "_chat": "Example conversation with MikyCore"
 };
 
 const store = {
   get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
   set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* private mode: fine */ } }
 };
+
+/* showcase: every feature carries its own screen; on wide screens they are copied into the one sticky phone */
+const stackBox = document.querySelector(".show-phone .stack");
+const features = [...document.querySelectorAll(".show-list > article")];
+features.forEach((art) => stackBox.append(art.querySelector(".screen").cloneNode(true)));
+const screens = [...stackBox.children];
 
 /* Italian texts come from the page itself */
 const IT = {};
@@ -75,8 +104,11 @@ Object.assign(IT, {
   _chat: document.querySelector(".chat").getAttribute("aria-label"),
   _themeDark: "Tema scuro", _themeLight: "Tema chiaro", _langBtn: "EN", _langAria: "Switch to English"
 });
+/* numbers written with an Italian comma switch to a dot in English */
+document.querySelectorAll("[data-num]").forEach((el) => { el.dataset.it = el.textContent; });
 
 let lang = "it";
+let afterLang = () => {};   // set below: counters and the scrubbed paragraph must be rebuilt after the texts change
 function dict() { return lang === "en" ? EN : IT; }
 
 function setLang(code) {
@@ -84,6 +116,7 @@ function setLang(code) {
   const d = dict();
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-i18n]").forEach((el) => { if (d[el.dataset.i18n]) el.textContent = d[el.dataset.i18n]; });
+  document.querySelectorAll("[data-num]").forEach((el) => { el.textContent = lang === "en" ? el.dataset.it.replace(",", ".") : el.dataset.it; });
   document.title = d._title;
   document.querySelector('meta[name="description"]').content = d._desc;
   document.querySelector(".chat").setAttribute("aria-label", d._chat);
@@ -91,6 +124,7 @@ function setLang(code) {
   lb.textContent = d._langBtn; lb.setAttribute("aria-label", d._langAria);
   store.set("lang", lang);
   paintThemeButton();
+  afterLang();
 }
 
 /* theme */
@@ -151,22 +185,74 @@ document.getElementById("theme").addEventListener("click", () => setTheme(isDark
 window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paintThemeButton);
 
 /* ---------- motion ---------- */
+const root = document.documentElement;
 const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fine = window.matchMedia("(pointer: fine)").matches;
+const hasIO = "IntersectionObserver" in window;
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const heroEl = document.getElementById("hero");
+const bar = document.getElementById("bar");
 
-/* headline word by word */
+/* headline: every word rises from behind its own mask */
 function splitHeadline() {
-  const h = document.querySelector("h1");
-  if (calm) return;
-  const words = h.textContent.trim().split(/\s+/);
-  h.replaceChildren(...words.flatMap((w, i) => {
-    const s = document.createElement("span");
-    s.className = "w"; s.style.setProperty("--i", i); s.textContent = w;
-    return i < words.length - 1 ? [s, document.createTextNode(" ")] : [s];
-  }));
+  const h = document.querySelector(".hero-copy h1");
+  if (!calm) {
+    const words = h.textContent.trim().split(/\s+/);
+    h.replaceChildren(...words.flatMap((w, i) => {
+      const m = document.createElement("span"), s = document.createElement("span");
+      m.className = "wm"; s.className = "w"; s.style.setProperty("--i", i); s.textContent = w; m.append(s);
+      return i < words.length - 1 ? [m, document.createTextNode(" ")] : [m];
+    }));
+  }
+  h.classList.add("ready");
 }
 
-/* the conversation, played like a real chat: "typing…" before every reply */
+/* the paragraph in "Chi sono" lights up word by word as you scroll through it */
+const scrubEl = document.getElementById("scrub");
+let scrubWords = [], scrubLit = -1;
+function prepareScrub() {
+  const words = scrubEl.textContent.trim().split(/\s+/);
+  scrubEl.replaceChildren(...words.flatMap((w, i) => {
+    const s = document.createElement("span");
+    s.className = "sw"; s.textContent = w;
+    return i < words.length - 1 ? [s, document.createTextNode(" ")] : [s];
+  }));
+  scrubWords = [...scrubEl.querySelectorAll(".sw")]; scrubLit = -1;
+  updateScrub();
+}
+function updateScrub() {
+  if (!scrubWords.length) return;
+  const vh = window.innerHeight, r = scrubEl.getBoundingClientRect();
+  const p = calm ? 1 : clamp((vh * 0.88 - r.top) / (vh * 0.42 + r.height * 0.7), 0, 1);
+  const lit = Math.round(p * scrubWords.length);
+  if (lit === scrubLit) return;
+  scrubLit = lit;
+  scrubWords.forEach((w, i) => w.classList.toggle("lit", i < lit));
+}
+
+/* numbers count up when the spec table comes into view */
+const cnts = [...document.querySelectorAll(".cnt")];
+const fmtNum = (n) => n >= 1000 ? (lang === "en" ? n.toLocaleString("en-US") : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ")) : String(n);
+const paintCnt = (el) => { el.textContent = fmtNum(Math.round(el._v)); };
+cnts.forEach((el) => { el._v = Number(el.dataset.count); });
+if (!calm && hasIO) {
+  cnts.forEach((el) => { el._v = 0; paintCnt(el); });
+  const co = new IntersectionObserver((es) => {
+    if (!es.some((e) => e.isIntersecting)) return;
+    co.disconnect();
+    const t0 = performance.now();
+    const tick = (now) => {
+      const t = clamp((now - t0) / 1700, 0, 1), e = 1 - Math.pow(2, -10 * t);
+      cnts.forEach((el) => { el._v = Number(el.dataset.count) * (t === 1 ? 1 : e); paintCnt(el); });
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, {threshold: 0.4});
+  co.observe(document.getElementById("spec"));
+}
+
+/* the conversation, played like the real app: three pulsing dots before every reply */
 let chatRun = 0;
 async function playChat() {
   const run = ++chatRun;
@@ -177,12 +263,11 @@ async function playChat() {
   box.querySelectorAll(".typing").forEach((t) => t.remove());
   setStatus(false);
   if (calm) { items.forEach((li) => li.classList.add("shown")); chat.classList.add("done"); return; }
-  /* reserve the final height first, so the page doesn't jump while messages appear */
   box.style.minHeight = ""; box.classList.remove("js");
-  box.style.minHeight = box.offsetHeight + "px";
+  box.style.minHeight = box.offsetHeight + "px";          // reserve the final height first, so nothing jumps
   box.classList.add("js"); chat.classList.remove("done");
   items.forEach((li) => li.classList.remove("shown"));
-  await wait(900);
+  await wait(1100);
   for (const li of items) {
     if (run !== chatRun) return;
     if (li.classList.contains("bot")) {
@@ -191,45 +276,155 @@ async function playChat() {
       t.append(document.createElement("i"), document.createElement("i"), document.createElement("i"));
       box.insertBefore(t, li);
       setStatus(true);
-      await wait(950);
+      await wait(1000);
       t.remove();
       setStatus(false);
       if (run !== chatRun) return;
     }
     li.classList.add("shown");
-    await wait(li.classList.contains("me") ? 650 : 900);
+    await wait(li.classList.contains("me") ? 700 : 1100);
   }
   chat.classList.add("done");
 }
 
-/* sticky bar becomes frosted glass after a little scroll */
-const bar = document.getElementById("bar");
-const onScroll = () => bar.classList.toggle("scrolled", window.scrollY > 12);
-window.addEventListener("scroll", onScroll, {passive: true}); onScroll();
-
-/* screenshots fan out once when reached */
-const shots = document.querySelector(".shots");
-if (!calm && "IntersectionObserver" in window) {
-  shots.classList.add("wait");
-  const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { shots.classList.remove("wait"); io.disconnect(); } }, {threshold: 0.25});
-  io.observe(shots);
+/* the sticky phone shows the screen of the feature that is in the middle of the viewport */
+const showEl = document.getElementById("show");
+const showPhone = document.querySelector(".show-phone");
+function showFeature(i) {
+  screens.forEach((s, k) => { s.classList.toggle("on", k === i); s.classList.toggle("past", k < i); });
+  features.forEach((a, k) => a.classList.toggle("active", k === i));
+}
+showFeature(0);
+if (hasIO) {
+  const so = new IntersectionObserver((es) => {
+    es.forEach((e) => { if (e.isIntersecting) showFeature(features.indexOf(e.target)); });
+  }, {rootMargin: "-45% 0px -45% 0px"});
+  features.forEach((a) => so.observe(a));
 }
 
 /* the message path animates once, when reached */
 const flow = document.getElementById("flow");
-if (!calm && "IntersectionObserver" in window) {
+if (!calm && hasIO) {
   const fo = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { flow.classList.add("run"); fo.disconnect(); } }, {threshold: 0.5});
   fo.observe(flow);
 }
 
-/* the chat wallpaper lights up under the pointer (mouse/pen only) */
-const win = document.getElementById("window");
-if (!calm && window.matchMedia("(pointer: fine)").matches) {
-  win.addEventListener("pointermove", (e) => {
-    const r = win.getBoundingClientRect();
-    win.style.setProperty("--mx", (e.clientX - r.left) + "px");
-    win.style.setProperty("--my", (e.clientY - r.top) + "px");
+/* reveals: every block arrives once, then gets out of the way of its hover effects */
+document.querySelectorAll(".steps li").forEach((li, i) => { li.setAttribute("data-r", ""); li.style.setProperty("--d", i * 160 + "ms"); });
+const revealEls = [...document.querySelectorAll("[data-r]")];
+if (calm || !hasIO) {
+  revealEls.forEach((el) => { el.classList.add("in"); el.removeAttribute("data-r"); });
+} else {
+  const ro = new IntersectionObserver((es) => es.forEach((e) => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    ro.unobserve(el);
+    el.classList.add("in");
+    setTimeout(() => el.removeAttribute("data-r"), 2400);
+  }), {threshold: 0.12, rootMargin: "0px 0px -6% 0px"});
+  revealEls.forEach((el) => ro.observe(el));
+}
+
+/* stack marquee: a second copy makes the loop seamless */
+const track = document.getElementById("track");
+[...track.children].forEach((li) => { const c = li.cloneNode(true); c.setAttribute("aria-hidden", "true"); track.append(c); });
+
+/* nav: a pill slides to the section you are in */
+const nav = document.getElementById("nav");
+const navLinks = [...nav.querySelectorAll("a")];
+const ind = nav.querySelector(".nav-ind");
+const navSecs = navLinks.map((a) => document.querySelector(a.getAttribute("href")));
+let curSec = -1;
+function moveInd(a) {
+  if (!a || getComputedStyle(ind).display === "none") { ind.style.opacity = 0; return; }
+  ind.style.left = a.offsetLeft + "px"; ind.style.width = a.offsetWidth + "px"; ind.style.opacity = 1;
+}
+function setActive(i) {
+  curSec = i;
+  navLinks.forEach((a, k) => a.classList.toggle("cur", k === i));
+  moveInd(navLinks[i]);
+}
+navLinks.forEach((a) => {
+  a.addEventListener("pointerenter", () => moveInd(a));
+  a.addEventListener("pointerleave", () => moveInd(navLinks[curSec]));
+});
+
+/* everything that follows the scroll position, in one frame */
+const prog = document.getElementById("progress");
+function update() {
+  const y = window.scrollY, vh = window.innerHeight, max = root.scrollHeight - vh;
+  prog.style.setProperty("--sp", max > 0 ? (y / max).toFixed(4) : 0);
+  bar.classList.toggle("scrolled", y > 12);
+  if (!calm && y < vh * 1.4) heroEl.style.setProperty("--hs", Math.round(y));
+  updateScrub();
+  let idx = -1;
+  for (let k = navSecs.length - 1; k >= 0; k--) { if (navSecs[k].getBoundingClientRect().top < vh * 0.4) { idx = k; break; } }
+  if (idx !== curSec) setActive(idx);
+  if (!calm && showPhone && showPhone.offsetParent) {
+    const r = showEl.getBoundingClientRect(), p = clamp((vh * 0.5 - r.top) / r.height, 0, 1);
+    showPhone.style.setProperty("--ry", ((0.5 - p) * 18).toFixed(2));
+    showPhone.style.setProperty("--rx", (Math.sin(p * Math.PI * 2) * 3).toFixed(2));
+  }
+}
+let ticking = false;
+window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; update(); }); } }, {passive: true});
+window.addEventListener("resize", () => { update(); moveInd(navLinks[curSec]); });
+
+/* smooth, inertial scrolling for mouse wheels (touch screens and reduced motion keep the native scroll) */
+let smoothTo = null;
+if (!calm && fine) {
+  root.classList.add("lenis");
+  let target = window.scrollY, cur = target, raf = 0;
+  const limit = () => root.scrollHeight - window.innerHeight;
+  const step = () => {
+    cur += (target - cur) * 0.115;
+    if (Math.abs(target - cur) < 0.5) { cur = target; raf = 0; } else raf = requestAnimationFrame(step);
+    window.scrollTo(0, cur);
+  };
+  smoothTo = (y) => { target = clamp(y, 0, limit()); if (!raf) { cur = window.scrollY; raf = requestAnimationFrame(step); } };
+  window.addEventListener("wheel", (e) => {
+    if (e.ctrlKey || e.defaultPrevented) return;
+    for (let el = e.target; el && el.nodeType === 1 && el !== document.body; el = el.parentElement) {     // let inner scrollers scroll themselves
+      const oy = getComputedStyle(el).overflowY;
+      if ((oy === "auto" || oy === "scroll") && el.scrollHeight > el.clientHeight) return;
+    }
+    e.preventDefault();
+    if (!raf) { cur = target = window.scrollY; }
+    target = clamp(target + e.deltaY * (e.deltaMode === 1 ? 34 : e.deltaMode === 2 ? window.innerHeight : 1), 0, limit());
+    if (!raf) raf = requestAnimationFrame(step);
+  }, {passive: false});
+  window.addEventListener("scroll", () => { if (!raf) cur = target = window.scrollY; }, {passive: true});   // keyboard, scrollbar, anchors: follow the real position
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey) return;
+    const dest = document.querySelector(a.getAttribute("href"));
+    if (!dest) return;
+    e.preventDefault();
+    smoothTo(dest.getBoundingClientRect().top + window.scrollY - (dest.id === "main" ? 0 : 72));
   });
+}
+
+/* pointer play: a tilted phone, magnetic buttons, a spotlight that follows the cursor on cards */
+if (!calm && fine) {
+  const tilt = document.getElementById("tilt");
+  heroEl.addEventListener("pointermove", (e) => {
+    const r = heroEl.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+    tilt.style.transform = `rotateY(${(x * 12).toFixed(2)}deg) rotateX(${(-y * 9).toFixed(2)}deg)`;
+  });
+  heroEl.addEventListener("pointerleave", () => { tilt.style.transform = ""; });
+  document.querySelectorAll("[data-mag], .switches button").forEach((el) => {
+    el.addEventListener("pointermove", (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.translate = ((e.clientX - r.left - r.width / 2) * 0.22).toFixed(1) + "px " + ((e.clientY - r.top - r.height / 2) * 0.3).toFixed(1) + "px";
+    });
+    el.addEventListener("pointerleave", () => { el.style.translate = ""; });
+  });
+  document.addEventListener("pointermove", (e) => {
+    const s = e.target.closest && e.target.closest(".spot");
+    if (!s) return;
+    const r = s.getBoundingClientRect();
+    s.style.setProperty("--mx", (e.clientX - r.left) + "px"); s.style.setProperty("--my", (e.clientY - r.top) + "px");
+  }, {passive: true});
 }
 
 /* language switch: soft crossfade + the headline and chat replay */
@@ -243,14 +438,17 @@ document.getElementById("lang").addEventListener("click", () => {
 const themeBtn = document.getElementById("theme");
 themeBtn.addEventListener("click", (ev) => {
   const next = isDark() ? "light" : "dark";
-  if (calm || !document.startViewTransition) return;                 // the plain handler below switches instantly
+  if (calm || !document.startViewTransition) return;                 // the plain handler switches instantly
   ev.stopImmediatePropagation();
   const r = themeBtn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
-  const root = document.documentElement.style;
-  root.setProperty("--x", x + "px"); root.setProperty("--y", y + "px");
-  root.setProperty("--r", Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)) + "px");
+  const root2 = root.style;
+  root2.setProperty("--x", x + "px"); root2.setProperty("--y", y + "px");
+  root2.setProperty("--r", Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)) + "px");
   document.startViewTransition(() => setTheme(next));
 }, true);
 
+afterLang = () => { cnts.forEach(paintCnt); prepareScrub(); setTimeout(() => moveInd(navLinks[curSec]), 80); };
+afterLang();
 splitHeadline();
 playChat();
+update();
