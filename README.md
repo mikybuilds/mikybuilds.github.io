@@ -11,7 +11,7 @@ Personal portfolio of **Mykhailo** — computer science student in Italy, buildi
 - **Contact** — [Telegram](https://t.me/mikybuilds) · [GitHub](https://github.com/mikybuilds)
 
 ## Built with
-Plain HTML, CSS and JavaScript — no frameworks, no build step, no trackers.
+Plain HTML, CSS and JavaScript — no frameworks, no build step, no trackers. Fonts: Bricolage Grotesque + Geist (Google Fonts).
 Italian / English switch, light / dark theme, responsive layout.
 
-Screenshots show the MikyCore Mini App with demo data.
+The phone screens are built in HTML/CSS after the real MikyCore iOS app, with demo data.
