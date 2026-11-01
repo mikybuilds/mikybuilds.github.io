@@ -13,7 +13,7 @@ const EN = {
   "skip": "Skip to content",
   "nav.about": "About", "nav.services": "Services", "nav.contact": "Contact",
   "hero.title": "I build bots that work while I study.",
-  "hero.lead": "I'm Mykhailo, a computer science student in Italy. My assistant MikyCore runs on my own PC: it keeps an eye on homework, gets me ready for tests and finds deals on Subito.",
+  "hero.lead": "I'm Mykhailo Zhupanov, a computer science student in Ferrara, Italy. My assistant MikyCore runs on my own PC: it keeps an eye on homework, gets me ready for tests and finds deals on Subito.",
   "hero.cta": "Message me on Telegram", "hero.more": "How MikyCore works", "hero.badge": "Available for small projects",
   "nt.1t": "Reminder", "nt.1d": "Physics test tomorrow, 10:40", "nt.2t": "Deal found", "nt.2d": "Dell Latitude 7490 · −40%", "nt.3t": "Homework ready", "nt.3d": "average.py, checked by running it",
   "chat.cap": "A typical conversation with MikyCore.",
@@ -79,8 +79,8 @@ const EN = {
   "foot": "Site written by hand in HTML, CSS and JavaScript.", "totop": "Back to top",
   "st.online": "online", "st.typing": "typing…",
   "_themeDark": "Dark theme", "_themeLight": "Light theme", "_langBtn": "IT", "_langAria": "Passa all'italiano",
-  "_title": "Mykhailo — Telegram bots and local AI",
-  "_desc": "Mykhailo, computer science student in Italy. I build Telegram bots, websites and AI assistants that run on my own PC.",
+  "_title": "Mykhailo Zhupanov — Telegram bots and local AI",
+  "_desc": "Mykhailo Zhupanov, computer science student in Ferrara, Italy. I build Telegram bots, websites and AI assistants that run on my own PC.",
   "_chat": "Example conversation with MikyCore"
 };
 
