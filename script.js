@@ -355,7 +355,7 @@ function update() {
   const y = window.scrollY, vh = window.innerHeight, max = root.scrollHeight - vh;
   prog.style.setProperty("--sp", max > 0 ? (y / max).toFixed(4) : 0);
   bar.classList.toggle("scrolled", y > 12);
-  if (!calm && y < vh * 1.4) heroEl.style.setProperty("--hs", Math.round(y));
+  if (!calm && fine && y < vh * 1.4) heroEl.style.setProperty("--hs", Math.round(y));
   updateScrub();
   let idx = -1;
   for (let k = navSecs.length - 1; k >= 0; k--) { if (navSecs[k].getBoundingClientRect().top < vh * 0.4) { idx = k; break; } }
@@ -366,9 +366,16 @@ function update() {
     showPhone.style.setProperty("--rx", (Math.sin(p * Math.PI * 2) * 3).toFixed(2));
   }
 }
+/* on narrow phones the app screens shrink to fit the width */
+function fitPhones() {
+  const vw = window.innerWidth;
+  if (vw <= 560) root.style.setProperty("--kfit", Math.min(0.8, (vw - 2 * Math.max(20, vw * 0.05) - 16) / 390).toFixed(3));
+  else root.style.removeProperty("--kfit");
+}
+fitPhones();
 let ticking = false;
 window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; update(); }); } }, {passive: true});
-window.addEventListener("resize", () => { update(); moveInd(navLinks[curSec]); });
+window.addEventListener("resize", () => { fitPhones(); update(); moveInd(navLinks[curSec]); });
 
 /* smooth, inertial scrolling for mouse wheels (touch screens and reduced motion keep the native scroll) */
 let smoothTo = null;
