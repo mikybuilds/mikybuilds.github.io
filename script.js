@@ -6,7 +6,7 @@ const CONTACTS = {
   telegram: "mikybuilds",   // without @
   email: "",
   github: "mikybuilds",
-  linkedin: ""
+  linkedin: "https://www.linkedin.com/in/mykhailo-zhupanov/"
 };
 
 const EN = {
