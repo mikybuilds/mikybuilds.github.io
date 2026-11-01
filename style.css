@@ -342,3 +342,56 @@ main.swap .lead { animation: swap 0.45s var(--out) both; opacity: 1; }
 @media (min-width: 1001px) and (max-height: 960px) { .hero-in .phone { --k: 0.76; } }
 .cta { transition: transform 0.25s var(--spring), box-shadow 0.3s, background-position 0.5s var(--out), translate 0.3s var(--out); }
 .switches button { transition: border-color 0.2s, background-color 0.2s, translate 0.3s var(--out); }
+
+/* ---------- phone hardening (desktop untouched) ---------- */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+.screen { -webkit-text-size-adjust: none; text-size-adjust: none; }
+@supports not (background: color-mix(in srgb, red 50%, blue)) {
+  .top, .bar.scrolled .top, .badge, .note { background: var(--card); border-color: var(--rule); }
+}
+@media (max-width: 1000px) {
+  .hero { padding-top: 132px; }
+  /* lighter, static glow: big animated blurs are what phones struggle with */
+  .aurora i { filter: blur(56px); animation: none; }
+  .aurora .b1 { width: 340px; height: 340px; left: 38%; top: -6%; }
+  .aurora .b2 { width: 280px; height: 280px; left: 62%; top: 30%; }
+  .aurora .b3 { width: 260px; height: 260px; left: -8%; top: 52%; }
+  .contact .aurora .b1 { left: 30%; top: -20%; } .contact .aurora .b2 { left: 55%; top: 40%; } .contact .aurora .b3 { left: -10%; top: 5%; }
+  .chat { perspective: none; transform: none; }
+  .tiltbox { transform-style: flat; }
+  .hero-copy { transform: none; opacity: 1; will-change: auto; }
+  .floatbox { animation: none; }
+  .phone { box-shadow: 0 0 0 1.5px #2a2f3b inset, 0 30px 50px -30px rgba(11, 13, 18, 0.55); }
+  .top { gap: 8px 12px; }
+  .top nav { -webkit-mask: linear-gradient(90deg, #000 90%, transparent); mask: linear-gradient(90deg, #000 90%, transparent); }
+  .top nav a { font-size: 14.5px; padding: 8px 11px; }
+  .switches button { min-width: 40px; height: 40px; }
+  .core, .contact { margin-left: 8px; margin-right: 8px; }
+  .marquee { padding: 18px 0; }
+  .track li::after { margin: 0 26px; }
+  .bc { padding: 22px; border-radius: 24px; }
+  .spec dd { font-size: clamp(28px, 7vw, 40px); }
+}
+@media (max-width: 560px) {
+  .hero-in .phone { --k: var(--kfit, 0.78); }
+  .show-list .mini { --k: var(--kfit, 0.74); }
+  .show-list .mini { margin-left: auto; margin-right: auto; }
+  h2 { font-size: clamp(32px, 9vw, 42px); }
+  .core-lead, .srv-lead, .ct-lead { font-size: 18px; }
+  .about { padding-top: 56px; }
+  .big { font-size: clamp(24px, 6.6vw, 30px); }
+  .sub-title { margin-top: 56px; }
+  .show-list > article { padding-bottom: 44px; }
+  .show-list h3 { font-size: 26px; }
+  .flow li { padding: 20px; }
+  .services > div { padding: 24px 0; }
+  .steps-title { margin-top: 48px; }
+  .contact { padding: 64px 0 56px; }
+  .foot { flex-direction: column; gap: 6px; }
+}
+
+/* older phone browsers and in-app webviews: no overflow:clip → hide the sideways overflow the old way, so the page cannot widen and shrink */
+@supports not (overflow: clip) {
+  html, body { overflow-x: hidden; }
+  .hero, .core, .contact { overflow: hidden; }
+}
