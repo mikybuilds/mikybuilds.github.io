@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Lanterna">
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A2034"/><stop offset="1" stop-color="#0B0E17"/></linearGradient>
+    <radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F5B544" stop-opacity=".45"/><stop offset="1" stop-color="#F5B544" stop-opacity="0"/></radialGradient>
+    <linearGradient id="flame" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF4D6"/><stop offset=".55" stop-color="#FFC75A"/><stop offset="1" stop-color="#F08A24"/></linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD27A"/><stop offset="1" stop-color="#E39A2E"/></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F5B544" stop-opacity=".10"/><stop offset="1" stop-color="#F5B544" stop-opacity=".28"/></linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="114" fill="url(#tile)"/>
+  <circle cx="256" cy="282" r="170" fill="url(#halo)"/>
+  <path d="M212 146 V126 a44 44 0 0 1 88 0 V146" fill="none" stroke="url(#metal)" stroke-width="18" stroke-linecap="round"/>
+  <rect x="178" y="142" width="156" height="34" rx="13" fill="url(#metal)"/>
+  <rect x="196" y="176" width="120" height="176" rx="42" fill="url(#glass)" stroke="url(#metal)" stroke-width="14"/>
+  <path d="M256 214 C284 248 298 270 298 294 a42 42 0 0 1 -84 0 C214 270 228 248 256 214 Z" fill="url(#flame)"/>
+  <rect x="178" y="350" width="156" height="32" rx="13" fill="url(#metal)"/>
+</svg>
