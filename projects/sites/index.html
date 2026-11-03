@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Siti per negozi locali — un bot che costruisce siti vetrina</title>
+  <meta name="description" content="Un bot di Mykhailo Zhupanov (Михайло Жупанов) che trova le attività senza sito web, ne costruisce uno e prepara un kit con codice QR da portare di persona.">
+  <meta name="author" content="Mykhailo Zhupanov (Михайло Жупанов)">
+  <link rel="canonical" href="https://mikybuilds.github.io/projects/sites/">
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "CreativeWork", "name": "Websites for local shops", "url": "https://mikybuilds.github.io/projects/sites/", "description": "A bot that finds businesses without a website, builds one and prepares a printable QR kit.", "author": {"@type": "Person", "name": "Mykhailo Zhupanov", "alternateName": ["Михайло Жупанов", "Міша Жупанов"], "url": "https://mikybuilds.github.io/"}}
+  </script>
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Siti per negozi locali — un bot che costruisce siti vetrina">
+  <meta property="og:description" content="Un bot di Mykhailo Zhupanov (Михайло Жупанов) che trova le attività senza sito web, ne costruisce uno e prepara un kit con codice QR da portare di persona.">
+  <meta property="og:image" content="https://mikybuilds.github.io/assets/og.png">
+  <meta property="og:url" content="https://mikybuilds.github.io/projects/sites/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232b59ff'/%3E%3Ctext x='32' y='43' font-family='Arial Black,Arial' font-weight='900' font-size='30' text-anchor='middle' fill='%23fff'%3EM.%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/app.css?v=10">
+  <link rel="stylesheet" href="/style.css?v=10">
+  <link rel="stylesheet" href="/proj.css?v=1">
+  
+  <script>(function(){var d=document.documentElement;d.classList.add("js");try{var t=localStorage.getItem("theme");if(t)d.dataset.theme=t;var q=localStorage.getItem("pt");if(q){localStorage.removeItem("pt");q=JSON.parse(q);if(Date.now()-q.t<6000){d.style.setProperty("--ac",q.c);d.style.setProperty("--ax",q.x+"px");d.style.setProperty("--ay",q.y+"px");d.classList.add("arriving");setTimeout(function(){d.classList.remove("arriving")},1000)}}}catch(e){}})();</script>
+</head>
+<body data-proj="sites" class="proj-body">
+  <a class="skip" href="#main" data-i18n="skip">Vai al contenuto</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M4 15h9" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="18.5" cy="15" r="1.9" fill="#2B59FF"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 6.5A2.5 2.5 0 0 1 7.5 4h9A2.5 2.5 0 0 1 19 6.5v7a2.5 2.5 0 0 1-2.5 2.5H11l-4 3.5V16h.5A2.5 2.5 0 0 1 5 13.5z" stroke="#ECEFF4" stroke-width="1.75" stroke-linejoin="round" fill="none"/><circle cx="15.5" cy="9.8" r="1.5" fill="#2B59FF"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2.1-5" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M19.500 4.500v4h-4" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500" stroke="#3FB984" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#8C95A6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3.500" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M5.500 11.500a6.500 6.500 0 0 0 13 0M12 18v2.500" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-cam" viewBox="0 0 24 24"><path d="M4 8.500A2.500 2.500 0 0 1 6.500 6h1.800l1.400-2h4.600l1.400 2h1.800A2.500 2.500 0 0 1 20 8.500v8A2.500 2.500 0 0 1 17.500 19h-11A2.500 2.500 0 0 1 4 16.500z" stroke="#ECEFF4" stroke-width="1.75" stroke-linejoin="round" fill="none"/><circle cx="12" cy="12.500" r="3" stroke="#ECEFF4" stroke-width="1.75" fill="none"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.500" stroke="#fff" stroke-width="1.8" fill="none"/><path d="M16 16l4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-class" viewBox="0 0 24 24"><rect x="3.500" y="4.500" width="17" height="11.500" rx="2" stroke="#ECEFF4" stroke-width="1.75" fill="none"/><path d="M8 20l2.500-4M16 20l-2.500-4" stroke="#ECEFF4" stroke-width="1.75" stroke-linecap="round" fill="none"/><circle cx="16.500" cy="10" r="1.700" fill="#2B59FF"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 21 21"><path d="M0 0h7v1h-7zM8 0h2v1h-2zM11 0h1v1h-1zM14 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h2v1h-2zM11 1h2v1h-2zM14 1h1v1h-1zM20 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h3v1h-3zM12 2h1v1h-1zM14 2h1v1h-1zM16 2h3v1h-3zM20 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM8 3h1v1h-1zM12 3h1v1h-1zM14 3h1v1h-1zM16 3h3v1h-3zM20 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM9 4h1v1h-1zM11 4h2v1h-2zM14 4h1v1h-1zM16 4h3v1h-3zM20 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h2v1h-2zM11 5h1v1h-1zM14 5h1v1h-1zM20 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h7v1h-7zM8 7h1v1h-1zM10 7h2v1h-2zM0 8h2v1h-2zM4 8h1v1h-1zM6 8h1v1h-1zM9 8h1v1h-1zM11 8h2v1h-2zM14 8h1v1h-1zM16 8h1v1h-1zM0 9h1v1h-1zM4 9h1v1h-1zM7 9h1v1h-1zM9 9h1v1h-1zM14 9h2v1h-2zM17 9h4v1h-4zM0 10h1v1h-1zM2 10h3v1h-3zM6 10h2v1h-2zM12 10h3v1h-3zM17 10h4v1h-4zM2 11h4v1h-4zM12 11h1v1h-1zM17 11h3v1h-3zM0 12h11v1h-11zM13 12h5v1h-5zM20 12h1v1h-1zM9 13h4v1h-4zM14 13h2v1h-2zM18 13h1v1h-1zM20 13h1v1h-1zM0 14h7v1h-7zM12 14h3v1h-3zM18 14h2v1h-2zM0 15h1v1h-1zM6 15h1v1h-1zM13 15h1v1h-1zM15 15h5v1h-5zM0 16h1v1h-1zM2 16h3v1h-3zM6 16h1v1h-1zM9 16h1v1h-1zM13 16h5v1h-5zM0 17h1v1h-1zM2 17h3v1h-3zM6 17h1v1h-1zM8 17h1v1h-1zM11 17h1v1h-1zM16 17h2v1h-2zM19 17h1v1h-1zM0 18h1v1h-1zM2 18h3v1h-3zM6 18h1v1h-1zM9 18h2v1h-2zM13 18h3v1h-3zM18 18h1v1h-1zM0 19h1v1h-1zM6 19h1v1h-1zM9 19h1v1h-1zM11 19h2v1h-2zM17 19h1v1h-1zM20 19h1v1h-1zM0 20h7v1h-7zM8 20h3v1h-3zM12 20h3v1h-3zM16 20h2v1h-2zM20 20h1v1h-1z" fill="#0b0d12"/></symbol>
+  </svg>
+
+  <header class="bar" id="bar"><div class="top">
+    <a class="name" href="/">Mykhailo</a>
+    <nav aria-label="Menu">
+      <a data-i18n="nav.home" href="/">Home</a>
+      <a data-i18n="nav.projects" href="/#projects">Progetti</a>
+      <a data-i18n="nav.contact" href="#contact">Contatti</a>
+    </nav>
+    <div class="switches">
+      <button id="lang" type="button" aria-label="Switch to English">EN</button>
+      <button id="theme" type="button" aria-label="Tema scuro">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      </button>
+    </div>
+  </div></header>
+
+  <main id="main" class="proj">
+
+    <section class="p-hero" id="top">
+      <div class="aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+      <div class="grain" aria-hidden="true"></div>
+      <div class="p-in">
+        <div class="p-copy">
+          <a class="crumb" href="/#projects"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span data-i18n="back">Tutti i progetti</span></a>
+          <p class="badge"><i></i><span><span data-i18n="s.badge">Progetto laterale</span></span></p>
+          <h1 data-i18n="s.h1">Siti per negozi locali</h1>
+          <p class="p-sub" data-i18n="s.sub">Da un negozio senza sito a un sito online, con un bot.</p>
+          <p class="lead" data-i18n="sf6.d">Chiedo al bot di trovare un locale senza sito e di crearlo: design, testi e anteprima. Poi ho un link e un QR da portare di persona.</p>
+          <p class="actions"><a class="cta" href="https://t.me/mikybuilds" data-mag target="_blank" rel="noopener"><span data-i18n="s.cta">Vuoi un sito per la tua attività?</span></a><a class="quiet" href="#how"><span data-i18n="s.how">Come funziona</span></a></p>
+          <ul class="chips"><li>Python</li><li>OpenStreetMap</li><li>Netlify</li><li>QR</li></ul>
+        </div>
+        <div class="p-art ">
+        <div class="fit-wrap"><div class="fit" style="--w:640;--h:560" data-w="640" data-h="560">
+          <div class="br" style="left:0;top:40px;width:470px;transform:rotate(-1.5deg)">
+            <div class="br-bar"><i></i><i></i><i></i><u>nome-del-locale.it</u></div>
+            <div class="br-body">
+              <div class="br-hero"><b data-i18n="pj.sit.name">Caffè Esempio</b><span data-i18n="pj.sit.sub">Sito di esempio creato dal bot</span><em data-i18n="pj.sit.cta">Chiamaci</em></div>
+              <div class="br-row"><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="kit" style="left:30px;top:350px;width:170px;transform:rotate(-5deg)"><b>Kit A4</b><small>PDF + QR</small><svg class="qr" viewBox="0 0 21 21"><use href="#i-qr"/></svg></div>
+          <div class="phone" style="--k:.62;right:0;top:0;transform:rotate(4deg)"><div class="screen app">
+                <header class="a-hd">
+                  <div class="a-row"><a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a><a class="a-btn pri"><svg width="18" height="18"><use href="#i-search"/></svg><span data-i18n="st.find">Trova locali</span></a></div>
+                  <h1 class="a-h1" data-i18n="st.h">Siti</h1>
+                  <div class="a-seg"><span class="on" data-i18n="st.mine">I miei siti · 4</span><span data-i18n="st.leads">Contatti · 35</span></div>
+                </header>
+                <div class="a-main">
+                  <div class="a-grid">
+                    <div class="a-site"><div class="pv green"><small>BAR A FERRARA</small><b>Caffè Estense</b><i></i></div><div class="cap"><b>Caffè Estense</b><span class="ok"><u></u><em data-i18n="st.pub">Pubblicato</em></span></div></div>
+                    <div class="a-site"><div class="pv cream"><small>Trattoria</small><b>Il Mulino</b><hr><hr></div><div class="cap"><b>Trattoria Il Mulino</b><span class="bl"><u></u><em data-i18n="st.demo">Demo</em></span></div></div>
+                    <div class="a-site"><div class="pv red"><i class="stripe"></i><b>BAR SPORT</b><hr><i class="tag"></i></div><div class="cap"><b>Bar Sport</b><span class="gr"><u></u><em data-i18n="st.demo">Demo</em></span></div></div>
+                    <div class="a-site"><div class="pv dark"><i class="stripe2"></i><b>BARBERIA</b><i class="gold"></i></div><div class="cap"><b>Barbieri Centro</b><span class="gr"><u></u><em data-i18n="st.demo">Demo</em></span></div></div>
+                  </div>
+                </div>
+              </div></div>
+          <div class="live" style="left:300px;top:6px"><i></i><span data-i18n="pj.sit.live">online</span></div>
+        </div></div></div>
+      </div>
+    </section>
+    <section class="p-sec" id="how">
+      <div class="sec">
+        <h2 data-i18n="s.hh" data-r>Come funziona</h2>
+        <p class="p-lead" data-i18n="s.hl" data-r>Quattro passi, e il bot li fa tutti: io controllo e decido.</p>
+        <ol class="pipe">
+          <li data-r style="--d:0ms"><b data-i18n="s.1.t">Trova</b><span data-i18n="s.1.d">Cerca su OpenStreetMap le attività di Ferrara che non hanno un sito web.</span></li>
+          <li data-r style="--d:90ms"><b data-i18n="s.2.t">Costruisce</b><span data-i18n="s.2.d">Sceglie un modello (bar, ristorazione, parrucchiere) e scrive i testi in italiano usando solo i fatti che gli do.</span></li>
+          <li data-r style="--d:180ms"><b data-i18n="s.3.t">Controlla</b><span data-i18n="s.3.d">Un filtro toglie telefoni, orari e prezzi inventati. Prima di tutto, un'anteprima da guardare.</span></li>
+          <li data-r style="--d:270ms"><b data-i18n="s.4.t">Pubblica</b><span data-i18n="s.4.d">Solo dopo il mio Conferma: il sito va online su Netlify, con un kit A4 in PDF e un codice QR.</span></li>
+        </ol>
+      </div>
+    </section>
+    <section class="p-sec alt" id="rules">
+      <div class="sec">
+        <h2 data-i18n="s.rh" data-r>Le regole che mi sono dato</h2>
+        <div class="bento" style="margin-top:34px">
+          <article class="bc spot w2" data-r style="--d:0ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></span><h4 data-i18n="s.r1.t">Niente invii di massa</h4><p data-i18n="s.r1.d">Nessuna email o messaggio a tappeto. L'elenco delle attività serve solo per andare a trovarle di persona.</p></article>
+          <article class="bc spot w2" data-r style="--d:70ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><h4 data-i18n="s.r2.t">Niente invenzioni</h4><p data-i18n="s.r2.d">Telefoni, orari e prezzi arrivano solo da ciò che mi viene detto. Il codice scarta il resto.</p></article>
+          <article class="bc spot w2" data-r style="--d:140ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><h4 data-i18n="s.r3.t">Pubblico solo con un clic</h4><p data-i18n="s.r3.d">Niente va online da solo: l'ultimo passo è sempre il mio Conferma.</p></article>
+        </div>
+        <p class="actions" style="margin-top:clamp(32px,4vw,52px)" data-r><a class="cta" href="https://t.me/mikybuilds" data-mag target="_blank" rel="noopener"><span data-i18n="s.cta2">Scrivimi su Telegram</span></a></p>
+      </div>
+    </section>
+
+    <section class="p-sec">
+      <div class="sec">
+        <h2 data-i18n="next.title" data-r>Altri progetti</h2>
+        <div class="pn-grid"><a class="pn" href="/projects/lanterna/" data-pt="#161b2b" data-r style="--pbg:linear-gradient(160deg,#1c2338,#0b0e17);--pg:245,181,68"><b>Lanterna</b><span data-i18n="pj.lan.d">Un assistente AI gratuito per Windows e Linux: usa modelli cloud gratuiti o i tuoi modelli locali. Open source, senza telemetria.</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="pn" href="/projects/mikycore/" data-pt="#0f1d4d" data-r style="--pbg:linear-gradient(160deg,#122a6b,#0b0d12);--pg:43,89,255"><b>MikyCore</b><span data-i18n="pj.mc.d">Il mio assistente personale su Telegram: compiti, voti, promemoria e affari su Subito, con un modello che gira sul mio PC.</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="pn" href="/projects/ios/" data-pt="#211757" data-r style="--pbg:linear-gradient(160deg,#2a1d63,#0b0d12);--pg:109,76,255"><b data-i18n="pj.ios.n">MikyCore per iPhone</b><span data-i18n="pj.ios.d">L'app nativa del bot: chat, giornata, voti, Classroom e widget sulla schermata Home.</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+      <div class="grain" aria-hidden="true"></div>
+      <div class="sec">
+        <h2 data-i18n="ct.title" data-r>Contatti</h2>
+        <p class="ct-lead" data-i18n="ct.lead" data-r>Scrivimi su Telegram: rispondo di solito in giornata.</p>
+        <p class="contact-links"><a href="https://t.me/mikybuilds" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>@mikybuilds</a><a href="https://github.com/mikybuilds" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub</a><a href="https://www.linkedin.com/in/mykhailo-zhupanov/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/mishh9ar/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2h8a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6H8a6 6 0 0 1-6-6V8a6 6 0 0 1 6-6zm0 1.8A4.2 4.2 0 0 0 3.8 8v8A4.2 4.2 0 0 0 8 20.2h8a4.2 4.2 0 0 0 4.2-4.2V8A4.2 4.2 0 0 0 16 3.8zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zM17.3 5.6a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg>Instagram</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p><span data-i18n="foot">Sito scritto a mano in HTML, CSS e JavaScript.</span> © <span id="year">2026</span> Mykhailo Zhupanov <span lang="uk">(Михайло Жупанов · Міша Жупанов)</span></p>
+    <a class="totop" data-i18n="totop" href="#main">Torna su</a>
+  </footer>
+  <script>window.PAGE_EN = {"st.find": "Find places", "st.h": "Sites", "st.mine": "My sites · 4", "st.leads": "Leads · 35", "st.pub": "Published", "st.demo": "Demo", "pj.sit.name": "Sample Café", "pj.sit.sub": "Sample site made by the bot", "pj.sit.cta": "Call us", "pj.sit.live": "online", "s.cta": "Want a site for your business?", "s.how": "How it works", "back": "All projects", "s.badge": "Side project", "s.h1": "Websites for local shops", "s.sub": "From a shop with no website to a live site, with a bot.", "sf6.d": "I ask the bot to find a place without a website and build one: design, copy and a preview. Then I have a link and a QR code to bring in person.", "s.hh": "How it works", "s.hl": "Four steps, and the bot does them all: I check and decide.", "s.1.t": "Finds", "s.1.d": "It searches OpenStreetMap for businesses in Ferrara that have no website.", "s.2.t": "Builds", "s.2.d": "It picks a template (café, food, hairdresser) and writes the Italian copy using only the facts I give it.", "s.3.t": "Checks", "s.3.d": "A filter strips any invented phone numbers, hours and prices. First of all, a preview to look at.", "s.4.t": "Publishes", "s.4.d": "Only after I press Confirm: the site goes live on Netlify, with an A4 PDF kit and a QR code.", "s.rh": "The rules I set myself", "s.r1.t": "No mass messages", "s.r1.d": "No bulk emails or DMs. The list of businesses is only for visiting them in person.", "s.r2.t": "Nothing made up", "s.r2.d": "Phone numbers, hours and prices come only from what I'm told. The code throws away the rest.", "s.r3.t": "Published only on a click", "s.r3.d": "Nothing goes online by itself: the last step is always my Confirm.", "s.cta2": "Message me on Telegram", "_title": "Websites for local shops — a bot that builds showcase sites", "_desc": "A bot by Mykhailo Zhupanov that finds businesses without a website, builds one and prepares a QR kit to bring in person.", "skip": "Skip to content", "nav.home": "Home", "nav.projects": "Projects", "nav.contact": "Contact", "pj.lan.d": "A free AI assistant for Windows and Linux: it uses free cloud models or your own local ones. Open source, no telemetry.", "pj.mc.d": "My personal assistant on Telegram: homework, grades, reminders and Subito deals, with a model that runs on my own PC.", "pj.ios.n": "MikyCore for iPhone", "pj.ios.d": "The bot's native app: chat, your day, grades, Classroom and Home Screen widgets.", "next.title": "More projects", "ct.title": "Contact", "ct.lead": "Message me on Telegram: I usually reply the same day.", "foot": "Site written by hand in HTML, CSS and JavaScript.", "totop": "Back to top"};</script>
+  <script src="/proj.js?v=1"></script>
+</body>
+</html>

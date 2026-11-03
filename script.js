@@ -6,12 +6,21 @@ const CONTACTS = {
   telegram: "mikybuilds",   // without @
   email: "",
   github: "mikybuilds",
-  linkedin: "https://www.linkedin.com/in/mykhailo-zhupanov/"
+  linkedin: "https://www.linkedin.com/in/mykhailo-zhupanov/",
+  instagram: "mishh9ar"   // without @
 };
 
 const EN = {
   "skip": "Skip to content",
   "nav.about": "About", "nav.services": "Services", "nav.contact": "Contact",
+  "nav.projects": "Projects",
+  "pj.title": "Projects", "pj.lead": "Things I've built. Open a project to see how it works.", "pj.more": "See the project", "pj.new": "New", "pj.t.os": "Open source", "pj.t.local": "Local AI",
+  "pj.lan.d": "A free AI assistant for Windows and Linux: it uses free cloud models or your own local ones. Open source, no telemetry.",
+  "pj.mc.d": "My personal assistant on Telegram: homework, grades, reminders and Subito deals, with a model that runs on my own PC.",
+  "pj.mc.q": "What do I have tomorrow?", "pj.mc.a": "Tomorrow you have 5 lessons. The physics test is in the third period.", "pj.mc.q2": "Make me a revision plan",
+  "pj.ios.n": "MikyCore for iPhone", "pj.ios.d": "The bot's native app: chat, your day, grades, Classroom and Home Screen widgets.",
+  "pj.sit.n": "Websites for local shops", "pj.sit.d": "A bot that finds shops without a website, builds one and prepares a QR kit to bring in person.",
+  "pj.sit.name": "Sample Café", "pj.sit.sub": "Sample site made by the bot", "pj.sit.cta": "Call us", "pj.sit.live": "online",
   "hero.title": "I build bots that work while I study.",
   "hero.lead": "I'm Mykhailo Zhupanov, a computer science student in Ferrara, Italy. My assistant MikyCore runs on my own PC: it keeps an eye on homework, gets me ready for tests and finds deals on Subito.",
   "hero.cta": "Message me on Telegram", "hero.more": "How MikyCore works", "hero.badge": "Available for small projects",
@@ -89,11 +98,12 @@ const store = {
   set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* private mode: fine */ } }
 };
 
-/* showcase: every feature carries its own screen; on wide screens they are copied into the one sticky phone */
-const stackBox = document.querySelector(".show-phone .stack");
-const features = [...document.querySelectorAll(".show-list > article")];
-features.forEach((art) => stackBox.append(art.querySelector(".screen").cloneNode(true)));
-const screens = [...stackBox.children];
+/* the iPhone card on the project grid shows two of the real app screens (kept in <template id="app-screens">) */
+const appScreens = document.getElementById("app-screens");
+document.querySelectorAll("[data-clone]").forEach((slot) => {
+  const src = appScreens && appScreens.content.querySelectorAll(".screen")[Number(slot.dataset.clone)];
+  if (src) slot.append(src.cloneNode(true));
+});
 
 /* Italian texts come from the page itself */
 const IT = {};
@@ -153,6 +163,7 @@ function renderContacts() {
   if (CONTACTS.email) links.push(["mailto:" + CONTACTS.email, CONTACTS.email, ""]);
   if (CONTACTS.github) links.push(["https://github.com/" + CONTACTS.github, "GitHub", "github"]);
   if (CONTACTS.linkedin) links.push([CONTACTS.linkedin, "LinkedIn", ""]);
+  if (CONTACTS.instagram) links.push(["https://www.instagram.com/" + CONTACTS.instagram.replace(/^@/, "") + "/", "Instagram", "instagram"]);
   box.replaceChildren(...links.map(([href, text, icon]) => {
     const a = document.createElement("a");
     a.href = href;
@@ -171,6 +182,7 @@ function renderContacts() {
 
 /* brand marks from Simple Icons (CC0) */
 const ICONS = {
+  instagram: "M8 2h8a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6H8a6 6 0 0 1-6-6V8a6 6 0 0 1 6-6zm0 1.8A4.2 4.2 0 0 0 3.8 8v8A4.2 4.2 0 0 0 8 20.2h8a4.2 4.2 0 0 0 4.2-4.2V8A4.2 4.2 0 0 0 16 3.8zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zM17.3 5.6a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z",
   telegram: "M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z",
   github: "M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
 };
@@ -231,27 +243,6 @@ function updateScrub() {
   scrubWords.forEach((w, i) => w.classList.toggle("lit", i < lit));
 }
 
-/* numbers count up when the spec table comes into view */
-const cnts = [...document.querySelectorAll(".cnt")];
-const fmtNum = (n) => n >= 1000 ? (lang === "en" ? n.toLocaleString("en-US") : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ")) : String(n);
-const paintCnt = (el) => { el.textContent = fmtNum(Math.round(el._v)); };
-cnts.forEach((el) => { el._v = Number(el.dataset.count); });
-if (!calm && hasIO) {
-  cnts.forEach((el) => { el._v = 0; paintCnt(el); });
-  const co = new IntersectionObserver((es) => {
-    if (!es.some((e) => e.isIntersecting)) return;
-    co.disconnect();
-    const t0 = performance.now();
-    const tick = (now) => {
-      const t = clamp((now - t0) / 1700, 0, 1), e = 1 - Math.pow(2, -10 * t);
-      cnts.forEach((el) => { el._v = Number(el.dataset.count) * (t === 1 ? 1 : e); paintCnt(el); });
-      if (t < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, {threshold: 0.4});
-  co.observe(document.getElementById("spec"));
-}
-
 /* the conversation, played like the real app: three pulsing dots before every reply */
 let chatRun = 0;
 async function playChat() {
@@ -285,28 +276,6 @@ async function playChat() {
     await wait(li.classList.contains("me") ? 700 : 1100);
   }
   chat.classList.add("done");
-}
-
-/* the sticky phone shows the screen of the feature that is in the middle of the viewport */
-const showEl = document.getElementById("show");
-const showPhone = document.querySelector(".show-phone");
-function showFeature(i) {
-  screens.forEach((s, k) => { s.classList.toggle("on", k === i); s.classList.toggle("past", k < i); });
-  features.forEach((a, k) => a.classList.toggle("active", k === i));
-}
-showFeature(0);
-if (hasIO) {
-  const so = new IntersectionObserver((es) => {
-    es.forEach((e) => { if (e.isIntersecting) showFeature(features.indexOf(e.target)); });
-  }, {rootMargin: "-45% 0px -45% 0px"});
-  features.forEach((a) => so.observe(a));
-}
-
-/* the message path animates once, when reached */
-const flow = document.getElementById("flow");
-if (!calm && hasIO) {
-  const fo = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { flow.classList.add("run"); fo.disconnect(); } }, {threshold: 0.5});
-  fo.observe(flow);
 }
 
 /* reveals: every block arrives once, then gets out of the way of its hover effects */
@@ -360,11 +329,6 @@ function update() {
   let idx = -1;
   for (let k = navSecs.length - 1; k >= 0; k--) { if (navSecs[k].getBoundingClientRect().top < vh * 0.4) { idx = k; break; } }
   if (idx !== curSec) setActive(idx);
-  if (!calm && showPhone && showPhone.offsetParent) {
-    const r = showEl.getBoundingClientRect(), p = clamp((vh * 0.5 - r.top) / r.height, 0, 1);
-    showPhone.style.setProperty("--ry", ((0.5 - p) * 18).toFixed(2));
-    showPhone.style.setProperty("--rx", (Math.sin(p * Math.PI * 2) * 3).toFixed(2));
-  }
 }
 /* on narrow phones the app screens shrink to fit the width */
 function fitPhones() {
@@ -434,6 +398,25 @@ if (!calm && fine) {
   }, {passive: true});
 }
 
+/* a project card opens its page behind a coloured iris that grows from the click */
+document.querySelectorAll("a.pc").forEach((a) => {
+  a.addEventListener("click", (e) => {
+    if (calm || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
+    e.preventDefault();
+    const r = a.getBoundingClientRect();
+    const x = e.clientX || r.left + r.width / 2, y = e.clientY || r.top + r.height / 2;
+    const colour = a.dataset.pt || "#0b0d12";
+    const iris = document.createElement("div");
+    iris.className = "pt"; iris.setAttribute("aria-hidden", "true");
+    iris.style.setProperty("--x", x + "px"); iris.style.setProperty("--y", y + "px"); iris.style.setProperty("--ptc", colour);
+    document.body.append(iris);
+    store.set("pt", JSON.stringify({c: colour, x: Math.round(x), y: Math.round(y), t: Date.now()}));
+    requestAnimationFrame(() => requestAnimationFrame(() => iris.classList.add("go")));
+    setTimeout(() => { location.href = a.href; }, 520);
+  });
+});
+window.addEventListener("pageshow", (e) => { if (e.persisted) document.querySelectorAll(".pt").forEach((n) => n.remove()); });
+
 /* language switch: soft crossfade + the headline and chat replay */
 document.getElementById("lang").addEventListener("click", () => {
   const main = document.querySelector("main");
@@ -454,7 +437,7 @@ themeBtn.addEventListener("click", (ev) => {
   document.startViewTransition(() => setTheme(next));
 }, true);
 
-afterLang = () => { cnts.forEach(paintCnt); prepareScrub(); setTimeout(() => moveInd(navLinks[curSec]), 80); };
+afterLang = () => { prepareScrub(); setTimeout(() => moveInd(navLinks[curSec]), 80); };
 afterLang();
 splitHeadline();
 playChat();

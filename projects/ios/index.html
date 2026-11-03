@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MikyCore per iPhone — app nativa SwiftUI</title>
+  <meta name="description" content="L&#x27;app per iPhone di MikyCore, fatta da Mykhailo Zhupanov (Михайло Жупанов) in SwiftUI: chat, giornata, voti, Classroom e widget sulla Home.">
+  <meta name="author" content="Mykhailo Zhupanov (Михайло Жупанов)">
+  <link rel="canonical" href="https://mikybuilds.github.io/projects/ios/">
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "MobileApplication", "name": "MikyCore for iPhone", "operatingSystem": "iOS 16+", "url": "https://mikybuilds.github.io/projects/ios/", "applicationCategory": "EducationalApplication", "author": {"@type": "Person", "name": "Mykhailo Zhupanov", "alternateName": ["Михайло Жупанов", "Міша Жупанов"], "url": "https://mikybuilds.github.io/"}}
+  </script>
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MikyCore per iPhone — app nativa SwiftUI">
+  <meta property="og:description" content="L&#x27;app per iPhone di MikyCore, fatta da Mykhailo Zhupanov (Михайло Жупанов) in SwiftUI: chat, giornata, voti, Classroom e widget sulla Home.">
+  <meta property="og:image" content="https://mikybuilds.github.io/assets/og.png">
+  <meta property="og:url" content="https://mikybuilds.github.io/projects/ios/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232b59ff'/%3E%3Ctext x='32' y='43' font-family='Arial Black,Arial' font-weight='900' font-size='30' text-anchor='middle' fill='%23fff'%3EM.%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/app.css?v=10">
+  <link rel="stylesheet" href="/style.css?v=10">
+  <link rel="stylesheet" href="/proj.css?v=1">
+  
+  <script>(function(){var d=document.documentElement;d.classList.add("js");try{var t=localStorage.getItem("theme");if(t)d.dataset.theme=t;var q=localStorage.getItem("pt");if(q){localStorage.removeItem("pt");q=JSON.parse(q);if(Date.now()-q.t<6000){d.style.setProperty("--ac",q.c);d.style.setProperty("--ax",q.x+"px");d.style.setProperty("--ay",q.y+"px");d.classList.add("arriving");setTimeout(function(){d.classList.remove("arriving")},1000)}}}catch(e){}})();</script>
+</head>
+<body data-proj="ios" class="proj-body">
+  <a class="skip" href="#main" data-i18n="skip">Vai al contenuto</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M4 15h9" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="18.5" cy="15" r="1.9" fill="#2B59FF"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 6.5A2.5 2.5 0 0 1 7.5 4h9A2.5 2.5 0 0 1 19 6.5v7a2.5 2.5 0 0 1-2.5 2.5H11l-4 3.5V16h.5A2.5 2.5 0 0 1 5 13.5z" stroke="#ECEFF4" stroke-width="1.75" stroke-linejoin="round" fill="none"/><circle cx="15.5" cy="9.8" r="1.5" fill="#2B59FF"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2.1-5" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M19.500 4.500v4h-4" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500" stroke="#3FB984" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#8C95A6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3.500" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M5.500 11.500a6.500 6.500 0 0 0 13 0M12 18v2.500" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-cam" viewBox="0 0 24 24"><path d="M4 8.500A2.500 2.500 0 0 1 6.500 6h1.800l1.400-2h4.600l1.400 2h1.800A2.500 2.500 0 0 1 20 8.500v8A2.500 2.500 0 0 1 17.500 19h-11A2.500 2.500 0 0 1 4 16.500z" stroke="#ECEFF4" stroke-width="1.75" stroke-linejoin="round" fill="none"/><circle cx="12" cy="12.500" r="3" stroke="#ECEFF4" stroke-width="1.75" fill="none"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.500" stroke="#fff" stroke-width="1.8" fill="none"/><path d="M16 16l4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-class" viewBox="0 0 24 24"><rect x="3.500" y="4.500" width="17" height="11.500" rx="2" stroke="#ECEFF4" stroke-width="1.75" fill="none"/><path d="M8 20l2.500-4M16 20l-2.500-4" stroke="#ECEFF4" stroke-width="1.75" stroke-linecap="round" fill="none"/><circle cx="16.500" cy="10" r="1.700" fill="#2B59FF"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 21 21"><path d="M0 0h7v1h-7zM8 0h2v1h-2zM11 0h1v1h-1zM14 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h2v1h-2zM11 1h2v1h-2zM14 1h1v1h-1zM20 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h3v1h-3zM12 2h1v1h-1zM14 2h1v1h-1zM16 2h3v1h-3zM20 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM8 3h1v1h-1zM12 3h1v1h-1zM14 3h1v1h-1zM16 3h3v1h-3zM20 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM9 4h1v1h-1zM11 4h2v1h-2zM14 4h1v1h-1zM16 4h3v1h-3zM20 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h2v1h-2zM11 5h1v1h-1zM14 5h1v1h-1zM20 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h7v1h-7zM8 7h1v1h-1zM10 7h2v1h-2zM0 8h2v1h-2zM4 8h1v1h-1zM6 8h1v1h-1zM9 8h1v1h-1zM11 8h2v1h-2zM14 8h1v1h-1zM16 8h1v1h-1zM0 9h1v1h-1zM4 9h1v1h-1zM7 9h1v1h-1zM9 9h1v1h-1zM14 9h2v1h-2zM17 9h4v1h-4zM0 10h1v1h-1zM2 10h3v1h-3zM6 10h2v1h-2zM12 10h3v1h-3zM17 10h4v1h-4zM2 11h4v1h-4zM12 11h1v1h-1zM17 11h3v1h-3zM0 12h11v1h-11zM13 12h5v1h-5zM20 12h1v1h-1zM9 13h4v1h-4zM14 13h2v1h-2zM18 13h1v1h-1zM20 13h1v1h-1zM0 14h7v1h-7zM12 14h3v1h-3zM18 14h2v1h-2zM0 15h1v1h-1zM6 15h1v1h-1zM13 15h1v1h-1zM15 15h5v1h-5zM0 16h1v1h-1zM2 16h3v1h-3zM6 16h1v1h-1zM9 16h1v1h-1zM13 16h5v1h-5zM0 17h1v1h-1zM2 17h3v1h-3zM6 17h1v1h-1zM8 17h1v1h-1zM11 17h1v1h-1zM16 17h2v1h-2zM19 17h1v1h-1zM0 18h1v1h-1zM2 18h3v1h-3zM6 18h1v1h-1zM9 18h2v1h-2zM13 18h3v1h-3zM18 18h1v1h-1zM0 19h1v1h-1zM6 19h1v1h-1zM9 19h1v1h-1zM11 19h2v1h-2zM17 19h1v1h-1zM20 19h1v1h-1zM0 20h7v1h-7zM8 20h3v1h-3zM12 20h3v1h-3zM16 20h2v1h-2zM20 20h1v1h-1z" fill="#0b0d12"/></symbol>
+  </svg>
+
+  <header class="bar" id="bar"><div class="top">
+    <a class="name" href="/">Mykhailo</a>
+    <nav aria-label="Menu">
+      <a data-i18n="nav.home" href="/">Home</a>
+      <a data-i18n="nav.projects" href="/#projects">Progetti</a>
+      <a data-i18n="nav.contact" href="#contact">Contatti</a>
+    </nav>
+    <div class="switches">
+      <button id="lang" type="button" aria-label="Switch to English">EN</button>
+      <button id="theme" type="button" aria-label="Tema scuro">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      </button>
+    </div>
+  </div></header>
+
+  <main id="main" class="proj">
+
+    <section class="p-hero" id="top">
+      <div class="aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+      <div class="grain" aria-hidden="true"></div>
+      <div class="p-in">
+        <div class="p-copy">
+          <a class="crumb" href="/#projects"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span data-i18n="back">Tutti i progetti</span></a>
+          <p class="badge"><i></i><span><span data-i18n="i.badge">App personale · SwiftUI</span></span></p>
+          <h1 data-i18n="i.h1">MikyCore per iPhone</h1>
+          <p class="p-sub" data-i18n="i.sub">L'app del bot, nata per essere usata ogni giorno.</p>
+          <p class="lead" data-i18n="app.lead">Oltre a Telegram, MikyCore ha una sua app iOS: chat, orario, voti, compiti e widget. Le schermate qui sotto sono quelle vere, con dati di esempio.</p>
+          <p class="actions"><a class="cta" href="https://t.me/mikybuilds" data-mag target="_blank" rel="noopener"><span data-i18n="hero.cta">Scrivimi su Telegram</span></a><a class="quiet" href="#screens"><span data-i18n="i.all">Tutte le schermate</span></a></p>
+          <ul class="chips"><li>Swift</li><li>SwiftUI</li><li>WidgetKit</li><li>iOS 16+</li></ul>
+        </div>
+        <div class="p-art ">
+        <div class="fit-wrap"><div class="fit fan" style="--w:640;--h:720" data-w="640" data-h="720">
+          <div class="glow" aria-hidden="true"></div>
+          <div class="phone f-l" style="--k:.66"><div class="screen app">
+                <header class="a-hd">
+                  <div class="a-row"><a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a><span class="a-meta" data-i18n="gr.upd">Classeviva · aggiornato 14:05</span></div>
+                  <h1 class="a-h1" data-i18n="gr.h">Voti</h1>
+                </header>
+                <div class="a-main">
+                  <section class="a-card a-avg">
+                    <div><b class="big-n" data-num>7,6</b><span data-i18n="gr.avg">media del semestre</span><em data-i18n="gr.up">▲ 0,3 nell'ultimo mese</em></div>
+                    <svg viewBox="0 0 150 70" fill="none" role="img" aria-label=""><path d="M4 52 L30 46 L56 50 L82 36 L108 32 L134 22" stroke="#2B59FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 52 L30 46 L56 50 L82 36 L108 32 L134 22 L134 66 L4 66 Z" fill="rgba(43,89,255,0.12)"/><circle cx="134" cy="22" r="4.500" fill="#2B59FF"/></svg>
+                  </section>
+                  <section class="a-card a-subj">
+                    <div><span data-i18n="su.ma">Matematica</span><b data-num>7,2</b><p><i style="width:72%;background:#F2B44B"></i></p><small data-num>6½ · 8 · 7</small></div>
+                    <div><span data-i18n="su.fi">Fisica</span><b data-num>7,8</b><p><i style="width:78%"></i></p><small data-num>8 · 7½ · 8</small></div>
+                    <div><span data-i18n="su.it">Italiano</span><b data-num>8,1</b><p><i style="width:81%;background:#3FB984"></i></p><small data-num>8 · 8½</small></div>
+                    <div><span data-i18n="su.st">Storia</span><b data-num>7,5</b><p><i style="width:75%"></i></p><small data-num>7 · 8</small></div>
+                    <div><span data-i18n="su.en">Inglese</span><b data-num>7,4</b><p><i style="width:74%"></i></p><small data-num>7½ · 7</small></div>
+                  </section>
+                  <section class="a-tip">
+                    <small data-i18n="gr.tip">Consiglio</small>
+                    <span data-i18n="gr.tipt">Per arrivare a 8 in matematica, alla prossima verifica serve 9 o più.</span>
+                    <a data-i18n="gr.plan">Crea un piano di ripasso →</a>
+                  </section>
+                </div>
+              </div></div>
+          <div class="phone f-r" style="--k:.66"><div class="screen app">
+                <header class="a-hd">
+                  <div class="a-row"><a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a><a class="a-btn"><svg width="18" height="18"><use href="#i-refresh"/></svg><span data-i18n="cl.ref">Aggiorna</span></a></div>
+                  <div><h1 class="a-h1">Classroom</h1><p class="a-sub" data-i18n="cl.sub">3 da consegnare · la prossima è domani</p></div>
+                  <div class="a-chips"><span class="on" data-i18n="cl.all">Tutti</span><span data-i18n="cl.cs">Informatica</span><span data-i18n="su.st">Storia</span></div>
+                </header>
+                <div class="a-main">
+                  <article class="a-card a-hwk">
+                    <div class="a-hwk-h"><span data-i18n="cl.cs">Informatica</span><em data-i18n="cl.d1">entro domani, 23:59</em></div>
+                    <h2 data-i18n="cl.t1">Programma: media aritmetica di un array</h2>
+                    <div class="tags"><span data-i18n="cl.g1">Codice · Python</span><span data-i18n="cl.m1">1 materiale</span></div>
+                    <div class="a-done"><svg width="18" height="18"><use href="#i-check"/></svg><span><b data-i18n="cl.ok">Fatto · su Google Drive</b><small data-i18n="cl.okd">average.py · verificato eseguendolo</small></span><a data-i18n="cl.chat">In chat</a></div>
+                  </article>
+                  <article class="a-card a-hwk">
+                    <div class="a-hwk-h"><span data-i18n="su.st">Storia</span><span class="mut" data-i18n="cl.d2">entro ven 25 ottobre</span></div>
+                    <h2 data-i18n="cl.t2">Presentazione: il Rinascimento in Italia</h2>
+                    <div class="tags"><span data-i18n="cl.g2">Presentazione</span><span data-i18n="cl.m2">2 materiali</span></div>
+                    <div class="a-acts"><span class="ghost" data-i18n="cl.do">Fallo con il bot</span><span class="sq"></span></div>
+                  </article>
+                  <article class="a-dash"><span><b data-i18n="cl.t3">Tema: il mio libro preferito</b><small data-i18n="cl.s3">Italiano · consegnato</small></span><svg width="20" height="20"><use href="#i-check"/></svg></article>
+                </div>
+              </div></div>
+          <div class="phone f-c" style="--k:.82"><div class="screen app">
+                <header class="a-hd">
+                  <div class="a-row">
+                    <a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a>
+                    <a class="a-btn"><svg width="18" height="18"><use href="#i-chat"/></svg><span data-i18n="m.ask">Chiedi a MikyCore</span></a>
+                  </div>
+                  <div><h1 class="a-h1" data-i18n="m.today">Oggi</h1><p class="a-sub" data-i18n="m.date">Lunedì 20 ottobre</p></div>
+                </header>
+                <div class="a-main">
+                  <section class="a-now">
+                    <div class="a-now-r"><b data-i18n="m.now">Adesso · 3ª ora</b><span data-i18n="m.left">ancora 28 min</span></div>
+                    <div class="a-now-r end"><span class="a-now-t" data-i18n="su.fi">Fisica</span><span class="tab">10:40 – 11:35</span></div>
+                    <div class="a-bar"><i></i></div>
+                    <div class="a-now-n" data-i18n="m.next">Dopo: Storia alle 11:35</div>
+                  </section>
+                  <section class="a-card a-tl">
+                    <div class="done"><span>8:00</span><u></u><s data-i18n="su.it">Italiano</s></div>
+                    <div class="done"><span>8:55</span><u></u><s data-i18n="su.ma">Matematica</s></div>
+                    <div class="cur"><span>10:40</span><u></u><b data-i18n="su.fi">Fisica</b></div>
+                    <div class="nxt"><span>11:35</span><u></u><i data-i18n="su.st">Storia</i></div>
+                    <div class="nxt"><span>12:30</span><u></u><i data-i18n="su.en">Inglese</i></div>
+                  </section>
+                  <section class="a-hw">
+                    <div class="a-sec-h"><h2 data-i18n="m.hw">Compiti per domani</h2><span data-i18n="m.hwc">1 di 3</span></div>
+                    <label class="a-task done"><i class="cb on"></i><span data-i18n="m.hw1">Matematica — esercizi 4–7, p. 112</span></label>
+                    <label class="a-task"><i class="cb"></i><span data-i18n="m.hw2">Storia — leggere il paragrafo 9</span></label>
+                    <label class="a-task"><i class="cb"></i><span data-i18n="m.hw3">Fisica — ripassare le leggi di Newton</span><em data-i18n="m.test">verifica</em></label>
+                  </section>
+                  <a class="a-link"><svg width="20" height="20"><use href="#i-class"/></svg><span><b data-i18n="m.cr">Classroom: media aritmetica</b><small data-i18n="m.crd">entro domani, 23:59 · ancora 2 compiti</small></span><svg width="16" height="16"><use href="#i-chev"/></svg></a>
+                </div>
+              </div></div>
+        </div></div></div>
+      </div>
+    </section>
+    <section class="p-sec" id="why">
+      <div class="sec story">
+        <h2 data-i18n="i.wh" data-r>Perché un'app</h2>
+        <div>
+          <p class="big" data-i18n="i.w1" data-r>Telegram basta per parlare con il bot, ma per la giornata a scuola volevo una schermata vera: cosa ho adesso, cosa ho domani, i voti con la media.</p>
+          <p class="plain" data-i18n="i.w2" data-r>Così ho costruito un'app SwiftUI che usa lo stesso bot come cervello. Non è sull'App Store: la installo direttamente sul mio iPhone.</p>
+        </div>
+      </div>
+    </section>
+    <section class="p-sec alt" id="screens">
+      <div class="sec">
+        <h2 data-i18n="i.sh" data-r>Le schermate</h2>
+        <p class="p-lead" data-i18n="i.sl" data-r>Quelle vere dell'app, con dati di esempio.</p>
+        <div class="shots"><div class="shot" data-r style="--d:0ms"><figure class="phone " style="--k:0.74;"><div class="screen app">
+                <header class="a-hd a-chat-hd">
+                  <a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a>
+                  <div class="a-title"><b>MikyCore<i>.</i></b><span class="a-status"><u></u><em data-i18n="st.online">online</em></span></div>
+                  <a class="a-btn a-btn-s"><b>10:40</b><span data-i18n="su.fi">Fisica</span></a>
+                </header>
+                <div class="a-main a-chat">
+                  <div class="a-day" data-i18n="g.today">Oggi, 15:42</div>
+                  <ol class="msgs static">
+                    <li class="me" data-i18n="g.me1">Cosa ho domani?</li>
+                    <li class="bot"><span class="av">M.</span><div class="bd">
+                      <p data-i18n="g.b1">Domani hai 5 lezioni, si comincia alle 8:00. Il punto importante: la verifica di fisica alla terza ora.</p>
+                      <div class="a-card a-sched">
+                        <div class="a-sched-h"><b data-i18n="g.day">Martedì 21 ottobre</b><span data-i18n="g.n5">5 lezioni</span></div>
+                        <div class="a-sched-r"><span>8:00</span><span data-i18n="su.it">Italiano</span></div>
+                        <div class="a-sched-r"><span>8:55</span><span data-i18n="su.ma">Matematica</span></div>
+                        <div class="a-sched-r hot"><span>10:40</span><b data-i18n="su.fi">Fisica</b><em data-i18n="m.test">verifica</em></div>
+                        <div class="a-sched-r"><span>11:35</span><span data-i18n="su.st">Storia</span></div>
+                      </div>
+                      <div class="a-chips2"><span data-i18n="m.hw">Compiti per domani</span><span data-i18n="g.ch2">Piano di ripasso</span></div>
+                    </div></li>
+                  </ol>
+                </div>
+                <div class="a-composer">
+                  <div class="a-in"><span class="a-plus"><svg width="20" height="20"><use href="#i-plus"/></svg></span><span class="ph" data-i18n="g.ph">Scrivi a MikyCore…</span><span class="a-mic"><svg width="20" height="20" style="color:#fff"><use href="#i-mic"/></svg></span></div>
+                </div>
+              </div></figure><div><h3 data-i18n="f1.t">Sceglie da solo lo strumento giusto</h3><p data-i18n="f1.d">Ha più di 100 strumenti: promemoria, file, browser, Google Classroom, posta. Nei test sul modello reale sceglie quello giusto nel 98% dei casi.</p></div></div><div class="shot" data-r style="--d:90ms"><figure class="phone " style="--k:0.74;"><div class="screen app">
+                <header class="a-hd">
+                  <div class="a-row">
+                    <a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a>
+                    <a class="a-btn"><svg width="18" height="18"><use href="#i-chat"/></svg><span data-i18n="m.ask">Chiedi a MikyCore</span></a>
+                  </div>
+                  <div><h1 class="a-h1" data-i18n="m.today">Oggi</h1><p class="a-sub" data-i18n="m.date">Lunedì 20 ottobre</p></div>
+                </header>
+                <div class="a-main">
+                  <section class="a-now">
+                    <div class="a-now-r"><b data-i18n="m.now">Adesso · 3ª ora</b><span data-i18n="m.left">ancora 28 min</span></div>
+                    <div class="a-now-r end"><span class="a-now-t" data-i18n="su.fi">Fisica</span><span class="tab">10:40 – 11:35</span></div>
+                    <div class="a-bar"><i></i></div>
+                    <div class="a-now-n" data-i18n="m.next">Dopo: Storia alle 11:35</div>
+                  </section>
+                  <section class="a-card a-tl">
+                    <div class="done"><span>8:00</span><u></u><s data-i18n="su.it">Italiano</s></div>
+                    <div class="done"><span>8:55</span><u></u><s data-i18n="su.ma">Matematica</s></div>
+                    <div class="cur"><span>10:40</span><u></u><b data-i18n="su.fi">Fisica</b></div>
+                    <div class="nxt"><span>11:35</span><u></u><i data-i18n="su.st">Storia</i></div>
+                    <div class="nxt"><span>12:30</span><u></u><i data-i18n="su.en">Inglese</i></div>
+                  </section>
+                  <section class="a-hw">
+                    <div class="a-sec-h"><h2 data-i18n="m.hw">Compiti per domani</h2><span data-i18n="m.hwc">1 di 3</span></div>
+                    <label class="a-task done"><i class="cb on"></i><span data-i18n="m.hw1">Matematica — esercizi 4–7, p. 112</span></label>
+                    <label class="a-task"><i class="cb"></i><span data-i18n="m.hw2">Storia — leggere il paragrafo 9</span></label>
+                    <label class="a-task"><i class="cb"></i><span data-i18n="m.hw3">Fisica — ripassare le leggi di Newton</span><em data-i18n="m.test">verifica</em></label>
+                  </section>
+                  <a class="a-link"><svg width="20" height="20"><use href="#i-class"/></svg><span><b data-i18n="m.cr">Classroom: media aritmetica</b><small data-i18n="m.crd">entro domani, 23:59 · ancora 2 compiti</small></span><svg width="16" height="16"><use href="#i-chev"/></svg></a>
+                </div>
+              </div></figure><div><h3 data-i18n="sf2.t">La giornata in una schermata</h3><p data-i18n="sf2.d">La lezione in corso, l'orario, i compiti per domani, le scadenze di Classroom e le verifiche. I dati arrivano da Classeviva e Classroom.</p></div></div><div class="shot" data-r style="--d:180ms"><figure class="phone " style="--k:0.74;"><div class="screen app">
+                <header class="a-hd">
+                  <div class="a-row"><a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a><span class="a-meta" data-i18n="gr.upd">Classeviva · aggiornato 14:05</span></div>
+                  <h1 class="a-h1" data-i18n="gr.h">Voti</h1>
+                </header>
+                <div class="a-main">
+                  <section class="a-card a-avg">
+                    <div><b class="big-n" data-num>7,6</b><span data-i18n="gr.avg">media del semestre</span><em data-i18n="gr.up">▲ 0,3 nell'ultimo mese</em></div>
+                    <svg viewBox="0 0 150 70" fill="none" role="img" aria-label=""><path d="M4 52 L30 46 L56 50 L82 36 L108 32 L134 22" stroke="#2B59FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 52 L30 46 L56 50 L82 36 L108 32 L134 22 L134 66 L4 66 Z" fill="rgba(43,89,255,0.12)"/><circle cx="134" cy="22" r="4.500" fill="#2B59FF"/></svg>
+                  </section>
+                  <section class="a-card a-subj">
+                    <div><span data-i18n="su.ma">Matematica</span><b data-num>7,2</b><p><i style="width:72%;background:#F2B44B"></i></p><small data-num>6½ · 8 · 7</small></div>
+                    <div><span data-i18n="su.fi">Fisica</span><b data-num>7,8</b><p><i style="width:78%"></i></p><small data-num>8 · 7½ · 8</small></div>
+                    <div><span data-i18n="su.it">Italiano</span><b data-num>8,1</b><p><i style="width:81%;background:#3FB984"></i></p><small data-num>8 · 8½</small></div>
+                    <div><span data-i18n="su.st">Storia</span><b data-num>7,5</b><p><i style="width:75%"></i></p><small data-num>7 · 8</small></div>
+                    <div><span data-i18n="su.en">Inglese</span><b data-num>7,4</b><p><i style="width:74%"></i></p><small data-num>7½ · 7</small></div>
+                  </section>
+                  <section class="a-tip">
+                    <small data-i18n="gr.tip">Consiglio</small>
+                    <span data-i18n="gr.tipt">Per arrivare a 8 in matematica, alla prossima verifica serve 9 o più.</span>
+                    <a data-i18n="gr.plan">Crea un piano di ripasso →</a>
+                  </section>
+                </div>
+              </div></figure><div><h3 data-i18n="sf3.t">Voti e media, con un consiglio</h3><p data-i18n="sf3.d">Media per materia e andamento nel tempo. Dice anche che voto serve alla prossima verifica per raggiungere l'obiettivo.</p></div></div><div class="shot" data-r style="--d:0ms"><figure class="phone " style="--k:0.74;"><div class="screen app">
+                <header class="a-hd">
+                  <div class="a-row"><a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a><a class="a-btn"><svg width="18" height="18"><use href="#i-refresh"/></svg><span data-i18n="cl.ref">Aggiorna</span></a></div>
+                  <div><h1 class="a-h1">Classroom</h1><p class="a-sub" data-i18n="cl.sub">3 da consegnare · la prossima è domani</p></div>
+                  <div class="a-chips"><span class="on" data-i18n="cl.all">Tutti</span><span data-i18n="cl.cs">Informatica</span><span data-i18n="su.st">Storia</span></div>
+                </header>
+                <div class="a-main">
+                  <article class="a-card a-hwk">
+                    <div class="a-hwk-h"><span data-i18n="cl.cs">Informatica</span><em data-i18n="cl.d1">entro domani, 23:59</em></div>
+                    <h2 data-i18n="cl.t1">Programma: media aritmetica di un array</h2>
+                    <div class="tags"><span data-i18n="cl.g1">Codice · Python</span><span data-i18n="cl.m1">1 materiale</span></div>
+                    <div class="a-done"><svg width="18" height="18"><use href="#i-check"/></svg><span><b data-i18n="cl.ok">Fatto · su Google Drive</b><small data-i18n="cl.okd">average.py · verificato eseguendolo</small></span><a data-i18n="cl.chat">In chat</a></div>
+                  </article>
+                  <article class="a-card a-hwk">
+                    <div class="a-hwk-h"><span data-i18n="su.st">Storia</span><span class="mut" data-i18n="cl.d2">entro ven 25 ottobre</span></div>
+                    <h2 data-i18n="cl.t2">Presentazione: il Rinascimento in Italia</h2>
+                    <div class="tags"><span data-i18n="cl.g2">Presentazione</span><span data-i18n="cl.m2">2 materiali</span></div>
+                    <div class="a-acts"><span class="ghost" data-i18n="cl.do">Fallo con il bot</span><span class="sq"></span></div>
+                  </article>
+                  <article class="a-dash"><span><b data-i18n="cl.t3">Tema: il mio libro preferito</b><small data-i18n="cl.s3">Italiano · consegnato</small></span><svg width="20" height="20"><use href="#i-check"/></svg></article>
+                </div>
+              </div></figure><div><h3 data-i18n="sf4.t">I compiti li fa con me</h3><p data-i18n="sf4.d">Legge i compiti di Classroom, scrive il codice e lo verifica eseguendolo, poi salva il risultato su Google Drive.</p></div></div><div class="shot" data-r style="--d:90ms"><figure class="phone " style="--k:0.74;"><div class="screen app wg">
+                <section class="w-big">
+                  <div class="w-l">
+                    <div class="w-top"><span class="av">M.</span><b data-i18n="wg.tom">Domani · martedì</b></div>
+                    <div><span class="w-n" data-i18n="g.n5">5 lezioni</span><small data-i18n="wg.hrs">dalle 8:00 alle 13:25</small></div>
+                    <em data-i18n="wg.test">Verifica: fisica</em>
+                  </div>
+                  <div class="w-sep"></div>
+                  <div class="w-r">
+                    <small data-i18n="wg.hw">Compiti · 1 di 3</small>
+                    <span class="d"><i class="cb on"></i><s data-i18n="su.ma">Matematica</s></span>
+                    <span><i class="cb"></i><span data-i18n="su.st">Storia</span></span>
+                    <span><i class="cb"></i><span data-i18n="su.fi">Fisica</span></span>
+                  </div>
+                </section>
+                <div class="w-two">
+                  <section class="w-now">
+                    <div><b data-i18n="wg.now">Adesso</b><svg viewBox="0 0 36 36" width="34" height="34"><circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="4"/><circle cx="18" cy="18" r="14" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-dasharray="43 88" transform="rotate(-90 18 18)"/></svg></div>
+                    <div><span class="w-n" data-i18n="su.fi">Fisica</span><small data-i18n="wg.till">fino alle 11:35 · ancora 28 min</small></div>
+                  </section>
+                  <section class="w-ask">
+                    <span class="av big">M.</span>
+                    <div><b data-i18n="m.ask">Chiedi a MikyCore</b><span class="w-btns"><i><svg width="16" height="16" style="color:#ECEFF4"><use href="#i-mic"/></svg></i><i><svg width="16" height="16"><use href="#i-cam"/></svg></i></span></div>
+                  </section>
+                </div>
+                <div class="w-icon"><span>M.</span><small>MikyCore</small></div>
+              </div></figure><div><h3 data-i18n="sf5.t">Widget sulla schermata Home</h3><p data-i18n="sf5.d">Il domani, la lezione in corso e una scorciatoia per parlare con il bot (voce o fotocamera), senza aprire l'app.</p></div></div><div class="shot" data-r style="--d:180ms"><figure class="phone " style="--k:0.74;"><div class="screen app">
+                <header class="a-hd">
+                  <div class="a-row"><a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a><a class="a-btn pri"><svg width="18" height="18"><use href="#i-search"/></svg><span data-i18n="st.find">Trova locali</span></a></div>
+                  <h1 class="a-h1" data-i18n="st.h">Siti</h1>
+                  <div class="a-seg"><span class="on" data-i18n="st.mine">I miei siti · 4</span><span data-i18n="st.leads">Contatti · 35</span></div>
+                </header>
+                <div class="a-main">
+                  <div class="a-grid">
+                    <div class="a-site"><div class="pv green"><small>BAR A FERRARA</small><b>Caffè Estense</b><i></i></div><div class="cap"><b>Caffè Estense</b><span class="ok"><u></u><em data-i18n="st.pub">Pubblicato</em></span></div></div>
+                    <div class="a-site"><div class="pv cream"><small>Trattoria</small><b>Il Mulino</b><hr><hr></div><div class="cap"><b>Trattoria Il Mulino</b><span class="bl"><u></u><em data-i18n="st.demo">Demo</em></span></div></div>
+                    <div class="a-site"><div class="pv red"><i class="stripe"></i><b>BAR SPORT</b><hr><i class="tag"></i></div><div class="cap"><b>Bar Sport</b><span class="gr"><u></u><em data-i18n="st.demo">Demo</em></span></div></div>
+                    <div class="a-site"><div class="pv dark"><i class="stripe2"></i><b>BARBERIA</b><i class="gold"></i></div><div class="cap"><b>Barbieri Centro</b><span class="gr"><u></u><em data-i18n="st.demo">Demo</em></span></div></div>
+                  </div>
+                </div>
+              </div></figure><div><h3 data-i18n="sf6.t">Siti per i negozi del quartiere</h3><p data-i18n="sf6.d">Chiedo al bot di trovare un locale senza sito e di crearlo: design, testi e anteprima. Poi ho un link e un QR da portare di persona.</p></div></div></div>
+      </div>
+    </section>
+    <section class="p-sec" id="details">
+      <div class="sec">
+        <h2 data-i18n="i.dh" data-r>Dettagli</h2>
+        <div class="bento" style="margin-top:34px">
+          <article class="bc spot w2" data-r style="--d:0ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg></span><h4 data-i18n="i.a.t">Widget sulla Home</h4><p data-i18n="i.a.d">Domani, la lezione in corso e un timer: costruiti con WidgetKit, senza aprire l'app.</p></article>
+          <article class="bc spot w2" data-r style="--d:70ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 7a4 4 0 1 1-3.9 4.9L4 19v-3h3v-3h3l1.4-1.4A4 4 0 0 1 15 7z"/></svg></span><h4 data-i18n="i.b.t">Accesso con Google</h4><p data-i18n="i.b.d">Si entra solo con l'account Google: nessuna password da ricordare o da salvare nell'app.</p></article>
+          <article class="bc spot w2" data-r style="--d:140ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l2 4-2 4M21 8l-2 4 2 4M8 6h8a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"/></svg></span><h4 data-i18n="i.c.t">Scuoti per segnalare</h4><p data-i18n="i.c.d">Se qualcosa non va, scuoto il telefono: l'app prepara la segnalazione con la schermata e i dettagli.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-sec">
+      <div class="sec">
+        <h2 data-i18n="next.title" data-r>Altri progetti</h2>
+        <div class="pn-grid"><a class="pn" href="/projects/lanterna/" data-pt="#161b2b" data-r style="--pbg:linear-gradient(160deg,#1c2338,#0b0e17);--pg:245,181,68"><b>Lanterna</b><span data-i18n="pj.lan.d">Un assistente AI gratuito per Windows e Linux: usa modelli cloud gratuiti o i tuoi modelli locali. Open source, senza telemetria.</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="pn" href="/projects/mikycore/" data-pt="#0f1d4d" data-r style="--pbg:linear-gradient(160deg,#122a6b,#0b0d12);--pg:43,89,255"><b>MikyCore</b><span data-i18n="pj.mc.d">Il mio assistente personale su Telegram: compiti, voti, promemoria e affari su Subito, con un modello che gira sul mio PC.</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="pn" href="/projects/sites/" data-pt="#0b3a2e" data-r style="--pbg:linear-gradient(160deg,#0f4a3b,#0b0d12);--pg:20,162,115"><b data-i18n="pj.sit.n">Siti per negozi locali</b><span data-i18n="pj.sit.d">Un bot che trova attività senza sito, ne costruisce uno e prepara il kit con QR da portare di persona.</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+      <div class="grain" aria-hidden="true"></div>
+      <div class="sec">
+        <h2 data-i18n="ct.title" data-r>Contatti</h2>
+        <p class="ct-lead" data-i18n="ct.lead" data-r>Scrivimi su Telegram: rispondo di solito in giornata.</p>
+        <p class="contact-links"><a href="https://t.me/mikybuilds" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>@mikybuilds</a><a href="https://github.com/mikybuilds" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub</a><a href="https://www.linkedin.com/in/mykhailo-zhupanov/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/mishh9ar/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2h8a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6H8a6 6 0 0 1-6-6V8a6 6 0 0 1 6-6zm0 1.8A4.2 4.2 0 0 0 3.8 8v8A4.2 4.2 0 0 0 8 20.2h8a4.2 4.2 0 0 0 4.2-4.2V8A4.2 4.2 0 0 0 16 3.8zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zM17.3 5.6a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg>Instagram</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p><span data-i18n="foot">Sito scritto a mano in HTML, CSS e JavaScript.</span> © <span id="year">2026</span> Mykhailo Zhupanov <span lang="uk">(Михайло Жупанов · Міша Жупанов)</span></p>
+    <a class="totop" data-i18n="totop" href="#main">Torna su</a>
+  </footer>
+  <script>window.PAGE_EN = {"st.online": "online", "su.fi": "Physics", "g.today": "Today, 3:42 pm", "g.me1": "What do I have tomorrow?", "g.b1": "Tomorrow you have 5 lessons, starting at 8:00. The important one: the physics test in the third period.", "g.day": "Tuesday, October 21", "g.n5": "5 lessons", "su.it": "Italian", "su.ma": "Maths", "m.test": "test", "su.st": "History", "m.hw": "Homework for tomorrow", "g.ch2": "Revision plan", "g.ph": "Message MikyCore…", "m.ask": "Ask MikyCore", "m.today": "Today", "m.date": "Monday, October 20", "m.now": "Now · period 3", "m.left": "28 min left", "m.next": "Next: History at 11:35", "su.en": "English", "m.hwc": "1 of 3", "m.hw1": "Maths — exercises 4–7, p. 112", "m.hw2": "History — read section 9", "m.hw3": "Physics — review Newton's laws", "m.cr": "Classroom: arithmetic mean", "m.crd": "due tomorrow, 11:59 pm · 2 tasks left", "gr.upd": "Classeviva · updated 2:05 pm", "gr.h": "Grades", "gr.avg": "semester average", "gr.up": "▲ 0.3 in the last month", "gr.tip": "Tip", "gr.tipt": "To reach an 8 in maths, you need a 9 or higher on the next test.", "gr.plan": "Make a revision plan →", "cl.ref": "Refresh", "cl.sub": "3 to hand in · the next one is tomorrow", "cl.all": "All", "cl.cs": "Computer science", "cl.d1": "due tomorrow, 11:59 pm", "cl.t1": "Program: arithmetic mean of an array", "cl.g1": "Code · Python", "cl.m1": "1 file", "cl.ok": "Done · on Google Drive", "cl.okd": "average.py · checked by running it", "cl.chat": "To chat", "cl.d2": "due Fri, October 25", "cl.t2": "Presentation: the Renaissance in Italy", "cl.g2": "Presentation", "cl.m2": "2 files", "cl.do": "Do it with the bot", "cl.t3": "Essay: my favourite book", "cl.s3": "Italian · handed in", "wg.tom": "Tomorrow · Tuesday", "wg.hrs": "8:00 to 1:25 pm", "wg.test": "Test: physics", "wg.hw": "Homework · 1 of 3", "wg.now": "Now", "wg.till": "until 11:35 · 28 min left", "st.find": "Find places", "st.h": "Sites", "st.mine": "My sites · 4", "st.leads": "Leads · 35", "st.pub": "Published", "st.demo": "Demo", "hero.cta": "Message me on Telegram", "i.all": "All the screens", "back": "All projects", "i.badge": "Personal app · SwiftUI", "i.h1": "MikyCore for iPhone", "i.sub": "The bot's app, made to be used every day.", "app.lead": "Besides Telegram, MikyCore has its own iOS app: chat, timetable, grades, homework and widgets. The screens below are the real ones, with sample data.", "i.wh": "Why an app", "i.w1": "Telegram is enough to talk to the bot, but for my school day I wanted a real screen: what I have now, what I have tomorrow, my grades with the average.", "i.w2": "So I built a SwiftUI app that uses the same bot as its brain. It isn't on the App Store: I install it straight onto my own iPhone.", "f1.t": "Picks the right tool on its own", "f1.d": "It has more than 100 tools: reminders, files, browser, Google Classroom, email. In tests on the real model it picks the right one 98% of the time.", "sf2.t": "Your day on one screen", "sf2.d": "The lesson in progress, the timetable, homework for tomorrow, Classroom deadlines and tests. The data comes from Classeviva and Classroom.", "sf3.t": "Grades and average, with advice", "sf3.d": "Average per subject and the trend over time. It also tells me what mark I need on the next test to reach my goal.", "sf4.t": "Homework, done together", "sf4.d": "It reads the Classroom assignments, writes the code and checks it by running it, then saves the result to Google Drive.", "sf5.t": "Widgets on the Home screen", "sf5.d": "Tomorrow, the lesson in progress and a shortcut to talk to the bot (voice or camera) without opening the app.", "sf6.t": "Websites for local shops", "sf6.d": "I ask the bot to find a place without a website and build one: design, copy and a preview. Then I have a link and a QR code to bring in person.", "i.sh": "The screens", "i.sl": "The real ones from the app, with sample data.", "i.dh": "Details", "i.a.t": "Home Screen widgets", "i.a.d": "Tomorrow, the lesson in progress and a timer: built with WidgetKit, without opening the app.", "i.b.t": "Sign in with Google", "i.b.d": "You sign in only with your Google account: no password to remember or to keep in the app.", "i.c.t": "Shake to report", "i.c.d": "If something's off I shake the phone: the app prepares a report with the screen and the details.", "_title": "MikyCore for iPhone — a native SwiftUI app", "_desc": "The iPhone app of MikyCore, built by Mykhailo Zhupanov in SwiftUI: chat, your day, grades, Classroom and Home Screen widgets.", "skip": "Skip to content", "nav.home": "Home", "nav.projects": "Projects", "nav.contact": "Contact", "pj.lan.d": "A free AI assistant for Windows and Linux: it uses free cloud models or your own local ones. Open source, no telemetry.", "pj.mc.d": "My personal assistant on Telegram: homework, grades, reminders and Subito deals, with a model that runs on my own PC.", "pj.sit.n": "Websites for local shops", "pj.sit.d": "A bot that finds shops without a website, builds one and prepares a QR kit to bring in person.", "next.title": "More projects", "ct.title": "Contact", "ct.lead": "Message me on Telegram: I usually reply the same day.", "foot": "Site written by hand in HTML, CSS and JavaScript.", "totop": "Back to top"};</script>
+  <script src="/proj.js?v=1"></script>
+</body>
+</html>

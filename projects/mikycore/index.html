@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MikyCore — il mio assistente personale su Telegram</title>
+  <meta name="description" content="MikyCore è l&#x27;assistente personale di Mykhailo Zhupanov (Михайло Жупанов): un bot Telegram con un modello AI che gira sul suo PC. Compiti, voti, promemoria e affari su Subito.">
+  <meta name="author" content="Mykhailo Zhupanov (Михайло Жупанов)">
+  <link rel="canonical" href="https://mikybuilds.github.io/projects/mikycore/">
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "CreativeWork", "name": "MikyCore", "url": "https://mikybuilds.github.io/projects/mikycore/", "description": "Personal Telegram assistant running on a local language model.", "author": {"@type": "Person", "name": "Mykhailo Zhupanov", "alternateName": ["Михайло Жупанов", "Міша Жупанов"], "url": "https://mikybuilds.github.io/"}}
+  </script>
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MikyCore — il mio assistente personale su Telegram">
+  <meta property="og:description" content="MikyCore è l&#x27;assistente personale di Mykhailo Zhupanov (Михайло Жупанов): un bot Telegram con un modello AI che gira sul suo PC. Compiti, voti, promemoria e affari su Subito.">
+  <meta property="og:image" content="https://mikybuilds.github.io/assets/og.png">
+  <meta property="og:url" content="https://mikybuilds.github.io/projects/mikycore/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232b59ff'/%3E%3Ctext x='32' y='43' font-family='Arial Black,Arial' font-weight='900' font-size='30' text-anchor='middle' fill='%23fff'%3EM.%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/app.css?v=10">
+  <link rel="stylesheet" href="/style.css?v=10">
+  <link rel="stylesheet" href="/proj.css?v=1">
+  
+  <script>(function(){var d=document.documentElement;d.classList.add("js");try{var t=localStorage.getItem("theme");if(t)d.dataset.theme=t;var q=localStorage.getItem("pt");if(q){localStorage.removeItem("pt");q=JSON.parse(q);if(Date.now()-q.t<6000){d.style.setProperty("--ac",q.c);d.style.setProperty("--ax",q.x+"px");d.style.setProperty("--ay",q.y+"px");d.classList.add("arriving");setTimeout(function(){d.classList.remove("arriving")},1000)}}}catch(e){}})();</script>
+</head>
+<body data-proj="mikycore" class="proj-body">
+  <a class="skip" href="#main" data-i18n="skip">Vai al contenuto</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M4 15h9" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="18.5" cy="15" r="1.9" fill="#2B59FF"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 6.5A2.5 2.5 0 0 1 7.5 4h9A2.5 2.5 0 0 1 19 6.5v7a2.5 2.5 0 0 1-2.5 2.5H11l-4 3.5V16h.5A2.5 2.5 0 0 1 5 13.5z" stroke="#ECEFF4" stroke-width="1.75" stroke-linejoin="round" fill="none"/><circle cx="15.5" cy="9.8" r="1.5" fill="#2B59FF"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2.1-5" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M19.500 4.500v4h-4" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500" stroke="#3FB984" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#8C95A6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3.500" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M5.500 11.500a6.500 6.500 0 0 0 13 0M12 18v2.500" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-cam" viewBox="0 0 24 24"><path d="M4 8.500A2.500 2.500 0 0 1 6.500 6h1.800l1.400-2h4.600l1.400 2h1.800A2.500 2.500 0 0 1 20 8.500v8A2.500 2.500 0 0 1 17.500 19h-11A2.500 2.500 0 0 1 4 16.500z" stroke="#ECEFF4" stroke-width="1.75" stroke-linejoin="round" fill="none"/><circle cx="12" cy="12.500" r="3" stroke="#ECEFF4" stroke-width="1.75" fill="none"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.500" stroke="#fff" stroke-width="1.8" fill="none"/><path d="M16 16l4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-class" viewBox="0 0 24 24"><rect x="3.500" y="4.500" width="17" height="11.500" rx="2" stroke="#ECEFF4" stroke-width="1.75" fill="none"/><path d="M8 20l2.500-4M16 20l-2.500-4" stroke="#ECEFF4" stroke-width="1.75" stroke-linecap="round" fill="none"/><circle cx="16.500" cy="10" r="1.700" fill="#2B59FF"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 21 21"><path d="M0 0h7v1h-7zM8 0h2v1h-2zM11 0h1v1h-1zM14 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h2v1h-2zM11 1h2v1h-2zM14 1h1v1h-1zM20 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h3v1h-3zM12 2h1v1h-1zM14 2h1v1h-1zM16 2h3v1h-3zM20 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM8 3h1v1h-1zM12 3h1v1h-1zM14 3h1v1h-1zM16 3h3v1h-3zM20 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM9 4h1v1h-1zM11 4h2v1h-2zM14 4h1v1h-1zM16 4h3v1h-3zM20 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h2v1h-2zM11 5h1v1h-1zM14 5h1v1h-1zM20 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h7v1h-7zM8 7h1v1h-1zM10 7h2v1h-2zM0 8h2v1h-2zM4 8h1v1h-1zM6 8h1v1h-1zM9 8h1v1h-1zM11 8h2v1h-2zM14 8h1v1h-1zM16 8h1v1h-1zM0 9h1v1h-1zM4 9h1v1h-1zM7 9h1v1h-1zM9 9h1v1h-1zM14 9h2v1h-2zM17 9h4v1h-4zM0 10h1v1h-1zM2 10h3v1h-3zM6 10h2v1h-2zM12 10h3v1h-3zM17 10h4v1h-4zM2 11h4v1h-4zM12 11h1v1h-1zM17 11h3v1h-3zM0 12h11v1h-11zM13 12h5v1h-5zM20 12h1v1h-1zM9 13h4v1h-4zM14 13h2v1h-2zM18 13h1v1h-1zM20 13h1v1h-1zM0 14h7v1h-7zM12 14h3v1h-3zM18 14h2v1h-2zM0 15h1v1h-1zM6 15h1v1h-1zM13 15h1v1h-1zM15 15h5v1h-5zM0 16h1v1h-1zM2 16h3v1h-3zM6 16h1v1h-1zM9 16h1v1h-1zM13 16h5v1h-5zM0 17h1v1h-1zM2 17h3v1h-3zM6 17h1v1h-1zM8 17h1v1h-1zM11 17h1v1h-1zM16 17h2v1h-2zM19 17h1v1h-1zM0 18h1v1h-1zM2 18h3v1h-3zM6 18h1v1h-1zM9 18h2v1h-2zM13 18h3v1h-3zM18 18h1v1h-1zM0 19h1v1h-1zM6 19h1v1h-1zM9 19h1v1h-1zM11 19h2v1h-2zM17 19h1v1h-1zM20 19h1v1h-1zM0 20h7v1h-7zM8 20h3v1h-3zM12 20h3v1h-3zM16 20h2v1h-2zM20 20h1v1h-1z" fill="#0b0d12"/></symbol>
+  </svg>
+
+  <header class="bar" id="bar"><div class="top">
+    <a class="name" href="/">Mykhailo</a>
+    <nav aria-label="Menu">
+      <a data-i18n="nav.home" href="/">Home</a>
+      <a data-i18n="nav.projects" href="/#projects">Progetti</a>
+      <a data-i18n="nav.contact" href="#contact">Contatti</a>
+    </nav>
+    <div class="switches">
+      <button id="lang" type="button" aria-label="Switch to English">EN</button>
+      <button id="theme" type="button" aria-label="Tema scuro">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      </button>
+    </div>
+  </div></header>
+
+  <main id="main" class="proj">
+
+    <section class="p-hero" id="top">
+      <div class="aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+      <div class="grain" aria-hidden="true"></div>
+      <div class="p-in">
+        <div class="p-copy">
+          <a class="crumb" href="/#projects"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span data-i18n="back">Tutti i progetti</span></a>
+          <p class="badge"><i></i><span><span data-i18n="m.badge">Lo uso ogni giorno</span></span></p>
+          <h1>MikyCore</h1>
+          <p class="p-sub" data-i18n="m.sub">Un assistente personale che gira tutto sul mio PC.</p>
+          <p class="lead" data-i18n="mc.lead">Un assistente personale su Telegram con un modello di linguaggio che gira interamente sulla mia scheda video da 8 GB: niente abbonamenti, niente dati inviati fuori. Lo uso ogni giorno per la scuola. Sono circa 21 000 righe di codice, con 46 suite di test.</p>
+          <p class="actions"><a class="cta" href="https://t.me/mikybuilds" data-mag target="_blank" rel="noopener"><span data-i18n="hero.cta">Scrivimi su Telegram</span></a><a class="quiet" href="/projects/ios/"><span data-i18n="m.tour">Le schermate dell’app</span></a></p>
+          <ul class="chips"><li>Telegram</li><li>Python</li><li>Ollama</li><li>Whisper</li></ul>
+        </div>
+        <div class="p-art ">
+        <figure class="chat done" style="transform:none">
+          <div class="notes" aria-hidden="true">
+            <div class="note n1"><i class="ic bl"></i><span><b data-i18n="nt.1t">Promemoria</b><small data-i18n="nt.1d">Verifica di fisica domani, 10:40</small></span></div>
+            <div class="note n2"><i class="ic gr"></i><span><b data-i18n="nt.2t">Affare trovato</b><small data-i18n="nt.2d">Dell Latitude 7490 · −40%</small></span></div>
+            <div class="note n3"><i class="ic ck"></i><span><b data-i18n="nt.3t">Compito pronto</b><small data-i18n="nt.3d">average.py, verificato eseguendolo</small></span></div>
+          </div>
+          <div class="tiltbox tiltz" data-tilt><div class="floatbox"><div class="phone" style="--k:.86"><div class="screen app">
+                <header class="a-hd a-chat-hd">
+                  <a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a>
+                  <div class="a-title"><b>MikyCore<i>.</i></b><span class="a-status"><u></u><em data-i18n="st.online">online</em></span></div>
+                  <a class="a-btn a-btn-s"><b>10:40</b><span data-i18n="su.fi">Fisica</span></a>
+                </header>
+                <div class="a-main a-chat">
+                  <div class="a-day" data-i18n="g.today">Oggi, 15:42</div>
+                  <ol class="msgs static">
+                    <li class="me" data-i18n="g.me1">Cosa ho domani?</li>
+                    <li class="bot"><span class="av">M.</span><div class="bd">
+                      <p data-i18n="g.b1">Domani hai 5 lezioni, si comincia alle 8:00. Il punto importante: la verifica di fisica alla terza ora.</p>
+                      <div class="a-card a-sched">
+                        <div class="a-sched-h"><b data-i18n="g.day">Martedì 21 ottobre</b><span data-i18n="g.n5">5 lezioni</span></div>
+                        <div class="a-sched-r"><span>8:00</span><span data-i18n="su.it">Italiano</span></div>
+                        <div class="a-sched-r"><span>8:55</span><span data-i18n="su.ma">Matematica</span></div>
+                        <div class="a-sched-r hot"><span>10:40</span><b data-i18n="su.fi">Fisica</b><em data-i18n="m.test">verifica</em></div>
+                        <div class="a-sched-r"><span>11:35</span><span data-i18n="su.st">Storia</span></div>
+                      </div>
+                      <div class="a-chips2"><span data-i18n="m.hw">Compiti per domani</span><span data-i18n="g.ch2">Piano di ripasso</span></div>
+                    </div></li>
+                  </ol>
+                </div>
+                <div class="a-composer">
+                  <div class="a-in"><span class="a-plus"><svg width="20" height="20"><use href="#i-plus"/></svg></span><span class="ph" data-i18n="g.ph">Scrivi a MikyCore…</span><span class="a-mic"><svg width="20" height="20" style="color:#fff"><use href="#i-mic"/></svg></span></div>
+                </div>
+              </div></div></div></div>
+        </figure></div>
+      </div>
+    </section>
+    <section class="p-sec" id="flow">
+      <div class="sec">
+        <h2 data-i18n="m.fh" data-r>Come funziona</h2>
+        <div class="flow run" style="margin-top:34px">
+          <h3 class="flow-title" data-i18n="hw.title">Il percorso di un messaggio</h3>
+          <ol>
+            <li class="spot" data-r><b data-i18n="hw.n1t">Il mio telefono</b><span data-i18n="hw.n1d">Scrivo o mando un vocale su Telegram, anche da scuola.</span></li>
+            <li class="spot" data-r style="--d:120ms"><b data-i18n="hw.n2t">Il mio PC</b><span data-i18n="hw.n2d">Qwen3 8B gira sulla RTX 5060 da 8 GB, Whisper trascrive la voce. Nessun servizio a pagamento.</span></li>
+            <li class="spot" data-r style="--d:240ms"><b data-i18n="hw.n3t">Più di 100 strumenti</b><span data-i18n="hw.n3d">Classeviva, Classroom, Subito, Obsidian, posta, browser: il modello sceglie quello giusto.</span></li>
+          </ol>
+          <p class="flow-back" data-i18n="hw.back">La risposta torna sul telefono in pochi secondi.</p>
+        </div>
+        <dl class="p-spec" style="margin-top:clamp(40px,5vw,72px)">
+          <div data-r><dt><span data-i18n="sp.tools">Strumenti</span></dt><dd><span class="cnt" data-count="100">100</span>+</dd></div>
+          <div data-r style="--d:80ms"><dt><span data-i18n="sp.code">Codice</span></dt><dd><span class="cnt" data-count="21000">21 000</span> <small><span data-i18n="sp.lines">righe</span></small></dd></div>
+          <div data-r style="--d:160ms"><dt><span data-i18n="sp.tests">Test</span></dt><dd><span class="cnt" data-count="46">46</span> <small><span data-i18n="sp.suites">suite</span></small></dd></div>
+          <div data-r style="--d:240ms"><dt><span data-i18n="sp.pick">Strumento giusto</span></dt><dd><span class="cnt" data-count="98">98</span>%</dd></div>
+        </dl>
+      </div>
+    </section>
+    <section class="p-sec alt" id="what">
+      <div class="sec">
+        <h2 data-i18n="m.wh" data-r>Cosa fa</h2>
+        <div class="bento" style="margin-top:34px">
+          <article class="bc spot w3" data-r style="--d:0ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h4 data-i18n="f1.t">Sceglie da solo lo strumento giusto</h4><p data-i18n="f1.d">Ha più di 100 strumenti: promemoria, file, browser, Google Classroom, posta. Nei test sul modello reale sceglie quello giusto nel 98% dei casi.</p></article>
+          <article class="bc spot w3" data-r style="--d:70ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l9 9-8 8z"/></svg></span><h4 data-i18n="f2.t">Trova affari su Subito</h4><p data-i18n="f2.d">Legge gli annunci, calcola il prezzo di mercato per modello e configurazione (processore, RAM, generazione), riconosce le truffe e mi scrive solo quando conviene davvero.</p></article>
+          <article class="bc spot w2" data-r style="--d:0ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5"/></svg></span><h4 data-i18n="f3.t">Mi aiuta a studiare</h4><p data-i18n="f3.d">Trasforma le lezioni in appunti su Obsidian, crea flashcard, mi interroga a voce e assegna un voto, e organizza il ripasso prima delle verifiche.</p></article>
+          <article class="bc spot w2" data-r style="--d:70ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.5-5.8M20 4v5h-5"/></svg></span><h4 data-i18n="f4.t">Si migliora, con il mio permesso</h4><p data-i18n="f4.d">Nota dove sbaglia e propone regole, automazioni e perfino nuovi plugin in Python. I plugin girano in una sandbox isolata e partono solo dopo la mia conferma.</p></article>
+          <article class="bc spot w2" data-r style="--d:140ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></span><h4 data-i18n="f6.t">Sicuro per scelta</h4><p data-i18n="f6.d">Le azioni rischiose chiedono conferma, le password non passano mai dal modello, il testo esterno non può dargli ordini, e non aggira le protezioni dei siti.</p></article>
+          <article class="bc spot w3" data-r style="--d:0ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span><h4>Flowgorithm</h4><p data-i18n="f5.d">Genera diagrammi di flusso e li verifica eseguendoli con un interprete .fprg scritto da me, che indica l'errore e il blocco esatto.</p></article>
+          <article class="bc spot w3" data-r style="--d:70ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a3 3 0 0 1 3 3v5a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM6 11a6 6 0 0 0 12 0M12 17v4"/></svg></span><h4 data-i18n="f7.t">Parla e ascolta</h4><p data-i18n="f7.d">Capisce i vocali con Whisper e può rispondere anche a voce.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-sec" id="private">
+      <div class="sec story">
+        <h2 data-i18n="m.ph" data-r>Il codice</h2>
+        <div>
+          <p class="big" data-i18n="m.p1" data-r>MikyCore usa i miei dati scolastici, quindi il codice non è pubblico. Se ti interessa come è fatto, te lo mostro volentieri: scrivimi.</p>
+          <p class="plain" data-i18n="m.p2" data-r>Le idee migliori sono finite in Lanterna, la versione pubblica e senza dati personali. E c'è anche l'app per iPhone.</p>
+          <p class="actions" data-r><a class="cta" href="https://t.me/mikybuilds" data-mag target="_blank" rel="noopener"><span data-i18n="hero.cta">Scrivimi su Telegram</span></a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-sec">
+      <div class="sec">
+        <h2 data-i18n="next.title" data-r>Altri progetti</h2>
+        <div class="pn-grid"><a class="pn" href="/projects/lanterna/" data-pt="#161b2b" data-r style="--pbg:linear-gradient(160deg,#1c2338,#0b0e17);--pg:245,181,68"><b>Lanterna</b><span data-i18n="pj.lan.d">Un assistente AI gratuito per Windows e Linux: usa modelli cloud gratuiti o i tuoi modelli locali. Open source, senza telemetria.</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="pn" href="/projects/ios/" data-pt="#211757" data-r style="--pbg:linear-gradient(160deg,#2a1d63,#0b0d12);--pg:109,76,255"><b data-i18n="pj.ios.n">MikyCore per iPhone</b><span data-i18n="pj.ios.d">L'app nativa del bot: chat, giornata, voti, Classroom e widget sulla schermata Home.</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="pn" href="/projects/sites/" data-pt="#0b3a2e" data-r style="--pbg:linear-gradient(160deg,#0f4a3b,#0b0d12);--pg:20,162,115"><b data-i18n="pj.sit.n">Siti per negozi locali</b><span data-i18n="pj.sit.d">Un bot che trova attività senza sito, ne costruisce uno e prepara il kit con QR da portare di persona.</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+      <div class="grain" aria-hidden="true"></div>
+      <div class="sec">
+        <h2 data-i18n="ct.title" data-r>Contatti</h2>
+        <p class="ct-lead" data-i18n="ct.lead" data-r>Scrivimi su Telegram: rispondo di solito in giornata.</p>
+        <p class="contact-links"><a href="https://t.me/mikybuilds" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>@mikybuilds</a><a href="https://github.com/mikybuilds" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub</a><a href="https://www.linkedin.com/in/mykhailo-zhupanov/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/mishh9ar/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2h8a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6H8a6 6 0 0 1-6-6V8a6 6 0 0 1 6-6zm0 1.8A4.2 4.2 0 0 0 3.8 8v8A4.2 4.2 0 0 0 8 20.2h8a4.2 4.2 0 0 0 4.2-4.2V8A4.2 4.2 0 0 0 16 3.8zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zM17.3 5.6a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg>Instagram</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p><span data-i18n="foot">Sito scritto a mano in HTML, CSS e JavaScript.</span> © <span id="year">2026</span> Mykhailo Zhupanov <span lang="uk">(Михайло Жупанов · Міша Жупанов)</span></p>
+    <a class="totop" data-i18n="totop" href="#main">Torna su</a>
+  </footer>
+  <script>window.PAGE_EN = {"st.online": "online", "su.fi": "Physics", "g.today": "Today, 3:42 pm", "g.me1": "What do I have tomorrow?", "g.b1": "Tomorrow you have 5 lessons, starting at 8:00. The important one: the physics test in the third period.", "g.day": "Tuesday, October 21", "g.n5": "5 lessons", "su.it": "Italian", "su.ma": "Maths", "m.test": "test", "su.st": "History", "m.hw": "Homework for tomorrow", "g.ch2": "Revision plan", "g.ph": "Message MikyCore…", "nt.1t": "Reminder", "nt.1d": "Physics test tomorrow, 10:40", "nt.2t": "Deal found", "nt.2d": "Dell Latitude 7490 · −40%", "nt.3t": "Homework ready", "nt.3d": "average.py, checked by running it", "hero.cta": "Message me on Telegram", "m.tour": "The app screens", "back": "All projects", "m.badge": "I use it every day", "m.sub": "A personal assistant that runs entirely on my PC.", "mc.lead": "A personal Telegram assistant with a language model that runs entirely on my 8 GB graphics card: no subscriptions, no data sent anywhere. I use it every day for school. It's about 21,000 lines of code with 46 test suites.", "m.fh": "How it works", "hw.title": "The path of one message", "hw.n1t": "My phone", "hw.n1d": "I type or send a voice message on Telegram, even from school.", "hw.n2t": "My PC", "hw.n2d": "Qwen3 8B runs on the 8 GB RTX 5060, Whisper transcribes the voice. No paid services.", "hw.n3t": "More than 100 tools", "hw.n3d": "Classeviva, Classroom, Subito, Obsidian, email, browser: the model picks the right one.", "hw.back": "The answer is back on the phone in a few seconds.", "sp.tools": "Tools", "sp.code": "Code", "sp.lines": "lines", "sp.tests": "Tests", "sp.suites": "suites", "sp.pick": "Right tool", "m.wh": "What it does", "f1.t": "Picks the right tool on its own", "f1.d": "It has more than 100 tools: reminders, files, browser, Google Classroom, email. In tests on the real model it picks the right one 98% of the time.", "f2.t": "Finds deals on Subito", "f2.d": "It reads listings, works out the market price per model and configuration (CPU, RAM, generation), spots scams and only messages me when a deal is real.", "f3.t": "Helps me study", "f3.d": "It turns lessons into notes in Obsidian, makes flashcards, quizzes me out loud with a grade, and plans revision before tests.", "f4.t": "Improves itself, with my permission", "f4.d": "It notices where it fails and proposes rules, automations and even new Python plugins. Plugins run in an isolated sandbox and start only after I confirm them.", "f6.t": "Safe by design", "f6.d": "Risky actions ask for confirmation, passwords never go through the model, outside text can't give it orders, and it doesn't get around websites' protections.", "f5.d": "It generates flowcharts and checks them by running them in a .fprg interpreter I wrote, which points to the error and the exact block.", "f7.t": "Speaks and listens", "f7.d": "It understands voice messages with Whisper and can answer out loud too.", "m.ph": "The code", "m.p1": "MikyCore uses my school data, so the code isn't public. If you're curious how it's built, I'm happy to show you: write to me.", "m.p2": "The best ideas ended up in Lanterna, the public version with no personal data. And there is the iPhone app too.", "_title": "MikyCore — my personal assistant on Telegram", "_desc": "MikyCore is the personal assistant of Mykhailo Zhupanov: a Telegram bot with an AI model that runs on his own PC. Homework, grades, reminders and Subito deals.", "skip": "Skip to content", "nav.home": "Home", "nav.projects": "Projects", "nav.contact": "Contact", "pj.lan.d": "A free AI assistant for Windows and Linux: it uses free cloud models or your own local ones. Open source, no telemetry.", "pj.ios.n": "MikyCore for iPhone", "pj.ios.d": "The bot's native app: chat, your day, grades, Classroom and Home Screen widgets.", "pj.sit.n": "Websites for local shops", "pj.sit.d": "A bot that finds shops without a website, builds one and prepares a QR kit to bring in person.", "next.title": "More projects", "ct.title": "Contact", "ct.lead": "Message me on Telegram: I usually reply the same day.", "foot": "Site written by hand in HTML, CSS and JavaScript.", "totop": "Back to top"};</script>
+  <script src="/proj.js?v=1"></script>
+</body>
+</html>
