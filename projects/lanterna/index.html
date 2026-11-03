@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lanterna — un assistente AI gratuito per Windows e Linux</title>
+  <meta name="description" content="Lanterna è un assistente AI open source (MIT) per Windows e Linux: usa modelli cloud gratuiti o i tuoi modelli locali, con memoria, promemoria, file e connettori. Di Mykhailo Zhupanov (Михайло Жупанов).">
+  <meta name="author" content="Mykhailo Zhupanov (Михайло Жупанов)">
+  <link rel="canonical" href="https://mikybuilds.github.io/projects/lanterna/">
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Lanterna", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Windows, Linux", "softwareVersion": "0.3.2", "license": "https://opensource.org/licenses/MIT", "url": "https://mikybuilds.github.io/projects/lanterna/", "downloadUrl": "https://github.com/mikybuilds/lanterna/releases/latest", "codeRepository": "https://github.com/mikybuilds/lanterna", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "author": {"@type": "Person", "name": "Mykhailo Zhupanov", "alternateName": ["Михайло Жупанов", "Міша Жупанов"], "url": "https://mikybuilds.github.io/"}}
+  </script>
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Lanterna — un assistente AI gratuito per Windows e Linux">
+  <meta property="og:description" content="Lanterna è un assistente AI open source (MIT) per Windows e Linux: usa modelli cloud gratuiti o i tuoi modelli locali, con memoria, promemoria, file e connettori. Di Mykhailo Zhupanov (Михайло Жупанов).">
+  <meta property="og:image" content="https://mikybuilds.github.io/lanterna/logo.svg">
+  <meta property="og:url" content="https://mikybuilds.github.io/projects/lanterna/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232b59ff'/%3E%3Ctext x='32' y='43' font-family='Arial Black,Arial' font-weight='900' font-size='30' text-anchor='middle' fill='%23fff'%3EM.%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/app.css?v=10">
+  <link rel="stylesheet" href="/style.css?v=10">
+  <link rel="stylesheet" href="/proj.css?v=1">
+  <script src="/lv.js?v=1" defer></script>
+  <script>(function(){var d=document.documentElement;d.classList.add("js");try{var t=localStorage.getItem("theme");if(t)d.dataset.theme=t;var q=localStorage.getItem("pt");if(q){localStorage.removeItem("pt");q=JSON.parse(q);if(Date.now()-q.t<6000){d.style.setProperty("--ac",q.c);d.style.setProperty("--ax",q.x+"px");d.style.setProperty("--ay",q.y+"px");d.classList.add("arriving");setTimeout(function(){d.classList.remove("arriving")},1000)}}}catch(e){}})();</script>
+</head>
+<body data-proj="lanterna" class="proj-body">
+  <a class="skip" href="#main" data-i18n="skip">Vai al contenuto</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M4 15h9" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="18.5" cy="15" r="1.9" fill="#2B59FF"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 6.5A2.5 2.5 0 0 1 7.5 4h9A2.5 2.5 0 0 1 19 6.5v7a2.5 2.5 0 0 1-2.5 2.5H11l-4 3.5V16h.5A2.5 2.5 0 0 1 5 13.5z" stroke="#ECEFF4" stroke-width="1.75" stroke-linejoin="round" fill="none"/><circle cx="15.5" cy="9.8" r="1.5" fill="#2B59FF"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2.1-5" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M19.500 4.500v4h-4" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500" stroke="#3FB984" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#8C95A6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3.500" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M5.500 11.500a6.500 6.500 0 0 0 13 0M12 18v2.500" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-cam" viewBox="0 0 24 24"><path d="M4 8.500A2.500 2.500 0 0 1 6.500 6h1.800l1.400-2h4.600l1.400 2h1.800A2.500 2.500 0 0 1 20 8.500v8A2.500 2.500 0 0 1 17.500 19h-11A2.500 2.500 0 0 1 4 16.500z" stroke="#ECEFF4" stroke-width="1.75" stroke-linejoin="round" fill="none"/><circle cx="12" cy="12.500" r="3" stroke="#ECEFF4" stroke-width="1.75" fill="none"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.500" stroke="#fff" stroke-width="1.8" fill="none"/><path d="M16 16l4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-class" viewBox="0 0 24 24"><rect x="3.500" y="4.500" width="17" height="11.500" rx="2" stroke="#ECEFF4" stroke-width="1.75" fill="none"/><path d="M8 20l2.500-4M16 20l-2.500-4" stroke="#ECEFF4" stroke-width="1.75" stroke-linecap="round" fill="none"/><circle cx="16.500" cy="10" r="1.700" fill="#2B59FF"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 21 21"><path d="M0 0h7v1h-7zM8 0h2v1h-2zM11 0h1v1h-1zM14 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h2v1h-2zM11 1h2v1h-2zM14 1h1v1h-1zM20 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h3v1h-3zM12 2h1v1h-1zM14 2h1v1h-1zM16 2h3v1h-3zM20 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM8 3h1v1h-1zM12 3h1v1h-1zM14 3h1v1h-1zM16 3h3v1h-3zM20 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM9 4h1v1h-1zM11 4h2v1h-2zM14 4h1v1h-1zM16 4h3v1h-3zM20 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h2v1h-2zM11 5h1v1h-1zM14 5h1v1h-1zM20 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h7v1h-7zM8 7h1v1h-1zM10 7h2v1h-2zM0 8h2v1h-2zM4 8h1v1h-1zM6 8h1v1h-1zM9 8h1v1h-1zM11 8h2v1h-2zM14 8h1v1h-1zM16 8h1v1h-1zM0 9h1v1h-1zM4 9h1v1h-1zM7 9h1v1h-1zM9 9h1v1h-1zM14 9h2v1h-2zM17 9h4v1h-4zM0 10h1v1h-1zM2 10h3v1h-3zM6 10h2v1h-2zM12 10h3v1h-3zM17 10h4v1h-4zM2 11h4v1h-4zM12 11h1v1h-1zM17 11h3v1h-3zM0 12h11v1h-11zM13 12h5v1h-5zM20 12h1v1h-1zM9 13h4v1h-4zM14 13h2v1h-2zM18 13h1v1h-1zM20 13h1v1h-1zM0 14h7v1h-7zM12 14h3v1h-3zM18 14h2v1h-2zM0 15h1v1h-1zM6 15h1v1h-1zM13 15h1v1h-1zM15 15h5v1h-5zM0 16h1v1h-1zM2 16h3v1h-3zM6 16h1v1h-1zM9 16h1v1h-1zM13 16h5v1h-5zM0 17h1v1h-1zM2 17h3v1h-3zM6 17h1v1h-1zM8 17h1v1h-1zM11 17h1v1h-1zM16 17h2v1h-2zM19 17h1v1h-1zM0 18h1v1h-1zM2 18h3v1h-3zM6 18h1v1h-1zM9 18h2v1h-2zM13 18h3v1h-3zM18 18h1v1h-1zM0 19h1v1h-1zM6 19h1v1h-1zM9 19h1v1h-1zM11 19h2v1h-2zM17 19h1v1h-1zM20 19h1v1h-1zM0 20h7v1h-7zM8 20h3v1h-3zM12 20h3v1h-3zM16 20h2v1h-2zM20 20h1v1h-1z" fill="#0b0d12"/></symbol>
+  </svg>
+
+  <header class="bar" id="bar"><div class="top">
+    <a class="name" href="/">Mykhailo</a>
+    <nav aria-label="Menu">
+      <a data-i18n="nav.home" href="/">Home</a>
+      <a data-i18n="nav.projects" href="/#projects">Progetti</a>
+      <a data-i18n="nav.contact" href="#contact">Contatti</a>
+    </nav>
+    <div class="switches">
+      <button id="lang" type="button" aria-label="Switch to English">EN</button>
+      <button id="theme" type="button" aria-label="Tema scuro">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      </button>
+    </div>
+  </div></header>
+
+  <main id="main" class="proj">
+
+    <section class="p-hero" id="top">
+      <div class="aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+      <div class="grain" aria-hidden="true"></div>
+      <div class="p-in">
+        <div class="p-copy">
+          <a class="crumb" href="/#projects"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span data-i18n="back">Tutti i progetti</span></a>
+          <p class="badge"><i></i><span>Open source · MIT · <span data-lv="v">v0.3.2</span></span></p>
+          <h1>Lanterna</h1>
+          <p class="p-sub" data-i18n="l.sub">Un assistente AI gentile, che usa i modelli gratuiti.</p>
+          <p class="lead" data-i18n="l.lead">Chatta con modelli cloud gratuiti — o con i tuoi modelli locali, se il PC è abbastanza forte. Ricorda, ti avvisa, legge i tuoi file e non manda niente all'autore.</p>
+          <p class="actions"><a class="cta" href="https://github.com/mikybuilds/lanterna/releases/latest" data-mag target="_blank" rel="noopener"><span data-i18n="l.dl">Scarica per Windows</span></a><a class="quiet" href="https://github.com/mikybuilds/lanterna" target="_blank" rel="noopener"><span data-i18n="l.gh">Codice su GitHub</span></a><a class="quiet" href="#install"><span data-i18n="l.lin">Installa su Linux</span></a></p>
+          <ul class="chips"><li>Python</li><li>Windows + Linux</li><li>Italiano · English · Українська</li></ul>
+        </div>
+        <div class="p-art ">
+        <div class="l-art tiltz" data-tilt>
+          <div class="glow" aria-hidden="true"></div>
+          <img class="mark" src="/lanterna/logo.svg" alt="" width="84" height="84">
+          <figure class="win"><div class="win-bar"><i></i><i></i><i></i><span>Lanterna</span></div>
+            <img src="/assets/lanterna/chat.webp" data-i18n-label="alt.chat" width="1120" height="760"></figure>
+          <figure class="win term"><img src="/assets/lanterna/terminal.webp" data-i18n-label="alt.term" width="1400" height="912" loading="lazy"></figure>
+          <span class="tag t1"><i></i>Groq · gpt-oss-120b</span>
+          <span class="tag t2"><i></i>Ollama · gemma4</span>
+        </div></div>
+      </div>
+    </section>
+    <section class="p-sec" id="why">
+      <div class="sec story">
+        <h2 data-i18n="l.why" data-r>Perché Lanterna</h2>
+        <div>
+          <p class="big" data-i18n="l.why1" data-r>Un buon modello in locale richiede una scheda video potente. Volevo che anche chi ha un PC normale potesse avere un assistente capace, senza pagare.</p>
+          <p class="plain" data-i18n="l.why2" data-r>Lanterna nasce da ciò che ho imparato con MikyCore, il mio assistente personale, ma senza nessun dato personale: è un progetto pubblico con licenza MIT. Usa i piani gratuiti dei servizi cloud e passa ai modelli locali (Ollama) sui computer che ce la fanno.</p>
+          <dl class="p-spec" data-r>
+            <div><dt><span data-i18n="l.k1">Versione</span></dt><dd><span data-lv="n">0.3.2</span></dd></div>
+            <div><dt><span data-i18n="l.k2">Licenza</span></dt><dd>MIT</dd></div>
+            <div><dt><span data-i18n="l.k3">Installer</span></dt><dd>~<span data-lv="size">25</span> <small>MB</small></dd></div>
+            <div><dt><span data-i18n="l.k4">Test automatici</span></dt><dd><span class="cnt" data-count="130">130</span>+</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+    <section class="p-sec alt" id="features">
+      <div class="sec">
+        <h2 data-i18n="l.fh" data-r>Cosa sa fare</h2>
+        <p class="p-lead" data-i18n="l.fl" data-r>Un assistente generale, non solo una chat. Ogni cosa che tocca file o account chiede prima il tuo OK.</p>
+        <div class="bento">
+
+          <article class="bc spot w3" data-r style="--d:0ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h4 data-i18n="l.a.t">Modelli gratuiti, sempre uno disponibile</h4><p data-i18n="l.a.d">Groq, Gemini, OpenRouter, Cerebras, Mistral e GitHub Models, con le tue chiavi gratuite. Quando uno raggiunge il limite risponde il successivo, e la barra sotto il messaggio mostra quanto resta.</p></article>
+
+          <article class="bc spot w3" data-r style="--d:70ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3v2M15 3v2M9 19v2M15 19v2M3 9h2M3 15h2M19 9h2M19 15h2M7 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zM9 9h6v6H9z"/></svg></span><h4 data-i18n="l.b.t">Anche in locale, con Ollama</h4><p data-i18n="l.b.d">Guarda la tua scheda video e consiglia i modelli adatti. Modalità Cloud, Locale o Auto: in Auto le domande difficili vanno al cloud e le altre restano sul tuo PC.</p></article>
+
+          <article class="bc spot w2" data-r style="--d:0ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 6 2 7 2 7H4s2-1 2-7M10 20a2 2 0 0 0 4 0"/></svg></span><h4 data-i18n="l.c.t">Ricorda e ti avvisa</h4><p data-i18n="l.c.d">Memoria, promemoria con notifica, ricerca sul web, meteo e calcolo delle date.</p></article>
+
+          <article class="bc spot w2" data-r style="--d:70ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><h4 data-i18n="l.d.t">File e foto</h4><p data-i18n="l.d.d">Una cartella di lavoro per ogni chat. Legge subito; ogni modifica arriva come scheda con Conferma. Non cancella mai niente.</p></article>
+
+          <article class="bc spot w2" data-r style="--d:140ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0zM12 17v4"/></svg></span><h4 data-i18n="l.e.t">Google Drive e GitHub</h4><p data-i18n="l.e.d">Crea cartelle, carica file, fa push dei tuoi progetti: solo dopo Conferma e con il minimo dei permessi.</p></article>
+
+          <article class="bc spot w3" data-r style="--d:0ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 17 8.5 4.5 4.5 0 0 1 17.5 18z"/></svg></span><h4 data-i18n="l.f.t">La stessa chat su ogni dispositivo</h4><p data-i18n="l.f.d">Accedi con Google: le chat restano in una cartella nascosta del tuo Drive, cifrate con AES-256 e la tua password. Le chiavi API non vengono sincronizzate.</p></article>
+
+          <article class="bc spot w3" data-r style="--d:70ms"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 11h12v9H6zM8 11V8a4 4 0 0 1 8 0v3"/></svg></span><h4 data-i18n="l.g.t">Privata per costruzione</h4><p data-i18n="l.g.d">Le chiavi stanno nel portachiavi del sistema, niente telemetria, nessun account Lanterna. L'installer si aggiorna da solo e controlla l'impronta SHA-256.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="p-sec" id="look">
+      <div class="sec">
+        <h2 data-i18n="l.vh" data-r>Com'è fatta</h2>
+        <div class="viewer" data-r>
+          <div class="v-tabs" role="tablist"><button type="button" role="tab" data-i18n="l.v.chat">Chat</button><button type="button" role="tab" data-i18n="l.v.modes">Impostazioni</button><button type="button" role="tab" data-i18n="l.v.local">Modelli locali</button><button type="button" role="tab" data-i18n="l.v.term">Terminale</button></div>
+          <div class="v-stage"><figure class="win v-win"><div class="win-bar"><i></i><i></i><i></i><span>Lanterna</span></div><div class="v-stack"><img class="v-shot" data-bare="0" src="/assets/lanterna/chat.webp" alt="" width="1120" height="760" loading="lazy"><img class="v-shot" data-bare="0" src="/assets/lanterna/modes.webp" alt="" width="1120" height="780" loading="lazy"><img class="v-shot" data-bare="0" src="/assets/lanterna/local.webp" alt="" width="1120" height="780" loading="lazy"><img class="v-shot" data-bare="1" src="/assets/lanterna/terminal.webp" alt="" width="1400" height="912" loading="lazy"></div></figure></div>
+          <p class="v-cap" data-i18n="l.vc.chat">La chat: le risposte arrivano in streaming e in alto vedi quale modello sta rispondendo.</p><p class="v-cap" data-i18n="l.vc.modes">Impostazioni: lingua, nome e modalità Cloud, Locale o Auto (le domande difficili vanno al cloud).</p><p class="v-cap" data-i18n="l.vc.local">Primo avvio: Lanterna controlla la scheda video e consiglia i modelli locali. Niente si scarica finché non premi il pulsante.</p><p class="v-cap" data-i18n="l.vc.term">Su Linux è un'app a schermo intero nel terminale, con il supporto del mouse.</p>
+        </div>
+      </div>
+    </section>
+    <section class="p-sec alt" id="install">
+      <div class="sec">
+        <h2 data-i18n="l.ih" data-r>Installa</h2>
+        <p class="p-lead" data-i18n="l.il" data-r>Gratis, senza account. Windows con un installer, Linux dal terminale.</p>
+        <div class="ins">
+          <article class="bc" data-r>
+            <h4 data-i18n="l.w.t">Windows 10 / 11</h4>
+            <ol>
+              <li><span data-i18n="l.w.1">Scarica Lanterna-Setup dall'ultima release.</span></li>
+              <li><span data-i18n="l.w.2">Avvialo: non servono diritti di amministratore.</span></li>
+              <li><span data-i18n="l.w.3">Se Windows avvisa «Editore sconosciuto», scegli Maggiori informazioni → Esegui comunque. L'installer non è firmato (la firma costa), ma lo costruisce GitHub Actions dal codice pubblico.</span></li>
+            </ol>
+            <p class="actions"><a class="cta" href="https://github.com/mikybuilds/lanterna/releases/latest" target="_blank" rel="noopener"><span data-i18n="l.dl2">Scarica l'ultima versione</span></a></p>
+          </article>
+          <article class="bc" data-r style="--d:90ms">
+            <h4 data-i18n="l.x.t">Linux</h4>
+            <p class="note-s"><span data-i18n="l.x.n">App a schermo intero nel terminale. Serve Python 3.10 o più recente.</span></p>
+            <div class="code"><code>sudo apt update &amp;&amp; sudo apt install -y pipx git
+pipx ensurepath</code><button type="button" data-copy><span class="c-a" data-i18n="l.copy">Copia</span><span class="c-b" data-i18n="l.copied">Copiato</span></button></div>
+            <div class="code"><code>pipx install git+https://github.com/mikybuilds/lanterna</code><button type="button" data-copy><span class="c-a" data-i18n="l.copy">Copia</span><span class="c-b" data-i18n="l.copied">Copiato</span></button></div>
+            <p class="note-s"><span data-i18n="l.x.n2">Poi scrivi lanterna in un terminale. Per averlo anche nel menu delle app: lanterna desktop.</span></p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="p-sec" id="hood">
+      <div class="sec">
+        <h2 data-i18n="l.hh" data-r>Sotto il cofano</h2>
+        <p class="p-lead" data-i18n="l.hl" data-r>Ogni release è costruita da GitHub Actions: test su Ubuntu e Windows, scansione dei segreti, installer e impronta SHA-256 per l'aggiornamento automatico.</p>
+        <ul class="stack-list" data-r><li>Python 3.10+</li><li>pywebview</li><li>Textual</li><li>SQLite</li><li>keyring</li><li>cryptography · AES-256-GCM</li><li>PyInstaller</li><li>Inno Setup</li><li>GitHub Actions</li></ul>
+        <p class="links-row" data-r>
+          <a href="/lanterna/privacy.html"><span data-i18n="l.pp">Informativa sulla privacy</span></a>
+          <a href="https://github.com/mikybuilds/lanterna/issues" target="_blank" rel="noopener"><span data-i18n="l.is">Segnala un problema</span></a>
+          <a href="https://github.com/mikybuilds/lanterna" target="_blank" rel="noopener"><span data-i18n="l.src">Codice sorgente</span></a>
+        </p>
+      </div>
+    </section>
+
+    <section class="p-sec">
+      <div class="sec">
+        <h2 data-i18n="next.title" data-r>Altri progetti</h2>
+        <div class="pn-grid"><a class="pn" href="/projects/mikycore/" data-pt="#0f1d4d" data-r style="--pbg:linear-gradient(160deg,#122a6b,#0b0d12);--pg:43,89,255"><b>MikyCore</b><span data-i18n="pj.mc.d">Il mio assistente personale su Telegram: compiti, voti, promemoria e affari su Subito, con un modello che gira sul mio PC.</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="pn" href="/projects/ios/" data-pt="#211757" data-r style="--pbg:linear-gradient(160deg,#2a1d63,#0b0d12);--pg:109,76,255"><b data-i18n="pj.ios.n">MikyCore per iPhone</b><span data-i18n="pj.ios.d">L'app nativa del bot: chat, giornata, voti, Classroom e widget sulla schermata Home.</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="pn" href="/projects/sites/" data-pt="#0b3a2e" data-r style="--pbg:linear-gradient(160deg,#0f4a3b,#0b0d12);--pg:20,162,115"><b data-i18n="pj.sit.n">Siti per negozi locali</b><span data-i18n="pj.sit.d">Un bot che trova attività senza sito, ne costruisce uno e prepara il kit con QR da portare di persona.</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+      <div class="grain" aria-hidden="true"></div>
+      <div class="sec">
+        <h2 data-i18n="ct.title" data-r>Contatti</h2>
+        <p class="ct-lead" data-i18n="ct.lead" data-r>Scrivimi su Telegram: rispondo di solito in giornata.</p>
+        <p class="contact-links"><a href="https://t.me/mikybuilds" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>@mikybuilds</a><a href="https://github.com/mikybuilds" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub</a><a href="https://www.linkedin.com/in/mykhailo-zhupanov/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/mishh9ar/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2h8a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6H8a6 6 0 0 1-6-6V8a6 6 0 0 1 6-6zm0 1.8A4.2 4.2 0 0 0 3.8 8v8A4.2 4.2 0 0 0 8 20.2h8a4.2 4.2 0 0 0 4.2-4.2V8A4.2 4.2 0 0 0 16 3.8zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zM17.3 5.6a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg>Instagram</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p><span data-i18n="foot">Sito scritto a mano in HTML, CSS e JavaScript.</span> © <span id="year">2026</span> Mykhailo Zhupanov <span lang="uk">(Михайло Жупанов · Міша Жупанов)</span></p>
+    <a class="totop" data-i18n="totop" href="#main">Torna su</a>
+  </footer>
+  <script>window.PAGE_EN = {"alt.chat": "Lanterna's chat window with an answer", "alt.term": "Lanterna in a Linux terminal", "l.dl": "Download for Windows", "l.gh": "Source on GitHub", "l.lin": "Install on Linux", "back": "All projects", "l.sub": "A friendly AI assistant that runs on free models.", "l.lead": "It chats with free cloud models — or with your own local models if your PC is strong enough. It remembers, reminds you, reads your files and sends nothing to its author.", "l.why": "Why Lanterna", "l.why1": "A good model on your own computer needs a strong graphics card. I wanted people with an ordinary PC to have a capable assistant too, without paying.", "l.why2": "Lanterna grew out of what I learned building MikyCore, my personal assistant, but with no personal data in it: it is a public project under the MIT licence. It uses the free tiers of cloud services and switches to local models (Ollama) on computers that can run them.", "l.k1": "Version", "l.k2": "Licence", "l.k3": "Installer", "l.k4": "Automated tests", "l.fh": "What it can do", "l.fl": "A general assistant, not just a chat. Anything that touches your files or accounts asks for your OK first.", "l.a.t": "Free models, always one available", "l.a.d": "Groq, Gemini, OpenRouter, Cerebras, Mistral and GitHub Models, with your own free keys. When one reaches its limit the next one answers, and the bar under the message box shows how much is left.", "l.b.t": "Local too, with Ollama", "l.b.d": "It looks at your graphics card and recommends the right models. Cloud, Local or Auto mode: in Auto the hard questions go to the cloud and the rest stay on your PC.", "l.c.t": "Remembers and reminds", "l.c.d": "Memory, reminders with a notification, web search, weather and date calculations.", "l.d.t": "Files and photos", "l.d.d": "A working folder for each chat. It reads right away; every change comes as a card with Confirm. It never deletes anything.", "l.e.t": "Google Drive and GitHub", "l.e.d": "Make folders, upload files, push your projects: only after Confirm and with the smallest permissions.", "l.f.t": "The same chat on every device", "l.f.d": "Sign in with Google: chats are kept in a hidden folder of your own Drive, encrypted with AES-256 and your password. API keys are never synced.", "l.g.t": "Private by design", "l.g.d": "Keys live in your system's vault, there is no telemetry and no Lanterna account. The installer updates itself and checks the SHA-256 fingerprint.", "l.v.chat": "Chat", "l.vc.chat": "The chat: answers stream in, and the top bar shows which model is replying.", "l.v.modes": "Settings", "l.vc.modes": "Settings: language, name and Cloud, Local or Auto mode (hard questions go to the cloud).", "l.v.local": "Local models", "l.vc.local": "First run: Lanterna checks the graphics card and recommends local models. Nothing downloads until you press the button.", "l.v.term": "Terminal", "l.vc.term": "On Linux it's a full-screen app in the terminal, with mouse support.", "l.vh": "How it looks", "l.copy": "Copy", "l.copied": "Copied", "l.ih": "Install", "l.il": "Free, no account. Windows with an installer, Linux from the terminal.", "l.w.t": "Windows 10 / 11", "l.w.1": "Download Lanterna-Setup from the latest release.", "l.w.2": "Run it: no administrator rights needed.", "l.w.3": "If Windows warns about an unknown publisher, choose More info → Run anyway. The installer isn't signed (signing costs money), but GitHub Actions builds it from the public code.", "l.dl2": "Get the latest version", "l.x.t": "Linux", "l.x.n": "A full-screen app in the terminal. Needs Python 3.10 or newer.", "l.x.n2": "Then type lanterna in a terminal. To have it in the app menu too: lanterna desktop.", "l.hh": "Under the hood", "l.hl": "Every release is built by GitHub Actions: tests on Ubuntu and Windows, a secrets scan, the installer and a SHA-256 fingerprint for the automatic update.", "l.pp": "Privacy policy", "l.is": "Report a problem", "l.src": "Source code", "_title": "Lanterna — a free AI assistant for Windows and Linux", "_desc": "Lanterna is an open-source (MIT) AI assistant for Windows and Linux: it uses free cloud models or your own local models, with memory, reminders, files and connectors. By Mykhailo Zhupanov.", "skip": "Skip to content", "nav.home": "Home", "nav.projects": "Projects", "nav.contact": "Contact", "pj.mc.d": "My personal assistant on Telegram: homework, grades, reminders and Subito deals, with a model that runs on my own PC.", "pj.ios.n": "MikyCore for iPhone", "pj.ios.d": "The bot's native app: chat, your day, grades, Classroom and Home Screen widgets.", "pj.sit.n": "Websites for local shops", "pj.sit.d": "A bot that finds shops without a website, builds one and prepares a QR kit to bring in person.", "next.title": "More projects", "ct.title": "Contact", "ct.lead": "Message me on Telegram: I usually reply the same day.", "foot": "Site written by hand in HTML, CSS and JavaScript.", "totop": "Back to top"};</script>
+  <script src="/proj.js?v=1"></script>
+</body>
+</html>
