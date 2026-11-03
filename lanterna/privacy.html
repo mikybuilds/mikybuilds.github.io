@@ -27,8 +27,8 @@
     <li><b>Your messages</b> go only to the AI service you chose (for example Groq or Google Gemini), under that service's own terms, together with the facts you asked Lanterna to remember. With local models (Ollama) nothing leaves your computer.</li>
     <li><b>Web search, web pages and weather</b>: when you ask for them, Lanterna sends the search words or city to DuckDuckGo, the page's website or Open-Meteo.</li>
     <li><b>Update check</b>: when Lanterna starts, it asks GitHub which version is the latest. Nothing about you is sent. You can turn this off in Settings → Updates.</li>
-    <li><b>Working folder</b> (optional): if you choose a folder in Settings, the files the assistant opens there are sent to the AI service in use, like a message. Lanterna sees nothing outside that folder and changes files only after you press Confirm.</li>
-    <li><b>Limits</b>: the numbers in Settings → Limits are counted on your computer from the services' own answers. Nothing is sent for them.</li>
+    <li><b>Working folder</b> (optional): if you choose a folder in Settings (or for one chat, under the message box), the files the assistant opens there are sent to the AI service in use, like a message. Lanterna sees nothing outside that folder and changes files only after you press Confirm.</li>
+    <li><b>Limits</b>: the numbers in Settings → Limits and in the bar under the message box are counted on your computer from the services' own answers. Nothing is sent for them.</li>
     <li><b>Bug reports</b> are never sent automatically. You see the whole text and send it yourself, by e-mail or as a GitHub issue.</li>
   </ul>
 
@@ -51,6 +51,16 @@
     <li>Disconnect removes the permission and the token from your computer.</li>
   </ul>
   <p>Lanterna's use of information received from Google APIs follows the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+  <h2>GitHub connector</h2>
+  <p>Optional. If you connect GitHub in Settings → Connectors, you can ask the assistant to push files from the chat's folder to your repositories.</p>
+  <ul>
+    <li>Lanterna uses the GitHub App <b>Lanterna Assistant</b>. You install it only on the repositories you choose, and it has one permission: <b>Contents</b> (read and write the files and commits of those repositories), plus the read-only metadata GitHub always adds. It cannot see other repositories, create or delete repositories, change settings or add people.</li>
+    <li>You sign in by typing a short code on github.com. No password is entered in Lanterna; the sign-in token is stored in your system's secure vault and is used only from your computer, directly with GitHub.</li>
+    <li>Every push is shown first (repository, branch, files, message) and happens only after you press Confirm. Files that look like passwords or keys are never pushed.</li>
+    <li>Commits are made in your name; Lanterna Assistant is shown as a co-author unless you turn that off. Your code and token are never sent to the author of Lanterna. GitHub shows the owner of a GitHub App which accounts installed it.</li>
+    <li>Disconnect removes the token from your computer. To remove the access on GitHub too: GitHub → Settings → Applications.</li>
+  </ul>
 
   <h2>How to delete your data</h2>
   <ul>
