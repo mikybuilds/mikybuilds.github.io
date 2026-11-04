@@ -12,7 +12,7 @@
 <main>
   <p class="back"><a href="./">← Lanterna</a></p>
   <h1>Privacy policy</h1>
-  <p class="by">Last updated: 3 November 2026</p>
+  <p class="by">Last updated: 4 November 2026</p>
 
   <p>Lanterna is a free, open-source desktop app (Windows and Linux) made by mikybuilds. It has no servers of its own: it runs on your computer, and its author does not receive your chats, your files or anything about you. The full source code is public, so you can check everything written here.</p>
 
@@ -28,17 +28,19 @@
     <li><b>Web search, web pages and weather</b>: when you ask for them, Lanterna sends the search words or city to DuckDuckGo, the page's website or Open-Meteo.</li>
     <li><b>Update check</b>: when Lanterna starts, it asks GitHub which version is the latest. Nothing about you is sent. You can turn this off in Settings → Updates.</li>
     <li><b>Working folder</b> (optional): if you choose a folder in Settings (or for one chat, under the message box), the files the assistant opens there are sent to the AI service in use, like a message. Lanterna sees nothing outside that folder and changes files only after you press Confirm.</li>
+    <li><b>Help with this computer</b> (Settings → Computer, can be turned off): Lanterna may look in your Downloads, Desktop, Documents, Pictures, Videos and Music folders. The file names, sizes and the files it opens there, and the computer check-up (free disk space, memory, running programs, startup apps), are sent to the AI service in use, like a message. System folders, AppData, hidden files and files that look like passwords or keys are never read. Every change (moving, Recycle Bin, installing a program, a setting) happens only after you press Confirm.</li>
+    <li><b>Programs</b>: when you ask to find or install a program, Lanterna uses your system's own package tool (winget, dnf or Flatpak), which contacts its usual sources (for example the winget catalogue or Flathub). Lanterna adds nothing about you.</li>
     <li><b>Limits</b>: the numbers in Settings → Limits and in the bar under the message box are counted on your computer from the services' own answers. Nothing is sent for them.</li>
     <li><b>Bug reports</b> are never sent automatically. You see the whole text and send it yourself, by e-mail or as a GitHub issue.</li>
   </ul>
 
   <h2>Google sign-in and Google Drive</h2>
-  <p>Both Google features are optional and separate: you can use one, both or none.</p>
+  <p>Both Google features are optional. One Google sign-in can give both permissions; on Google's page you can untick the Drive connector part and keep only sync.</p>
   <h3>Chat sync</h3>
   <p>Signing in with Google lets you see the same chats on your other devices.</p>
   <ul>
     <li>For this Lanterna asks for one permission only: <code>drive.appdata</code> — “See, create and delete its own configuration data in your Google Drive”. This gives access to a hidden folder that belongs to Lanterna. Lanterna <b>cannot see, open or change any other file</b> in your Google Drive.</li>
-    <li>In that folder Lanterna keeps an encrypted copy of your chats, memory, reminders and settings. Your API keys are not copied there.</li>
+    <li>In that folder Lanterna keeps one encrypted file with your chats, memory, reminders, settings and the API keys of the model services you added, so a new device is ready after one sign-in. It is encrypted on your device with a sync password only you know (AES-256); Google and the author of Lanterna cannot read it. Sign-in tokens for Google and GitHub are not copied there.</li>
     <li>This data moves only between your devices and your own Google Drive. It is never sent to the author of Lanterna or to anyone else, never sold, and never used for advertising or to train AI models.</li>
     <li>The sign-in token is stored in your system's secure vault on each device.</li>
   </ul>
