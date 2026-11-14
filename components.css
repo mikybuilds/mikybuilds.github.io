@@ -45,8 +45,9 @@
 .index-row { position: relative; padding: var(--s5) 0; border-top: 1px solid var(--line); color: inherit; text-decoration: none; }
 .index-row:last-child { border-bottom: 1px solid var(--line); }
 .index-row:hover { color: inherit; text-decoration: none; }
-.index-row::before, .contact-row::before { content: ""; position: absolute; inset: -1px calc(-1 * var(--s4)) 0; background: var(--bg-2); opacity: 0; transition: opacity var(--t-fast); }
-.index-row > *, .contact-row > * { position: relative; }
+/* the hover background sits under the whole row (its own stacking context), so no text can end up behind it */
+.index-row, .contact-row { isolation: isolate; }
+.index-row::before, .contact-row::before { content: ""; position: absolute; z-index: -1; inset: -1px calc(-1 * var(--s4)) 0; background: var(--bg-2); opacity: 0; transition: opacity var(--t-fast); }
 .index-row:hover::before, .index-row:focus-visible::before, .contact-row:hover::before, .contact-row:focus-visible::before { opacity: 1; }
 .row-title { view-transition-class: none; }
 .row-desc { color: var(--ink-2); }
