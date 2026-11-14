@@ -5,410 +5,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mykhailo Zhupanov — bot Telegram e AI in locale</title>
   <meta name="description" content="Mykhailo Zhupanov (Михайло Жупанов, Міша Жупанов), studente di informatica a Ferrara. Costruisco bot Telegram, siti web e assistenti AI che girano sul mio PC.">
-  <meta name="keywords" content="Mykhailo Zhupanov, Mikhail Zhupanov, Misha Zhupanov, Zhupanov Mykhailo, Михайло Жупанов, Міша Жупанов, Жупанов Михайло, Миша Жупанов, mikybuilds, MikyCore">
-  <meta name="author" content="Mykhailo Zhupanov">
+  <meta name="author" content="Mykhailo Zhupanov (Михайло Жупанов)">
+  <meta name="theme-color" content="#F3F4F6">
   <link rel="canonical" href="https://mikybuilds.github.io/">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Person","name":"Mykhailo Zhupanov","givenName":"Mykhailo","familyName":"Zhupanov","alternateName":["Mikhail Zhupanov","Misha Zhupanov","Zhupanov Mykhailo","Михайло Жупанов","Міша Жупанов","Миша Жупанов","Жупанов Михайло","mikybuilds"],"url":"https://mikybuilds.github.io/","mainEntityOfPage":"https://mikybuilds.github.io/","jobTitle":"Computer science student, developer","homeLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Ferrara","addressCountry":"IT"}},"knowsAbout":["Telegram bots","Local LLM","iOS apps","Web development"],"sameAs":["https://github.com/mikybuilds","https://www.linkedin.com/in/mykhailo-zhupanov/","https://t.me/mikybuilds","https://www.instagram.com/mishh9ar/"]}
+  {"@context": "https://schema.org", "@type": "Person", "name": "Mykhailo Zhupanov", "alternateName": ["Mikhail Zhupanov", "Misha Zhupanov", "Zhupanov Mykhailo", "Михайло Жупанов", "Міша Жупанов", "Миша Жупанов", "Жупанов Михайло", "mikybuilds"], "url": "https://mikybuilds.github.io/", "givenName": "Mykhailo", "familyName": "Zhupanov", "mainEntityOfPage": "https://mikybuilds.github.io/", "jobTitle": "Computer science student, developer", "homeLocation": {"@type": "Place", "address": {"@type": "PostalAddress", "addressLocality": "Ferrara", "addressCountry": "IT"}}, "knowsAbout": ["Telegram bots", "Local LLM", "iOS apps", "Web development"], "sameAs": ["https://github.com/mikybuilds", "https://www.linkedin.com/in/mykhailo-zhupanov/", "https://t.me/mikybuilds", "https://www.instagram.com/mishh9ar/"]}
   </script>
   <meta name="color-scheme" content="light dark">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Mykhailo Zhupanov (Михайло Жупанов) — bot Telegram e AI in locale">
-  <meta property="og:site_name" content="Mykhailo Zhupanov · Михайло Жупанов">
-  <meta property="og:description" content="Costruisco bot che lavorano mentre studio. Progetto principale: MikyCore.">
+  <meta property="og:title" content="Mykhailo Zhupanov — bot Telegram e AI in locale">
+  <meta property="og:description" content="Mykhailo Zhupanov (Михайло Жупанов, Міша Жупанов), studente di informatica a Ferrara. Costruisco bot Telegram, siti web e assistenti AI che girano sul mio PC.">
   <meta property="og:image" content="https://mikybuilds.github.io/assets/og.png">
   <meta property="og:url" content="https://mikybuilds.github.io/">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232b59ff'/%3E%3Ctext x='32' y='43' font-family='Arial Black,Arial' font-weight='900' font-size='30' text-anchor='middle' fill='%23fff'%3EM.%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%2314161B'/%3E%3Cpath d='M13 47V18l12 17 12-17v29' fill='none' stroke='%23F3F4F6' stroke-width='6' stroke-linejoin='miter'/%3E%3Ccircle cx='51' cy='45' r='5' fill='%23F2A93B'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="app.css?v=10">
-  <link rel="stylesheet" href="style.css?v=10">
-  <link rel="stylesheet" href="cards.css?v=10">
-  <script>document.documentElement.classList.add("js");</script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Onest:wght@400..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/tokens.css?v=13">
+  <link rel="stylesheet" href="/base.css?v=13">
+  <link rel="stylesheet" href="/components.css?v=13">
+  <link rel="stylesheet" href="/pages.css?v=13">
+  <script src="/lv.js?v=1" defer></script>
+  <script>(function(){var d=document.documentElement;d.classList.add("js");try{var t=localStorage.getItem("theme");if(t)d.dataset.theme=t}catch(e){}})();</script>
 </head>
-<body>
+<body data-page="home">
   <a class="skip" href="#main" data-i18n="skip">Vai al contenuto</a>
-  <div class="progress" id="progress" aria-hidden="true"></div>
+  
 
-  <!-- icons used inside the app screens -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M4 15h9" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="18.5" cy="15" r="1.9" fill="#2B59FF"/></symbol>
-    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 6.5A2.5 2.5 0 0 1 7.5 4h9A2.5 2.5 0 0 1 19 6.5v7a2.5 2.5 0 0 1-2.5 2.5H11l-4 3.5V16h.5A2.5 2.5 0 0 1 5 13.5z" stroke="#ECEFF4" stroke-width="1.75" stroke-linejoin="round" fill="none"/><circle cx="15.5" cy="9.8" r="1.5" fill="#2B59FF"/></symbol>
-    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2.1-5" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M19.500 4.500v4h-4" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500" stroke="#3FB984" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
-    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#8C95A6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
-    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3.500" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M5.500 11.500a6.500 6.500 0 0 0 13 0M12 18v2.500" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
-    <symbol id="i-cam" viewBox="0 0 24 24"><path d="M4 8.500A2.500 2.500 0 0 1 6.500 6h1.800l1.400-2h4.600l1.400 2h1.800A2.500 2.500 0 0 1 20 8.500v8A2.500 2.500 0 0 1 17.500 19h-11A2.500 2.500 0 0 1 4 16.500z" stroke="#ECEFF4" stroke-width="1.75" stroke-linejoin="round" fill="none"/><circle cx="12" cy="12.500" r="3" stroke="#ECEFF4" stroke-width="1.75" fill="none"/></symbol>
-    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#ECEFF4" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
-    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.500" stroke="#fff" stroke-width="1.8" fill="none"/><path d="M16 16l4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
-    <symbol id="i-class" viewBox="0 0 24 24"><rect x="3.500" y="4.500" width="17" height="11.500" rx="2" stroke="#ECEFF4" stroke-width="1.75" fill="none"/><path d="M8 20l2.500-4M16 20l-2.500-4" stroke="#ECEFF4" stroke-width="1.75" stroke-linecap="round" fill="none"/><circle cx="16.500" cy="10" r="1.700" fill="#2B59FF"/></symbol>
-    <symbol id="i-qr" viewBox="0 0 21 21"><path d="M0 0h7v1h-7zM8 0h2v1h-2zM11 0h1v1h-1zM14 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h2v1h-2zM11 1h2v1h-2zM14 1h1v1h-1zM20 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h3v1h-3zM12 2h1v1h-1zM14 2h1v1h-1zM16 2h3v1h-3zM20 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM8 3h1v1h-1zM12 3h1v1h-1zM14 3h1v1h-1zM16 3h3v1h-3zM20 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM9 4h1v1h-1zM11 4h2v1h-2zM14 4h1v1h-1zM16 4h3v1h-3zM20 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h2v1h-2zM11 5h1v1h-1zM14 5h1v1h-1zM20 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h7v1h-7zM8 7h1v1h-1zM10 7h2v1h-2zM0 8h2v1h-2zM4 8h1v1h-1zM6 8h1v1h-1zM9 8h1v1h-1zM11 8h2v1h-2zM14 8h1v1h-1zM16 8h1v1h-1zM0 9h1v1h-1zM4 9h1v1h-1zM7 9h1v1h-1zM9 9h1v1h-1zM14 9h2v1h-2zM17 9h4v1h-4zM0 10h1v1h-1zM2 10h3v1h-3zM6 10h2v1h-2zM12 10h3v1h-3zM17 10h4v1h-4zM2 11h4v1h-4zM12 11h1v1h-1zM17 11h3v1h-3zM0 12h11v1h-11zM13 12h5v1h-5zM20 12h1v1h-1zM9 13h4v1h-4zM14 13h2v1h-2zM18 13h1v1h-1zM20 13h1v1h-1zM0 14h7v1h-7zM12 14h3v1h-3zM18 14h2v1h-2zM0 15h1v1h-1zM6 15h1v1h-1zM13 15h1v1h-1zM15 15h5v1h-5zM0 16h1v1h-1zM2 16h3v1h-3zM6 16h1v1h-1zM9 16h1v1h-1zM13 16h5v1h-5zM0 17h1v1h-1zM2 17h3v1h-3zM6 17h1v1h-1zM8 17h1v1h-1zM11 17h1v1h-1zM16 17h2v1h-2zM19 17h1v1h-1zM0 18h1v1h-1zM2 18h3v1h-3zM6 18h1v1h-1zM9 18h2v1h-2zM13 18h3v1h-3zM18 18h1v1h-1zM0 19h1v1h-1zM6 19h1v1h-1zM9 19h1v1h-1zM11 19h2v1h-2zM17 19h1v1h-1zM20 19h1v1h-1zM0 20h7v1h-7zM8 20h3v1h-3zM12 20h3v1h-3zM16 20h2v1h-2zM20 20h1v1h-1z" fill="#0b0d12"/></symbol>
-  </svg>
-
-  <header class="bar" id="bar"><div class="top">
-    <a class="name" href="#main">Mykhailo</a>
-    <nav aria-label="Menu" id="nav">
-      <i class="nav-ind" aria-hidden="true"></i>
-      <a href="#about" data-i18n="nav.about">Chi sono</a>
-      <a href="#projects" data-i18n="nav.projects">Progetti</a>
-      <a href="#services" data-i18n="nav.services">Servizi</a>
-      <a href="#contact" data-i18n="nav.contact">Contatti</a>
+  <header class="site-head"><div class="wrap">
+    <a class="brand" href="/">Mykhailo</a>
+    <nav class="site-nav" aria-label="Menu">
+      <a data-i18n="nav.projects" href="/#projects" data-sec="projects">Progetti</a>
+      <a class="hide-m" data-i18n="nav.about" href="/#about" data-sec="about">Chi sono</a>
+      <a class="hide-s" data-i18n="nav.services" href="/#services" data-sec="services">Servizi</a>
+      <a data-i18n="nav.contact" href="/#contact" data-sec="contact">Contatti</a>
     </nav>
-    <div class="switches">
-      <button id="lang" type="button" aria-label="Switch to English">EN</button>
-      <button id="theme" type="button" aria-label="Tema scuro">
-        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
-        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
-      </button>
+    <div class="tools">
+      <div class="lang" role="group" aria-label="Lingua / Language"><button type="button" data-lang="it" aria-pressed="true">IT</button><span aria-hidden="true">·</span><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+      <button id="theme" class="theme-btn" type="button" aria-label="Tema scuro"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path class="half" d="M12 4a8 8 0 0 1 0 16z"/></svg><span class="t-label">Scuro</span></button>
     </div>
   </div></header>
 
   <main id="main">
-    <!-- HERO -->
-    <section class="hero" id="hero">
-      <div class="aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
-      <div class="grain" aria-hidden="true"></div>
-      <div class="hero-in">
-        <div class="hero-copy" id="hero-copy">
-          <p class="badge"><i></i><span data-i18n="hero.badge">Disponibile per piccoli progetti</span></p>
-          <h1 data-i18n="hero.title">Costruisco bot che lavorano mentre io studio.</h1>
-          <p class="lead" data-i18n="hero.lead">Sono Mykhailo Zhupanov, studente di informatica in Italia. Il mio assistente MikyCore gira sul mio PC: tiene d'occhio i compiti, mi prepara per le verifiche e trova affari su Subito.</p>
-          <p class="actions">
-            <a class="cta" href="https://t.me/mikybuilds" id="cta-tg" data-mag data-i18n="hero.cta">Scrivimi su Telegram</a>
-            <a class="quiet" href="/projects/mikycore/" data-i18n="hero.more">Come funziona MikyCore</a>
-          </p>
-        </div>
 
-        <figure class="chat" id="hero-phone" aria-label="Esempio di conversazione con MikyCore">
-          <div class="notes" aria-hidden="true">
-            <div class="note n1"><i class="ic bl"></i><span><b data-i18n="nt.1t">Promemoria</b><small data-i18n="nt.1d">Verifica di fisica domani, 10:40</small></span></div>
-            <div class="note n2"><i class="ic gr"></i><span><b data-i18n="nt.2t">Affare trovato</b><small data-i18n="nt.2d">Dell Latitude 7490 · −40%</small></span></div>
-            <div class="note n3"><i class="ic ck"></i><span><b data-i18n="nt.3t">Compito pronto</b><small data-i18n="nt.3d">average.py, verificato eseguendolo</small></span></div>
-          </div>
-          <div class="tiltbox" id="tilt"><div class="floatbox"><div class="phone hero-phone">
-            <div class="screen app">
-              <header class="a-hd a-chat-hd">
-                <a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a>
-                <div class="a-title"><b>MikyCore<i>.</i></b><span class="a-status"><u></u><em id="status" data-i18n="st.online">online</em></span></div>
-                <a class="a-btn a-btn-s"><b>10:40</b><span data-i18n="su.fi">Fisica</span></a>
-              </header>
-              <div class="a-main a-chat">
-                <div class="a-day" data-i18n="g.today">Oggi, 15:42</div>
-                <ol class="msgs" id="msgs">
-                  <li class="me" data-i18n="g.me1">Cosa ho domani?</li>
-                  <li class="bot"><span class="av">M.</span><div class="bd">
-                    <p data-i18n="g.b1">Domani hai 5 lezioni, si comincia alle 8:00. Il punto importante: la verifica di fisica alla terza ora.</p>
-                    <div class="a-card a-sched">
-                      <div class="a-sched-h"><b data-i18n="g.day">Martedì 21 ottobre</b><span data-i18n="g.n5">5 lezioni</span></div>
-                      <div class="a-sched-r"><span>8:00</span><span data-i18n="su.it">Italiano</span></div>
-                      <div class="a-sched-r"><span>8:55</span><span data-i18n="su.ma">Matematica</span></div>
-                      <div class="a-sched-r hot"><span>10:40</span><b data-i18n="su.fi">Fisica</b><em data-i18n="m.test">verifica</em></div>
-                    </div>
-                  </div></li>
-                  <li class="me" data-i18n="c1">Ci sono ThinkPad buoni su Subito?</li>
-                  <li class="bot"><span class="av">M.</span><div class="bd">
-                    <p data-i18n="c2a">Uno sì: Dell Latitude 7490, i7 con 8 GB, a 150 €.</p>
-                    <div class="deal"><b data-i18n="c2b">Per questa configurazione il mercato è circa 250 €</b><span data-i18n="c2c">Spedizione con TuttoSubito, pagamento protetto.</span></div>
-                  </div></li>
-                </ol>
-              </div>
-              <div class="a-composer">
-                <div class="a-in"><span class="a-plus"><svg width="20" height="20"><use href="#i-plus"/></svg></span><span class="ph" data-i18n="g.ph">Scrivi a MikyCore…</span><span class="a-mic"><svg width="20" height="20" style="color:#fff"><use href="#i-mic"/></svg></span></div>
-              </div>
-            </div>
-          </div></div></div>
-          <figcaption data-i18n="chat.cap">Una conversazione tipo con MikyCore.</figcaption>
-        </figure>
+    <section class="intro"><div class="wrap">
+      <p class="label">Mykhailo Zhupanov · Ferrara</p>
+      <h1 class="display" data-i18n="hero.title" data-split>Costruisco bot che lavorano mentre io studio.</h1>
+      <p class="lead" data-i18n="hero.lead">Sono Mykhailo Zhupanov, studente di informatica in Italia. Il mio assistente MikyCore gira sul mio PC: tiene d'occhio i compiti, mi prepara per le verifiche e trova affari su Subito.</p>
+      <p class="actions"><a class="btn" href="https://t.me/mikybuilds" target="_blank" rel="noopener"><span data-i18n="hero.cta">Scrivimi su Telegram</span><span class="arr" aria-hidden="true">→</span></a><a class="more" href="#projects"><span data-i18n="hero.more2">Vedi i progetti</span><span class="arr" aria-hidden="true">↓</span></a></p>
+    </div></section>
+
+    <section class="sec first" id="projects"><div class="wrap">
+      <h2 class="label" data-i18n="pj.title">01 — Progetti</h2>
+      <div class="index">
+        <div class="index-head label" aria-hidden="true"><span data-i18n="ix.n">N°</span><span data-i18n="ix.p">Progetto</span><span data-i18n="ix.d">Cosa fa</span><span data-i18n="ix.k">Stack</span><span data-i18n="ix.s">Stato</span></div>
+        <a class="index-row" href="/projects/lanterna/" data-preview="/assets/lanterna/chat.webp"><span class="row-no meta">01</span><span class="row-title h3" style="view-transition-name:p-lanterna">Lanterna</span><span class="row-desc" data-i18n="pj.lan.d">Assistente AI gratuito per Windows e Linux: usa modelli cloud gratuiti o i tuoi modelli locali. Open source, senza telemetria.</span><span class="row-meta"><span class="row-k meta">Python · MIT</span><span class="row-s meta"><span><span class="dot" aria-hidden="true"></span><span data-lv="v">v1.1.8</span></span><span class="arr" aria-hidden="true">→</span></span></span></a><a class="index-row" href="/projects/mikycore/" data-preview="/assets/previews/mikycore.webp"><span class="row-no meta">02</span><span class="row-title h3" style="view-transition-name:p-mikycore">MikyCore</span><span class="row-desc" data-i18n="pj.mc.d">Il mio assistente personale su Telegram: compiti, voti, promemoria e affari su Subito, con un modello che gira sul mio PC.</span><span class="row-meta"><span class="row-k meta">Python · Ollama · Telegram</span><span class="row-s meta"><span data-i18n="ix.private">Codice privato</span><span class="arr" aria-hidden="true">→</span></span></span></a><a class="index-row" href="/projects/ios/" data-preview="/assets/previews/ios.webp"><span class="row-no meta">03</span><span class="row-title h3" data-i18n="pj.ios.n" style="view-transition-name:p-ios">MikyCore per iPhone</span><span class="row-desc" data-i18n="pj.ios.d">L'app nativa del bot: chat, giornata, voti, Classroom e widget sulla schermata Home.</span><span class="row-meta"><span class="row-k meta">Swift · SwiftUI · WidgetKit</span><span class="row-s meta"><span data-i18n="ix.private">Codice privato</span><span class="arr" aria-hidden="true">→</span></span></span></a><a class="index-row" href="/projects/sites/" data-preview="/assets/previews/sites.webp"><span class="row-no meta">04</span><span class="row-title h3" data-i18n="pj.sites.n" style="view-transition-name:p-sites">Siti per negozi locali</span><span class="row-desc" data-i18n="pj.sit.d">Un bot che trova attività senza sito, ne costruisce uno e prepara il kit con QR da portare di persona.</span><span class="row-meta"><span class="row-k meta">Python · OpenStreetMap · Netlify</span><span class="row-s meta"><span data-i18n="ix.private">Codice privato</span><span class="arr" aria-hidden="true">→</span></span></span></a>
       </div>
-    </section>
+    </div></section>
 
-    <!-- STACK MARQUEE -->
-    <div class="marquee" aria-label="Stack">
-      <ul class="track" id="track">
-        <li>Python</li><li>C++</li><li>JavaScript</li><li>HTML / CSS</li><li>Ollama</li><li>Qwen3</li><li>Whisper</li><li>Telegram Bot API</li><li>Mini App</li><li>Playwright</li><li>Obsidian</li><li>Flowgorithm</li>
-      </ul>
-    </div>
-
-    <!-- ABOUT -->
-    <section id="about" class="about">
-      <div class="sec">
-        <h2 data-r data-i18n="about.title">Chi sono</h2>
-        <div class="about-body">
-          <p class="big scrub" id="scrub" data-i18n="about.p1">Sono ucraino e vivo in Italia, dove frequento il terzo anno di informatica. Mi piace prendere un problema di tutti i giorni — compiti, voti, appunti, annunci online — e scrivere il programma che lo risolve da solo.</p>
-          <p class="plain" data-r data-i18n="ab.p2">Ogni funzione ha i suoi test automatici, e provo tutto sul modello reale prima di fidarmi.</p>
-          <dl class="facts">
-            <div data-r><dt data-i18n="ab.k1">Studio</dt><dd data-i18n="ab.v1">Informatica, terzo anno</dd></div>
-            <div data-r style="--d:80ms"><dt data-i18n="ab.k4">Lingue</dt><dd data-i18n="ab.v4">Ucraino (madrelingua), italiano, inglese</dd></div>
-            <div data-r style="--d:160ms"><dt data-i18n="ab.k5">Progetto principale</dt><dd>MikyCore</dd></div>
-          </dl>
-        </div>
+    <section class="sec" id="about"><div class="wrap"><div class="split">
+      <div class="split-main">
+        <span class="label">02</span>
+        <h2 class="h2" data-i18n="about.title">Chi sono</h2>
+        <p class="lead wide" data-i18n="about.p1" data-r>Sono ucraino e vivo in Italia, dove frequento il terzo anno di informatica. Mi piace prendere un problema di tutti i giorni — compiti, voti, appunti, annunci online — e scrivere il programma che lo risolve da solo.</p>
+        <p class="body dim" data-i18n="ab.p2" data-r>Ogni funzione ha i suoi test automatici, e provo tutto sul modello reale prima di fidarmi.</p>
       </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="projects">
-      <div class="sec">
-        <h2 data-r data-i18n="pj.title">Progetti</h2>
-        <p class="srv-lead" data-r data-i18n="pj.lead">Le cose che ho costruito. Apri un progetto per vedere come funziona.</p>
-        <div class="pgrid">
-
-          <a class="pc pc-lan wide spot" href="/projects/lanterna/" data-r data-pt="#161b2b" style="--pbg:linear-gradient(160deg,#1c2338,#0b0e17);--pg:245,181,68">
-            <div class="pc-body">
-              <ul class="pc-tags"><li class="hot" data-i18n="pj.new">Nuovo</li><li data-i18n="pj.t.os">Open source</li><li>MIT · <span data-lv="v">v0.3.2</span></li><li>Windows · Linux</li></ul>
-              <h3>Lanterna</h3>
-              <p data-i18n="pj.lan.d">Un assistente AI gratuito per Windows e Linux: usa modelli cloud gratuiti o i tuoi modelli locali. Open source, senza telemetria.</p>
-              <span class="pc-more"><span data-i18n="pj.more">Scopri il progetto</span><svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-            </div>
-            <div class="pc-art" aria-hidden="true">
-              <i class="lg"></i>
-              <img class="lw w1" src="/assets/lanterna/chat.webp" alt="" loading="lazy" width="1120" height="760">
-              <img class="lw w2" src="/assets/lanterna/terminal.webp" alt="" loading="lazy" width="1400" height="912">
-              <img class="lm" src="/lanterna/logo.svg" alt="" width="64" height="64">
-            </div>
-          </a>
-
-          <a class="pc pc-mc spot" href="/projects/mikycore/" data-r style="--d:80ms;--pbg:linear-gradient(160deg,#122a6b,#0b0d12);--pg:43,89,255" data-pt="#0f1d4d">
-            <div class="pc-body">
-              <ul class="pc-tags"><li>Telegram</li><li data-i18n="pj.t.local">AI locale</li></ul>
-              <h3>MikyCore</h3>
-              <p data-i18n="pj.mc.d">Il mio assistente personale su Telegram: compiti, voti, promemoria e affari su Subito, con un modello che gira sul mio PC.</p>
-              <span class="pc-more"><span data-i18n="pj.more">Scopri il progetto</span><svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-            </div>
-            <div class="pc-art" aria-hidden="true">
-              <div class="bub b1" data-i18n="pj.mc.q">Cosa ho domani?</div>
-              <div class="bub b2"><i>M.</i><span data-i18n="pj.mc.a">Domani hai 5 lezioni. Alla terza ora c'è la verifica di fisica.</span></div>
-              <div class="bub b3" data-i18n="pj.mc.q2">Preparami un ripasso</div>
-              <div class="bub b4"><u></u><u></u><u></u></div>
-            </div>
-          </a>
-
-          <a class="pc pc-ios spot" href="/projects/ios/" data-r style="--d:80ms;--pbg:linear-gradient(160deg,#2a1d63,#0b0d12);--pg:109,76,255" data-pt="#211757">
-            <div class="pc-body">
-              <ul class="pc-tags"><li>iOS</li><li>SwiftUI</li><li>Widget</li></ul>
-              <h3 data-i18n="pj.ios.n">MikyCore per iPhone</h3>
-              <p data-i18n="pj.ios.d">L'app nativa del bot: chat, giornata, voti, Classroom e widget sulla schermata Home.</p>
-              <span class="pc-more"><span data-i18n="pj.more">Scopri il progetto</span><svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-            </div>
-            <div class="pc-art" aria-hidden="true">
-              <div class="phone ph1" data-clone="2"></div>
-              <div class="phone ph2" data-clone="1"></div>
-            </div>
-          </a>
-
-          <a class="pc pc-sit wide spot" href="/projects/sites/" data-r style="--d:160ms;--pbg:linear-gradient(160deg,#0f4a3b,#0b0d12);--pg:20,162,115" data-pt="#0b3a2e">
-            <div class="pc-body">
-              <ul class="pc-tags"><li>Python</li><li>OpenStreetMap</li><li>Netlify</li><li>QR</li></ul>
-              <h3 data-i18n="pj.sit.n">Siti per negozi locali</h3>
-              <p data-i18n="pj.sit.d">Un bot che trova attività senza sito, ne costruisce uno e prepara il kit con QR da portare di persona.</p>
-              <span class="pc-more"><span data-i18n="pj.more">Scopri il progetto</span><svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-            </div>
-            <div class="pc-art" aria-hidden="true">
-              <div class="br">
-                <div class="br-bar"><i></i><i></i><i></i><u>nome-del-locale.it</u></div>
-                <div class="br-body">
-                  <div class="br-hero"><b data-i18n="pj.sit.name">Caffè Esempio</b><span data-i18n="pj.sit.sub">Sito di esempio creato dal bot</span><em data-i18n="pj.sit.cta">Chiamaci</em></div>
-                  <div class="br-row"><i></i><i></i><i></i></div>
-                </div>
-              </div>
-              <div class="kit"><b>QR</b><svg class="qr" viewBox="0 0 21 21"><use href="#i-qr"/></svg></div>
-              <div class="live"><i></i><span data-i18n="pj.sit.live">online</span></div>
-            </div>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- the six real app screens: cloned into the iPhone card; the generator of the project pages reads them too -->
-    <template id="app-screens">
-      <figure class="phone mini"><div class="screen app">
-                <header class="a-hd a-chat-hd">
-                  <a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a>
-                  <div class="a-title"><b>MikyCore<i>.</i></b><span class="a-status"><u></u><em data-i18n="st.online">online</em></span></div>
-                  <a class="a-btn a-btn-s"><b>10:40</b><span data-i18n="su.fi">Fisica</span></a>
-                </header>
-                <div class="a-main a-chat">
-                  <div class="a-day" data-i18n="g.today">Oggi, 15:42</div>
-                  <ol class="msgs static">
-                    <li class="me" data-i18n="g.me1">Cosa ho domani?</li>
-                    <li class="bot"><span class="av">M.</span><div class="bd">
-                      <p data-i18n="g.b1">Domani hai 5 lezioni, si comincia alle 8:00. Il punto importante: la verifica di fisica alla terza ora.</p>
-                      <div class="a-card a-sched">
-                        <div class="a-sched-h"><b data-i18n="g.day">Martedì 21 ottobre</b><span data-i18n="g.n5">5 lezioni</span></div>
-                        <div class="a-sched-r"><span>8:00</span><span data-i18n="su.it">Italiano</span></div>
-                        <div class="a-sched-r"><span>8:55</span><span data-i18n="su.ma">Matematica</span></div>
-                        <div class="a-sched-r hot"><span>10:40</span><b data-i18n="su.fi">Fisica</b><em data-i18n="m.test">verifica</em></div>
-                        <div class="a-sched-r"><span>11:35</span><span data-i18n="su.st">Storia</span></div>
-                      </div>
-                      <div class="a-chips2"><span data-i18n="m.hw">Compiti per domani</span><span data-i18n="g.ch2">Piano di ripasso</span></div>
-                    </div></li>
-                  </ol>
-                </div>
-                <div class="a-composer">
-                  <div class="a-in"><span class="a-plus"><svg width="20" height="20"><use href="#i-plus"/></svg></span><span class="ph" data-i18n="g.ph">Scrivi a MikyCore…</span><span class="a-mic"><svg width="20" height="20" style="color:#fff"><use href="#i-mic"/></svg></span></div>
-                </div>
-              </div></figure>
-      <figure class="phone mini"><div class="screen app">
-                <header class="a-hd">
-                  <div class="a-row">
-                    <a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a>
-                    <a class="a-btn"><svg width="18" height="18"><use href="#i-chat"/></svg><span data-i18n="m.ask">Chiedi a MikyCore</span></a>
-                  </div>
-                  <div><h1 class="a-h1" data-i18n="m.today">Oggi</h1><p class="a-sub" data-i18n="m.date">Lunedì 20 ottobre</p></div>
-                </header>
-                <div class="a-main">
-                  <section class="a-now">
-                    <div class="a-now-r"><b data-i18n="m.now">Adesso · 3ª ora</b><span data-i18n="m.left">ancora 28 min</span></div>
-                    <div class="a-now-r end"><span class="a-now-t" data-i18n="su.fi">Fisica</span><span class="tab">10:40 – 11:35</span></div>
-                    <div class="a-bar"><i></i></div>
-                    <div class="a-now-n" data-i18n="m.next">Dopo: Storia alle 11:35</div>
-                  </section>
-                  <section class="a-card a-tl">
-                    <div class="done"><span>8:00</span><u></u><s data-i18n="su.it">Italiano</s></div>
-                    <div class="done"><span>8:55</span><u></u><s data-i18n="su.ma">Matematica</s></div>
-                    <div class="cur"><span>10:40</span><u></u><b data-i18n="su.fi">Fisica</b></div>
-                    <div class="nxt"><span>11:35</span><u></u><i data-i18n="su.st">Storia</i></div>
-                    <div class="nxt"><span>12:30</span><u></u><i data-i18n="su.en">Inglese</i></div>
-                  </section>
-                  <section class="a-hw">
-                    <div class="a-sec-h"><h2 data-i18n="m.hw">Compiti per domani</h2><span data-i18n="m.hwc">1 di 3</span></div>
-                    <label class="a-task done"><i class="cb on"></i><span data-i18n="m.hw1">Matematica — esercizi 4–7, p. 112</span></label>
-                    <label class="a-task"><i class="cb"></i><span data-i18n="m.hw2">Storia — leggere il paragrafo 9</span></label>
-                    <label class="a-task"><i class="cb"></i><span data-i18n="m.hw3">Fisica — ripassare le leggi di Newton</span><em data-i18n="m.test">verifica</em></label>
-                  </section>
-                  <a class="a-link"><svg width="20" height="20"><use href="#i-class"/></svg><span><b data-i18n="m.cr">Classroom: media aritmetica</b><small data-i18n="m.crd">entro domani, 23:59 · ancora 2 compiti</small></span><svg width="16" height="16"><use href="#i-chev"/></svg></a>
-                </div>
-              </div></figure>
-      <figure class="phone mini"><div class="screen app">
-                <header class="a-hd">
-                  <div class="a-row"><a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a><span class="a-meta" data-i18n="gr.upd">Classeviva · aggiornato 14:05</span></div>
-                  <h1 class="a-h1" data-i18n="gr.h">Voti</h1>
-                </header>
-                <div class="a-main">
-                  <section class="a-card a-avg">
-                    <div><b class="big-n" data-num>7,6</b><span data-i18n="gr.avg">media del semestre</span><em data-i18n="gr.up">▲ 0,3 nell'ultimo mese</em></div>
-                    <svg viewBox="0 0 150 70" fill="none" role="img" aria-label=""><path d="M4 52 L30 46 L56 50 L82 36 L108 32 L134 22" stroke="#2B59FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 52 L30 46 L56 50 L82 36 L108 32 L134 22 L134 66 L4 66 Z" fill="rgba(43,89,255,0.12)"/><circle cx="134" cy="22" r="4.500" fill="#2B59FF"/></svg>
-                  </section>
-                  <section class="a-card a-subj">
-                    <div><span data-i18n="su.ma">Matematica</span><b data-num>7,2</b><p><i style="width:72%;background:#F2B44B"></i></p><small data-num>6½ · 8 · 7</small></div>
-                    <div><span data-i18n="su.fi">Fisica</span><b data-num>7,8</b><p><i style="width:78%"></i></p><small data-num>8 · 7½ · 8</small></div>
-                    <div><span data-i18n="su.it">Italiano</span><b data-num>8,1</b><p><i style="width:81%;background:#3FB984"></i></p><small data-num>8 · 8½</small></div>
-                    <div><span data-i18n="su.st">Storia</span><b data-num>7,5</b><p><i style="width:75%"></i></p><small data-num>7 · 8</small></div>
-                    <div><span data-i18n="su.en">Inglese</span><b data-num>7,4</b><p><i style="width:74%"></i></p><small data-num>7½ · 7</small></div>
-                  </section>
-                  <section class="a-tip">
-                    <small data-i18n="gr.tip">Consiglio</small>
-                    <span data-i18n="gr.tipt">Per arrivare a 8 in matematica, alla prossima verifica serve 9 o più.</span>
-                    <a data-i18n="gr.plan">Crea un piano di ripasso →</a>
-                  </section>
-                </div>
-              </div></figure>
-      <figure class="phone mini"><div class="screen app">
-                <header class="a-hd">
-                  <div class="a-row"><a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a><a class="a-btn"><svg width="18" height="18"><use href="#i-refresh"/></svg><span data-i18n="cl.ref">Aggiorna</span></a></div>
-                  <div><h1 class="a-h1">Classroom</h1><p class="a-sub" data-i18n="cl.sub">3 da consegnare · la prossima è domani</p></div>
-                  <div class="a-chips"><span class="on" data-i18n="cl.all">Tutti</span><span data-i18n="cl.cs">Informatica</span><span data-i18n="su.st">Storia</span></div>
-                </header>
-                <div class="a-main">
-                  <article class="a-card a-hwk">
-                    <div class="a-hwk-h"><span data-i18n="cl.cs">Informatica</span><em data-i18n="cl.d1">entro domani, 23:59</em></div>
-                    <h2 data-i18n="cl.t1">Programma: media aritmetica di un array</h2>
-                    <div class="tags"><span data-i18n="cl.g1">Codice · Python</span><span data-i18n="cl.m1">1 materiale</span></div>
-                    <div class="a-done"><svg width="18" height="18"><use href="#i-check"/></svg><span><b data-i18n="cl.ok">Fatto · su Google Drive</b><small data-i18n="cl.okd">average.py · verificato eseguendolo</small></span><a data-i18n="cl.chat">In chat</a></div>
-                  </article>
-                  <article class="a-card a-hwk">
-                    <div class="a-hwk-h"><span data-i18n="su.st">Storia</span><span class="mut" data-i18n="cl.d2">entro ven 25 ottobre</span></div>
-                    <h2 data-i18n="cl.t2">Presentazione: il Rinascimento in Italia</h2>
-                    <div class="tags"><span data-i18n="cl.g2">Presentazione</span><span data-i18n="cl.m2">2 materiali</span></div>
-                    <div class="a-acts"><span class="ghost" data-i18n="cl.do">Fallo con il bot</span><span class="sq"></span></div>
-                  </article>
-                  <article class="a-dash"><span><b data-i18n="cl.t3">Tema: il mio libro preferito</b><small data-i18n="cl.s3">Italiano · consegnato</small></span><svg width="20" height="20"><use href="#i-check"/></svg></article>
-                </div>
-              </div></figure>
-      <figure class="phone mini"><div class="screen app wg">
-                <section class="w-big">
-                  <div class="w-l">
-                    <div class="w-top"><span class="av">M.</span><b data-i18n="wg.tom">Domani · martedì</b></div>
-                    <div><span class="w-n" data-i18n="g.n5">5 lezioni</span><small data-i18n="wg.hrs">dalle 8:00 alle 13:25</small></div>
-                    <em data-i18n="wg.test">Verifica: fisica</em>
-                  </div>
-                  <div class="w-sep"></div>
-                  <div class="w-r">
-                    <small data-i18n="wg.hw">Compiti · 1 di 3</small>
-                    <span class="d"><i class="cb on"></i><s data-i18n="su.ma">Matematica</s></span>
-                    <span><i class="cb"></i><span data-i18n="su.st">Storia</span></span>
-                    <span><i class="cb"></i><span data-i18n="su.fi">Fisica</span></span>
-                  </div>
-                </section>
-                <div class="w-two">
-                  <section class="w-now">
-                    <div><b data-i18n="wg.now">Adesso</b><svg viewBox="0 0 36 36" width="34" height="34"><circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="4"/><circle cx="18" cy="18" r="14" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-dasharray="43 88" transform="rotate(-90 18 18)"/></svg></div>
-                    <div><span class="w-n" data-i18n="su.fi">Fisica</span><small data-i18n="wg.till">fino alle 11:35 · ancora 28 min</small></div>
-                  </section>
-                  <section class="w-ask">
-                    <span class="av big">M.</span>
-                    <div><b data-i18n="m.ask">Chiedi a MikyCore</b><span class="w-btns"><i><svg width="16" height="16" style="color:#ECEFF4"><use href="#i-mic"/></svg></i><i><svg width="16" height="16"><use href="#i-cam"/></svg></i></span></div>
-                  </section>
-                </div>
-                <div class="w-icon"><span>M.</span><small>MikyCore</small></div>
-              </div></figure>
-      <figure class="phone mini"><div class="screen app">
-                <header class="a-hd">
-                  <div class="a-row"><a class="a-sq"><svg width="22" height="22"><use href="#i-menu"/></svg></a><a class="a-btn pri"><svg width="18" height="18"><use href="#i-search"/></svg><span data-i18n="st.find">Trova locali</span></a></div>
-                  <h1 class="a-h1" data-i18n="st.h">Siti</h1>
-                  <div class="a-seg"><span class="on" data-i18n="st.mine">I miei siti · 4</span><span data-i18n="st.leads">Contatti · 35</span></div>
-                </header>
-                <div class="a-main">
-                  <div class="a-grid">
-                    <div class="a-site"><div class="pv green"><small>BAR A FERRARA</small><b>Caffè Estense</b><i></i></div><div class="cap"><b>Caffè Estense</b><span class="ok"><u></u><em data-i18n="st.pub">Pubblicato</em></span></div></div>
-                    <div class="a-site"><div class="pv cream"><small>Trattoria</small><b>Il Mulino</b><hr><hr></div><div class="cap"><b>Trattoria Il Mulino</b><span class="bl"><u></u><em data-i18n="st.demo">Demo</em></span></div></div>
-                    <div class="a-site"><div class="pv red"><i class="stripe"></i><b>BAR SPORT</b><hr><i class="tag"></i></div><div class="cap"><b>Bar Sport</b><span class="gr"><u></u><em data-i18n="st.demo">Demo</em></span></div></div>
-                    <div class="a-site"><div class="pv dark"><i class="stripe2"></i><b>BARBERIA</b><i class="gold"></i></div><div class="cap"><b>Barbieri Centro</b><span class="gr"><u></u><em data-i18n="st.demo">Demo</em></span></div></div>
-                  </div>
-                </div>
-              </div></figure>
-    </template>
-
-    <!-- SERVICES -->
-    <section id="services" class="services-sec">
-      <div class="sec">
-        <h2 data-r data-i18n="srv.title">Lavoro su richiesta</h2>
-        <p class="srv-lead" data-r data-i18n="srv.lead">Prendo piccoli progetti e li faccio bene. Prezzi da studente, da concordare in base al lavoro.</p>
-        <dl class="services">
-          <div class="spot" data-r style="--d:0ms"><dt data-i18n="s1.t">Bot Telegram</dt><dd data-i18n="s1.d">Prenotazioni, menù, promemoria per i clienti, risposte automatiche, mini app. Per negozi, palestre, insegnanti.</dd><svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
-          <div class="spot" data-r style="--d:70ms"><dt data-i18n="s2.t">Siti web</dt><dd data-i18n="s2.d">Siti vetrina veloci, fatti bene anche su telefono, pubblicati gratis su GitHub Pages o sul tuo dominio.</dd><svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
-          <div class="spot" data-r style="--d:140ms"><dt data-i18n="s3.t">Traduzioni ucraino, italiano, inglese</dt><dd data-i18n="s3.d">Lettere, moduli e aiuto con la burocrazia italiana per chi parla ucraino. Traduzioni non giurate.</dd><svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
-          <div class="spot" data-r style="--d:210ms"><dt data-i18n="s4.t">Ripetizioni di informatica</dt><dd data-i18n="s4.d">Python, Flowgorithm e basi di programmazione per studenti più giovani, con esercizi e quiz.</dd><svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+      <div class="split-aside">
+        <dl class="facts" data-r>
+          <div><dt class="label" data-i18n="ab.k1">Studio</dt><dd data-i18n="ab.v1">Informatica, terzo anno</dd></div>
+          <div><dt class="label" data-i18n="ab.k4">Lingue</dt><dd data-i18n="ab.v4">Ucraino (madrelingua), italiano, inglese</dd></div>
+          <div><dt class="label" data-i18n="ab.k5">Progetto principale</dt><dd><a href="/projects/mikycore/">MikyCore</a></dd></div>
         </dl>
-
-        <h3 class="steps-title" data-r data-i18n="pr.title">Come lavoriamo</h3>
-        <ol class="steps" id="steps">
-          <li><b data-i18n="pr.1t">Mi scrivi</b><span data-i18n="pr.1d">Due righe su cosa ti serve bastano: il resto lo chiedo io.</span></li>
-          <li><b data-i18n="pr.2t">Ricevi una proposta</b><span data-i18n="pr.2d">Ti mando l'idea, i tempi e il prezzo prima di iniziare. Nessun impegno.</span></li>
-          <li><b data-i18n="pr.3t">Lo provi e lo sistemiamo</b><span data-i18n="pr.3d">Vedi il lavoro mentre lo faccio e correggiamo insieme i dettagli.</span></li>
-        </ol>
-        <p class="srv-cta" data-r><a class="cta" href="https://t.me/mikybuilds" data-tg data-mag data-i18n="pr.cta">Chiedi una proposta su Telegram</a></p>
       </div>
-    </section>
+    </div></div></section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="contact">
-      <div class="aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
-      <div class="grain" aria-hidden="true"></div>
-      <div class="sec">
-        <h2 data-r data-i18n="ct.title">Contatti</h2>
-        <p class="ct-lead" data-r data-i18n="ct.lead">Scrivimi su Telegram: rispondo di solito in giornata.</p>
-        <p class="contact-links" id="contact-links"></p>
-      </div>
-    </section>
+    <section class="sec" id="services"><div class="wrap">
+      <div class="sec-head"><span class="label">03</span><h2 class="h2" data-i18n="srv.title">Lavoro su richiesta</h2><p class="lead" data-i18n="srv.lead">Prendo piccoli progetti e li faccio bene. Prezzi da studente, da concordare in base al lavoro.</p></div>
+      <div class="rows"><div class="row" data-r><span class="row-no meta">01</span><h3 class="h3" data-i18n="s1.t">Bot Telegram</h3><p class="row-text" data-i18n="s1.d">Prenotazioni, menù, promemoria per i clienti, risposte automatiche, mini app. Per negozi, palestre, insegnanti.</p></div><div class="row" data-r><span class="row-no meta">02</span><h3 class="h3" data-i18n="s2.t">Siti web</h3><p class="row-text" data-i18n="s2.d">Siti vetrina veloci, fatti bene anche su telefono, pubblicati gratis su GitHub Pages o sul tuo dominio.</p></div><div class="row" data-r><span class="row-no meta">03</span><h3 class="h3" data-i18n="s3.t">Traduzioni ucraino, italiano, inglese</h3><p class="row-text" data-i18n="s3.d">Lettere, moduli e aiuto con la burocrazia italiana per chi parla ucraino. Traduzioni non giurate.</p></div><div class="row" data-r><span class="row-no meta">04</span><h3 class="h3" data-i18n="s4.t">Ripetizioni di informatica</h3><p class="row-text" data-i18n="s4.d">Python, Flowgorithm e basi di programmazione per studenti più giovani, con esercizi e quiz.</p></div></div>
+      <h3 class="h3 subhead" data-r data-i18n="pr.title">Come lavoriamo</h3>
+      <ol class="steps"><li data-r style="--d:0ms"><b data-i18n="pr.1t">Mi scrivi</b><span data-i18n="pr.1d">Due righe su cosa ti serve bastano: il resto lo chiedo io.</span></li><li data-r style="--d:60ms"><b data-i18n="pr.2t">Ricevi una proposta</b><span data-i18n="pr.2d">Ti mando l'idea, i tempi e il prezzo prima di iniziare. Nessun impegno.</span></li><li data-r style="--d:120ms"><b data-i18n="pr.3t">Lo provi e lo sistemiamo</b><span data-i18n="pr.3d">Vedi il lavoro mentre lo faccio e correggiamo insieme i dettagli.</span></li></ol>
+      <p class="actions after" data-r><a class="btn" href="https://t.me/mikybuilds" target="_blank" rel="noopener"><span data-i18n="pr.cta">Chiedi una proposta su Telegram</span><span class="arr" aria-hidden="true">→</span></a></p>
+    </div></section>
+
+    <section class="sec" id="contact"><div class="wrap">
+      <div class="sec-head"><span class="label">04</span><h2 class="h2" data-i18n="ct.title">Contatti</h2><p class="lead" data-i18n="ct.lead">Scrivimi su Telegram: rispondo di solito in giornata.</p></div>
+      <div class="contact-list" data-r><a class="contact-row" href="https://t.me/mikybuilds" target="_blank" rel="noopener"><span class="h3">Telegram</span><span class="meta">@mikybuilds</span><span class="arr" aria-hidden="true">↗</span></a><a class="contact-row" href="https://github.com/mikybuilds" target="_blank" rel="noopener"><span class="h3">GitHub</span><span class="meta">mikybuilds</span><span class="arr" aria-hidden="true">↗</span></a><a class="contact-row" href="https://www.linkedin.com/in/mykhailo-zhupanov/" target="_blank" rel="noopener"><span class="h3">LinkedIn</span><span class="meta">mykhailo-zhupanov</span><span class="arr" aria-hidden="true">↗</span></a><a class="contact-row" href="https://www.instagram.com/mishh9ar/" target="_blank" rel="noopener"><span class="h3">Instagram</span><span class="meta">@mishh9ar</span><span class="arr" aria-hidden="true">↗</span></a></div>
+    </div></section>
+  <div class="preview" id="preview" aria-hidden="true"><img alt="" width="320" height="200"></div>
   </main>
 
-  <footer class="foot">
-    <p><span data-i18n="foot">Sito scritto a mano in HTML, CSS e JavaScript.</span> © <span id="year">2026</span> Mykhailo Zhupanov <span lang="uk">(Михайло Жупанов · Міша Жупанов)</span></p>
-    <a href="#main" class="totop" data-i18n="totop">Torna su</a>
-  </footer>
-  <script src="script.js?v=11"></script>
-  <script src="/lv.js?v=1" defer></script>
+  <footer class="site-foot"><div class="wrap">
+    <p class="small dim"><span data-i18n="foot">Sito scritto a mano in HTML, CSS e JavaScript.</span> © <span id="year">2026</span> Mykhailo Zhupanov <span lang="uk">(Михайло Жупанов · Міша Жупанов)</span></p>
+    <a class="small" href="#main" data-i18n="totop">Torna su</a>
+  </div></footer>
+  <script>window.PAGE_EN = {"pj.lan.d": "A free AI assistant for Windows and Linux: it uses free cloud models or your own local ones. Open source, no telemetry.", "pj.mc.d": "My personal assistant on Telegram: homework, grades, reminders and Subito deals, with a model that runs on my own PC.", "ix.private": "Private code", "pj.ios.n": "MikyCore for iPhone", "pj.ios.d": "The bot's native app: chat, your day, grades, Classroom and Home Screen widgets.", "pj.sites.n": "Websites for local shops", "pj.sit.d": "A bot that finds shops without a website, builds one and prepares a QR kit to bring in person.", "ix.n": "No.", "ix.p": "Project", "ix.d": "What it does", "ix.k": "Stack", "ix.s": "Status", "hero.more2": "See the projects", "pj.title": "01 — Projects", "hero.cta": "Message me on Telegram", "about.title": "About me", "about.p1": "I'm Ukrainian and I live in Italy, where I'm in my third year of computer science. I like taking an everyday problem — homework, grades, notes, online listings — and writing the program that solves it on its own.", "ab.p2": "Every feature has its own automated tests, and I try everything on the real model before I trust it.", "ab.k1": "Studying", "ab.v1": "Computer science, third year", "ab.k4": "Languages", "ab.v4": "Ukrainian (native), Italian, English", "ab.k5": "Main project", "s1.t": "Telegram bots", "s1.d": "Bookings, menus, customer reminders, auto-replies, mini apps. For shops, gyms, teachers.", "s2.t": "Websites", "s2.d": "Fast showcase sites that work well on phones too, published for free on GitHub Pages or on your domain.", "s3.t": "Ukrainian, Italian, English translations", "s3.d": "Letters, forms and help with Italian paperwork for Ukrainian speakers. Non-certified translations.", "s4.t": "Computer science tutoring", "s4.d": "Python, Flowgorithm and programming basics for younger students, with exercises and quizzes.", "pr.1t": "You message me", "pr.1d": "A couple of lines about what you need is enough: I'll ask the rest.", "pr.2t": "You get a proposal", "pr.2d": "I send you the idea, the timing and the price before I start. No commitment.", "pr.3t": "You try it, we polish it", "pr.3d": "You see the work while I build it and we fix the details together.", "srv.lead": "I take on small projects and do them well. Student prices, agreed depending on the job.", "srv.title": "Work on request", "pr.title": "How we work", "pr.cta": "Ask for a proposal on Telegram", "hero.title": "I build bots that work while I study.", "hero.lead": "I'm Mykhailo Zhupanov, a computer science student in Ferrara, Italy. My assistant MikyCore runs on my own PC: it keeps an eye on homework, gets me ready for tests and finds deals on Subito.", "ct.lead": "Message me on Telegram: I usually reply the same day.", "ct.title": "Contact", "_title": "Mykhailo Zhupanov — Telegram bots and local AI", "_desc": "Mykhailo Zhupanov (Михайло Жупанов, Міша Жупанов), computer science student in Ferrara, Italy. I build Telegram bots, websites and AI assistants that run on my own PC.", "skip": "Skip to content", "nav.projects": "Projects", "nav.about": "About", "nav.services": "Services", "nav.contact": "Contact", "foot": "Site written by hand in HTML, CSS and JavaScript.", "totop": "Back to top"};</script>
+  <script src="/site.js?v=13"></script>
 </body>
 </html>

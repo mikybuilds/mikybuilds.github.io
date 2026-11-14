@@ -1,0 +1,70 @@
+/* Page-level composition: intro, split blocks, project page heads, sample figures. Components live in components.css. */
+
+/* home intro */
+.intro { padding-top: var(--s8); padding-bottom: var(--s8); }
+.intro .display { margin-top: var(--s3); max-width: 14em; }
+.intro .lead { margin-top: var(--s5); }
+.intro .actions { margin-top: var(--s6); }
+.sec.first { padding-top: 0; }
+
+/* split block: text 1-7, facts / figure 9-12 */
+.split { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: var(--s7); align-items: start; }
+.split-main { grid-column: 1 / 8; min-width: 0; }
+.split-aside { grid-column: 9 / 13; min-width: 0; }
+.split-wide { grid-column: 1 / 13; min-width: 0; }
+.split-main > * + * { margin-top: var(--s5); }
+.split-main > .label + .h2 { margin-top: var(--s3); }
+.split-main > .h2 + .lead { margin-top: var(--s4); }
+.split-main > .actions { margin-top: var(--s6); }
+
+/* project page head */
+.pagehead { padding-top: var(--s7); padding-bottom: var(--s8); }
+.crumb { display: inline-flex; align-items: center; gap: var(--s2); min-height: 44px; margin-left: calc(-1 * var(--s1)); padding-inline: var(--s1); text-decoration: none; }
+.crumb:hover { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
+.pagehead .display { margin-top: var(--s3); }
+.pagehead .lead { margin-top: var(--s5); }
+.pagehead .actions { margin-top: var(--s6); }
+.pagehead .split { row-gap: var(--s6); }
+
+/* sample website figure (what the bot builds). Colours here belong to the sample, not to the site. */
+.sample { border: 1px solid var(--frame-line); border-radius: var(--r-2); overflow: hidden; background: #fff; color: #14161B; }
+.sample-bar { padding: 9px 14px; background: #ECEEF1; border-bottom: 1px solid #D9DCE2; font: 400 12px/1.4 var(--font-mono); color: #646B78; }
+.sample-hero { padding: 36px 32px; background: #12372D; color: #F3F4F6; }
+.sample-hero b { display: block; margin-bottom: 8px; font: 600 30px/1.1 var(--font-sans); letter-spacing: -0.02em; }
+.sample-hero span { display: block; margin-bottom: 18px; font-size: 15px; opacity: 0.86; }
+.sample-hero em { display: inline-block; padding: 9px 16px; border-radius: var(--r-1); background: #F3F4F6; color: #12372D; font: 500 14px/1 var(--font-sans); font-style: normal; }
+.sample-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 20px 32px 32px; }
+.sample-row i { display: block; height: 76px; border-radius: var(--r-1); background: #ECEEF1; }
+.kit { padding: 20px; border: 1px solid var(--frame-line); border-radius: var(--r-1); background: #fff; color: #14161B; }
+.kit b { display: block; font: 600 16px/1.2 var(--font-sans); }
+.kit small { display: block; margin: 4px 0 14px; font: 400 12px/1.4 var(--font-mono); color: #646B78; }
+.kit .qr { display: block; width: 120px; height: 120px; }
+.sites-figs { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: var(--s6); align-items: start; }
+.sites-figs .f-sample { grid-column: 1 / 9; }
+.sites-figs .f-kit { grid-column: 10 / 13; }
+
+/* spacing helpers that carry a meaning */
+.subhead { margin-top: var(--s9); margin-bottom: var(--s5); }
+.actions.after { margin-top: var(--s7); }
+.actions.after-s { margin-top: var(--s5); }
+.mt-m { margin-top: var(--s6); }
+.rows.tight .row { grid-template-columns: 48px minmax(0, 1fr); row-gap: var(--s2); }
+.rows.tight .row .row-text { grid-column: 2; }
+.row-text ol { padding-left: 1.2em; list-style: decimal; display: grid; gap: var(--s2); }
+.code-wrap { margin: var(--s4) 0; }
+
+/* narrower screens */
+@media (max-width: 1099px) {
+  .split-main { grid-column: 1 / 13; }
+  .split-aside { grid-column: 1 / 13; }
+  .sites-figs .f-sample { grid-column: 1 / 13; }
+  .sites-figs .f-kit { grid-column: 1 / 7; }
+}
+@media (max-width: 759px) {
+  .intro { padding-top: var(--s7); padding-bottom: var(--s7); }
+  .pagehead { padding-top: var(--s5); padding-bottom: var(--s7); }
+  .split, .sites-figs { row-gap: var(--s5); }
+  .sites-figs .f-kit { grid-column: 1 / 13; }
+  .sample-hero { padding: 24px 20px; }
+  .sample-row { padding: 16px 20px 20px; }
+}

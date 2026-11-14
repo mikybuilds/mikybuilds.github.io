@@ -5,14 +5,12 @@ Personal portfolio of **Mykhailo** — computer science student in Italy, buildi
 🌐 **Live:** https://mikybuilds.github.io
 
 ## What's inside
-- **About me** — skills and languages (Ukrainian, Italian, English)
-- **Projects** — four cards, each opening its own page under `/projects/`: Lanterna (public AI assistant for Windows and Linux), MikyCore, MikyCore for iPhone, and websites for local shops
-- **MikyCore** — my main project: a personal Telegram assistant powered by a local LLM, with a Telegram Mini App, sandboxed self-written plugins, a Subito market analyzer, study tools and more
-- **Services** — custom Telegram bots, websites, UA · IT · EN translations, computer science tutoring
+- **Projects** — an index of four projects, each with its own page under `/projects/`: Lanterna (public AI assistant for Windows and Linux), MikyCore (personal Telegram assistant on a local model), MikyCore for iPhone, and websites for local shops
+- **About me** — studies, languages
+- **Services** — custom Telegram bots, websites, UA · IT · EN translations, computer science tutoring, and how we work
 - **Contact** — [Telegram](https://t.me/mikybuilds) · [GitHub](https://github.com/mikybuilds) · [Instagram](https://www.instagram.com/mishh9ar/)
 
 ## Built with
-Plain HTML, CSS and JavaScript — no frameworks, no build step, no trackers. Fonts: Bricolage Grotesque + Geist (Google Fonts).
-Italian / English switch, light / dark theme, responsive layout.
+Plain HTML, CSS and JavaScript — no frameworks, no trackers. Fonts: Onest and JetBrains Mono (Google Fonts). Italian / English switch, light / dark theme, responsive layout. The Lanterna version number is read from its latest GitHub release.
 
-The phone screens are built in HTML/CSS after the real MikyCore iOS app, with demo data.
+Files: `tokens.css` → `base.css` → `components.css` → `pages.css`, one script `site.js`, `app.css` only for the sample app screens. The HTML pages are generated from shared components, so the header, footer and contact block stay identical on every page.

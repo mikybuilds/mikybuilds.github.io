@@ -1,0 +1,66 @@
+/* Design tokens. The only place with raw colours and sizes. Rules: DESIGN_RULES.md sections 2-5, 8. */
+:root {
+  /* surfaces */
+  --bg: #F3F4F6;
+  --bg-2: #ECEEF1;
+  --surface: #FFFFFF;
+  /* lines */
+  --line: #D9DCE2;
+  --line-2: #B9BEC8;
+  /* text */
+  --ink: #14161B;
+  --ink-2: #4A505C;
+  --ink-3: #646B78;
+  /* accent: amber */
+  --accent: #F2A93B;
+  --accent-ink: #8F5600;
+  --on-accent: #14161B;
+  /* states */
+  --ok: #1F7A4D;
+  --err: #B3261E;
+  --focus: 0 0 0 2px var(--bg), 0 0 0 4px var(--ink);
+  --sel: color-mix(in srgb, var(--accent) 35%, transparent);
+  --frame-line: var(--line);
+
+  /* type */
+  --font-sans: "Onest", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+
+  /* spacing (4px base) */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px; --s10: 128px;
+  --gut: clamp(20px, 5vw, 48px);
+  --wrap: 1120px;
+
+  /* radii: only these two (plus 50% for the status dot) */
+  --r-1: 4px;
+  --r-2: 8px;
+
+  /* motion */
+  --t-fast: 120ms;
+  --t-base: 200ms;
+  --t-slow: 360ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #111317; --bg-2: #171A1F; --surface: #1B1F25;
+  --line: #272B33; --line-2: #3A404B;
+  --ink: #E8EAEE; --ink-2: #B2B8C2; --ink-3: #8A919E;
+  --accent: #F5B544; --accent-ink: #F5B544; --on-accent: #14161B;
+  --ok: #5FD5A0; --err: #FF8A80;
+  --frame-line: var(--line-2);
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111317; --bg-2: #171A1F; --surface: #1B1F25;
+    --line: #272B33; --line-2: #3A404B;
+    --ink: #E8EAEE; --ink-2: #B2B8C2; --ink-3: #8A919E;
+    --accent: #F5B544; --accent-ink: #F5B544; --on-accent: #14161B;
+    --ok: #5FD5A0; --err: #FF8A80;
+    --frame-line: var(--line-2);
+    color-scheme: dark;
+  }
+}

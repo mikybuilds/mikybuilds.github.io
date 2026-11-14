@@ -1,0 +1,38 @@
+/* Reset, type scale, links, focus, selection, page transitions. Uses tokens.css only. */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: var(--t-base); animation-timing-function: var(--ease); }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: 76px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--font-sans); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: clip; }
+img, svg { max-width: 100%; }
+h1, h2, h3, h4, p, dl, dd, ol, ul, figure { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+::selection { background: var(--sel); }
+
+a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.22em; text-decoration-color: var(--line-2); transition: text-decoration-color var(--t-fast), text-decoration-thickness var(--t-fast), color var(--t-fast); }
+a:hover { color: var(--accent-ink); text-decoration-thickness: 2px; text-decoration-color: currentColor; }
+:focus-visible { outline: none; box-shadow: var(--focus); border-radius: var(--r-1); }
+.skip { position: absolute; left: -999px; top: var(--s2); z-index: 60; background: var(--ink); color: var(--bg); padding: var(--s2) var(--s4); border-radius: var(--r-1); }
+.skip:focus { left: var(--s3); }
+
+/* type scale (the only sizes) */
+.display { font: 600 clamp(40px, 5.4vw, 72px)/1.02 var(--font-sans); letter-spacing: -0.035em; text-wrap: balance; }
+.h2 { font: 600 clamp(28px, 3.2vw, 40px)/1.1 var(--font-sans); letter-spacing: -0.025em; text-wrap: balance; }
+.h3 { font: 600 22px/1.25 var(--font-sans); letter-spacing: -0.015em; }
+.lead { font: 400 clamp(19px, 1.7vw, 22px)/1.5 var(--font-sans); letter-spacing: -0.005em; color: var(--ink-2); max-width: 40ch; text-wrap: pretty; }
+.lead.wide { max-width: 56ch; }
+.body { max-width: 64ch; text-wrap: pretty; }
+.body + .body { margin-top: var(--s4); }
+.small { font-size: 14px; line-height: 1.5; }
+.label { font: 500 12.5px/1.4 var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); }
+.meta { font: 400 13px/1.4 var(--font-mono); color: var(--ink-3); }
+.dim { color: var(--ink-2); }
+.num { font-variant-numeric: tabular-nums; }
+
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
