@@ -142,16 +142,23 @@ const preview = document.getElementById("preview");
 if (preview && window.matchMedia("(min-width: 1100px) and (pointer: fine)").matches) {
   const img = preview.querySelector("img");
   const rows = document.querySelectorAll(".index-row[data-preview]");
-  let current = "";
+  let current = "", pw = 320, ph = 200;
   rows.forEach((row) => {
     row.addEventListener("pointerenter", () => {
       const src = row.dataset.preview;
-      if (src !== current) { img.src = src; current = src; }
+      if (src !== current) {
+        const w = Number(row.dataset.pw), h = Number(row.dataset.ph);       // show the whole image in its own proportions, never crop it
+        if (w >= h) { pw = 320; ph = Math.round(320 * h / w); } else { ph = Math.min(440, window.innerHeight - 120); pw = Math.round(ph * w / h); }
+        preview.style.setProperty("--pw", pw + "px"); preview.style.setProperty("--ph", ph + "px");
+        img.width = pw; img.height = ph;
+        img.src = src; current = src;
+      }
       preview.classList.add("on");
     });
     row.addEventListener("pointermove", (e) => {
-      const x = Math.min(e.clientX + 28, window.innerWidth - 340), y = clamp(e.clientY - 100, 76, window.innerHeight - 220);
-      preview.style.setProperty("--px", x + "px"); preview.style.setProperty("--py", y + "px");
+      const x = e.clientX + 32 + pw > window.innerWidth - 16 ? e.clientX - 32 - pw : e.clientX + 32;
+      const y = clamp(e.clientY - ph / 2, 76, window.innerHeight - ph - 16);
+      preview.style.setProperty("--px", Math.round(x) + "px"); preview.style.setProperty("--py", Math.round(y) + "px");
     });
     row.addEventListener("pointerleave", () => preview.classList.remove("on"));
   });

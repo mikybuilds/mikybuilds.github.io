@@ -120,9 +120,9 @@
 .contact-row:hover { color: inherit; text-decoration: none; }
 
 /* floating preview of a project (fine pointer, wide screens only) */
-.preview { position: fixed; left: 0; top: 0; z-index: 40; width: 320px; height: 200px; pointer-events: none; border: 1px solid var(--frame-line); border-radius: var(--r-2); overflow: hidden; background: var(--surface); opacity: 0; transform: translate3d(var(--px, 0), var(--py, 0), 0); transition: opacity 160ms var(--ease); }
+.preview { position: fixed; left: 0; top: 0; z-index: 40; width: var(--pw, 320px); height: var(--ph, 200px); pointer-events: none; border: 1px solid var(--frame-line); border-radius: var(--r-2); overflow: hidden; background: var(--surface); opacity: 0; transform: translate3d(var(--px, 0), var(--py, 0), 0); transition: opacity 160ms var(--ease); }
 .preview.on { opacity: 1; }
-.preview img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.preview img { display: block; width: 100%; height: 100%; object-fit: contain; }
 
 /* footer */
 .site-foot { border-top: 1px solid var(--line); padding: var(--s5) 0; }
