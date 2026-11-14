@@ -107,7 +107,8 @@ if (cnts.length && !calm && hasIO) {
   }, { threshold: 0.4 });
   co.observe(cnts[0].closest("dl, ul, div"));
 }
-afterLang = () => cnts.forEach(paintCnt);
+let afterLangStage = () => {};
+afterLang = () => { cnts.forEach(paintCnt); afterLangStage(); };
 afterLang();
 
 /* ---------- reveals: each block arrives once, 8 px and 360 ms ---------- */
@@ -137,31 +138,40 @@ if (navLinks.length && document.body.dataset.page === "home") {
   mark();
 }
 
-/* ---------- project index: a flat screenshot follows the pointer (wide screens, fine pointer) ---------- */
-const preview = document.getElementById("preview");
-if (preview && window.matchMedia("(min-width: 1100px) and (pointer: fine)").matches) {
-  const img = preview.querySelector("img");
-  const rows = document.querySelectorAll(".index-row[data-preview]");
-  let current = "", pw = 320, ph = 200;
-  rows.forEach((row) => {
-    row.addEventListener("pointerenter", () => {
-      const src = row.dataset.preview;
-      if (src !== current) {
-        const w = Number(row.dataset.pw), h = Number(row.dataset.ph);       // show the whole image in its own proportions, never crop it
-        if (w >= h) { pw = 320; ph = Math.round(320 * h / w); } else { ph = Math.min(440, window.innerHeight - 120); pw = Math.round(ph * w / h); }
-        preview.style.setProperty("--pw", pw + "px"); preview.style.setProperty("--ph", ph + "px");
-        img.width = pw; img.height = ph;
-        img.src = src; current = src;
-      }
-      preview.classList.add("on");
-    });
-    row.addEventListener("pointermove", (e) => {
-      const x = e.clientX + 32 + pw > window.innerWidth - 16 ? e.clientX - 32 - pw : e.clientX + 32;
-      const y = clamp(e.clientY - ph / 2, 76, window.innerHeight - ph - 16);
-      preview.style.setProperty("--px", Math.round(x) + "px"); preview.style.setProperty("--py", Math.round(y) + "px");
-    });
-    row.addEventListener("pointerleave", () => preview.classList.remove("on"));
+/* ---------- project index: one fixed plate beside the table shows the project you point at ---------- */
+const plate = document.querySelector(".plate-frame");
+if (plate && window.matchMedia("(min-width: 1100px)").matches) {
+  const imgs = [...plate.querySelectorAll("img")];
+  const rows = [...document.querySelectorAll(".index-layout .index-row")];
+  const noEl = document.getElementById("plate-no"), nameEl = document.getElementById("plate-name");
+  const ease = "cubic-bezier(0.2, 0.7, 0.2, 1)";
+  let cur = 0;
+  const caption = (i) => {
+    noEl.textContent = String(i + 1).padStart(2, "0") + " / " + String(rows.length).padStart(2, "0");
+    nameEl.textContent = rows[i].querySelector(".row-title").textContent;
+  };
+  const activate = (i) => {
+    if (i === cur) return;
+    const from = imgs[cur], to = imgs[i], forward = i > cur;
+    imgs.forEach((im) => { im.getAnimations().forEach((a) => a.cancel()); im.classList.remove("leaving"); if (im !== from && im !== to) im.classList.remove("cur"); });
+    rows.forEach((r, k) => r.classList.toggle("active", k === i));
+    from.classList.remove("cur"); to.classList.add("cur"); cur = i;
+    caption(i);
+    if (calm || !to.animate) return;
+    // the new screenshot is revealed like a shutter: from the bottom when going down the list, from the top when going up
+    from.classList.add("leaving");
+    from.animate([{ clipPath: "inset(0)" }, { clipPath: forward ? "inset(0 0 100% 0)" : "inset(100% 0 0 0)" }], { duration: 360, easing: ease, fill: "forwards" })
+      .onfinish = () => { from.classList.remove("leaving"); from.getAnimations().forEach((a) => a.cancel()); };
+    to.animate([{ clipPath: forward ? "inset(100% 0 0 0)" : "inset(0 0 100% 0)" }, { clipPath: "inset(0)" }], { duration: 360, easing: ease });
+    nameEl.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 200, easing: ease });
+  };
+  rows.forEach((row, i) => {
+    row.addEventListener("pointerenter", () => activate(i));
+    row.addEventListener("focus", () => activate(i));
   });
+  rows[0].classList.add("active");
+  caption(0);
+  afterLangStage = () => caption(cur);
 }
 
 /* ---------- screenshot viewer (tabs) ---------- */
