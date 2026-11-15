@@ -1,7 +1,7 @@
 /* Page-level composition: intro, split blocks, project page heads, sample figures. Components live in components.css. */
 
 /* home intro */
-.intro { padding-top: var(--s8); padding-bottom: var(--s8); }
+.intro { padding-top: var(--s7); padding-bottom: var(--s7); }
 .intro .display { margin-top: var(--s3); max-width: 14em; }
 .intro .lead { margin-top: var(--s5); }
 .intro .actions { margin-top: var(--s6); }

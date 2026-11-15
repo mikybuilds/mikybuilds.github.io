@@ -98,10 +98,24 @@
 .tabs button { margin-bottom: -1px; min-height: 44px; min-width: 44px; padding: 2px 0 0; font: 500 12.5px/1 var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); border-bottom: 2px solid transparent; transition: color var(--t-fast), border-color var(--t-fast); border-radius: 0; }
 .tabs button:hover { color: var(--ink); }
 .tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
-.stack { position: relative; aspect-ratio: 1400 / 912; background: var(--surface); }
-.stack img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; transition: opacity var(--t-base) var(--ease); }
-.stack img.on { opacity: 1; }
+.stack { position: relative; aspect-ratio: 1120 / 760; background: var(--surface); }
+.stack .pane { position: absolute; inset: 0; opacity: 0; transition: opacity var(--t-base) var(--ease); }
+.stack .pane.on { opacity: 1; }
+.stack img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+/* the app's own screenshots follow the site theme: light shots on the light page, dark on the dark one */
+.t-dark { display: none; }
+:root[data-theme="dark"] .t-dark { display: block; }
+:root[data-theme="dark"] .t-light { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .t-dark { display: block; }
+  :root:not([data-theme="light"]) .t-light { display: none; }
+}
 .v-cap[hidden] { display: none; }
+
+/* release log: version, date, title */
+.rel { border-bottom: 1px solid var(--line); }
+.rel-row { display: grid; grid-template-columns: 88px 112px minmax(0, 1fr); column-gap: var(--s5); align-items: baseline; padding: var(--s3) 0; border-top: 1px solid var(--line); }
+.rel-row .meta:first-child { color: var(--ink); }
 
 /* command blocks */
 .code { position: relative; min-height: 48px; border: 1px solid var(--line); border-radius: var(--r-1); background: var(--surface); }
@@ -193,11 +207,17 @@
   .contact-row .meta { grid-column: 1; grid-row: 2; }
   .contact-row .arr { grid-column: 2; grid-row: 1; }
   .tabs { gap: var(--s4); }
+  .rel-row { grid-template-columns: auto minmax(0, 1fr); row-gap: var(--s1); }
+  .rel-row .rel-t { grid-column: 1 / -1; }
   .code code { padding-right: var(--s4); padding-bottom: 52px; }
   .code button { top: auto; bottom: 1px; }
 }
 @media (max-width: 479px) {
   .site-nav .hide-s { display: none; }
+  /* four tab names don't fit one row in Italian: two columns, each tab on its own hairline, instead of one orphaned tab */
+  .tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--s4); border-bottom: 0; }
+  .tabs button { margin-bottom: 0; padding: 2px 0 1px; text-align: left; border-bottom: 1px solid var(--line); }
+  .tabs button[aria-selected="true"] { padding-bottom: 0; border-bottom-width: 2px; }
 }
 @media (max-width: 379px) {
   .site-head .wrap { gap: var(--s2); }

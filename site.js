@@ -176,12 +176,12 @@ if (plate && window.matchMedia("(min-width: 1100px)").matches) {
 
 /* ---------- screenshot viewer (tabs) ---------- */
 document.querySelectorAll(".viewer").forEach((v) => {
-  const tabs = [...v.querySelectorAll('[role="tab"]')], shots = [...v.querySelectorAll(".stack img")], caps = [...v.querySelectorAll(".v-cap")];
+  const tabs = [...v.querySelectorAll('[role="tab"]')], shots = [...v.querySelectorAll(".stack .pane")], caps = [...v.querySelectorAll(".v-cap")];
   const stack = v.querySelector(".stack"), panel = v.querySelector('[role="tabpanel"]');
   const show = (i, focus) => {
     tabs.forEach((t, k) => { t.setAttribute("aria-selected", String(k === i)); t.tabIndex = k === i ? 0 : -1; });
     shots.forEach((s, k) => s.classList.toggle("on", k === i));
-    if (stack) stack.style.aspectRatio = shots[i].getAttribute("width") + " / " + shots[i].getAttribute("height");   // never crop a screenshot
+    if (stack) stack.style.aspectRatio = shots[i].dataset.w + " / " + shots[i].dataset.h;   // never crop a screenshot
     if (panel) panel.setAttribute("aria-labelledby", tabs[i].id);
     caps.forEach((c, k) => { c.hidden = k !== i; });
     if (focus) tabs[i].focus();
