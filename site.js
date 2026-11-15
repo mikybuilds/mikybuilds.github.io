@@ -211,3 +211,35 @@ document.querySelectorAll("[data-copy]").forEach((b) => {
     setTimeout(() => b.classList.remove("ok"), 1600);
   });
 });
+
+/* ---------- CV: print or save as PDF ---------- */
+document.querySelectorAll("[data-print]").forEach((b) => b.addEventListener("click", () => window.print()));
+
+/* ---------- contact form: sent without leaving the page; Telegram stays as the fallback ---------- */
+const form = document.getElementById("contact-form");
+if (form) {
+  const note = form.querySelector(".form-note"), btn = form.querySelector('button[type="submit"]');
+  const say = (key, cls) => { note.textContent = (lang === "en" ? EN["fm." + key] : note.dataset[key]) || ""; note.className = "form-note small" + (cls ? " " + cls : ""); };
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    let first = null;
+    form.querySelectorAll(".field").forEach((f) => {
+      const el = f.querySelector("input, textarea"), msg = f.querySelector(".field-err");
+      const no = !el.value.trim() || !el.checkValidity();
+      f.classList.toggle("bad", no);
+      el.setAttribute("aria-invalid", no ? "true" : "false");
+      msg.textContent = no ? ((lang === "en" ? EN[msg.dataset.key] : msg.dataset.msg) || "") : "";
+      msg.hidden = !no;
+      if (no && !first) first = el;
+    });
+    say("", "");
+    if (first) { first.focus(); return; }
+    btn.disabled = true; say("sending");
+    try {
+      const r = await fetch(form.action, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) });
+      const j = await r.json().catch(() => ({}));
+      if (r.ok && j.success) { form.reset(); say("ok", "ok"); } else say("err", "err");
+    } catch (err) { say("err", "err"); }
+    btn.disabled = false;
+  });
+}
