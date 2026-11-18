@@ -166,6 +166,7 @@
 .site-foot { border-top: 1px solid var(--line); padding: var(--s5) 0; }
 .site-foot a { display: inline-flex; align-items: center; min-height: 44px; }
 .site-foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s3) var(--s5); }
+.site-foot p { max-width: 64ch; }   /* the colophon wraps in its own measure, so "back to top" keeps its place on the right */
 
 /* ---------- motion ---------- */
 .js [data-r] { opacity: 0; transform: translateY(8px); transition: opacity var(--t-slow) var(--ease) var(--d, 0ms), transform var(--t-slow) var(--ease) var(--d, 0ms); }

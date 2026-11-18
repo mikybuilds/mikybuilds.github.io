@@ -111,3 +111,4 @@
   .facts > div { padding: 5pt 0; grid-template-columns: minmax(0, 7em) minmax(0, 1fr); gap: 8pt; }
   .mt-m { margin-top: 6pt; }
 }
+.split + .steps-label { margin: var(--s7) 0 var(--s4); }
